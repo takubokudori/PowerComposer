@@ -83,7 +83,7 @@
             // HeaderTxt
             // 
             this.HeaderTxt.Location = new System.Drawing.Point(26, 122);
-            this.HeaderTxt.MaxLength = 10240;
+            this.HeaderTxt.MaxLength = 0;
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.Size = new System.Drawing.Size(584, 215);
@@ -92,7 +92,7 @@
             // BodyTxt
             // 
             this.BodyTxt.Location = new System.Drawing.Point(26, 361);
-            this.BodyTxt.MaxLength = 10240;
+            this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
             this.BodyTxt.Size = new System.Drawing.Size(584, 383);
@@ -154,7 +154,7 @@
             // ValuesTxt
             // 
             this.ValuesTxt.Location = new System.Drawing.Point(21, 41);
-            this.ValuesTxt.MaxLength = 10240;
+            this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
             this.ValuesTxt.Size = new System.Drawing.Size(259, 381);
@@ -209,6 +209,7 @@
             // NewVarTxt
             // 
             this.NewVarTxt.Location = new System.Drawing.Point(7, 425);
+            this.NewVarTxt.MaxLength = 32;
             this.NewVarTxt.Name = "NewVarTxt";
             this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
             this.NewVarTxt.TabIndex = 10;
@@ -239,7 +240,7 @@
             // ValuesLbl
             // 
             this.ValuesLbl.AutoSize = true;
-            this.ValuesLbl.Location = new System.Drawing.Point(112, 3);
+            this.ValuesLbl.Location = new System.Drawing.Point(118, 3);
             this.ValuesLbl.Name = "ValuesLbl";
             this.ValuesLbl.Size = new System.Drawing.Size(49, 24);
             this.ValuesLbl.TabIndex = 4;
