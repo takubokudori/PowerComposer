@@ -58,6 +58,7 @@ namespace PowerComposer
             }
 
             VariableBox.Items.Add(NewVarTxt.Text);
+            NewVarTxt.Text = "";
         }
 
         private void ValuesTxt_TextChanged(object sender, EventArgs e)
