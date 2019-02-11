@@ -40,14 +40,17 @@
             this.VariableBox = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.VarsTab = new System.Windows.Forms.TabPage();
-            this.ValsTab = new System.Windows.Forms.TabPage();
-            this.ValuesLbl = new System.Windows.Forms.Label();
-            this.NewVarTxt = new System.Windows.Forms.TextBox();
             this.AddNewVarBtn = new System.Windows.Forms.Button();
+            this.NewVarTxt = new System.Windows.Forms.TextBox();
+            this.ValsTab = new System.Windows.Forms.TabPage();
             this.SaveBtn = new System.Windows.Forms.Button();
+            this.ValuesLbl = new System.Windows.Forms.Label();
+            this.OptionTab = new System.Windows.Forms.TabPage();
+            this.OptionBox = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
+            this.OptionTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLbl
@@ -173,6 +176,7 @@
             // 
             this.tabControl1.Controls.Add(this.VarsTab);
             this.tabControl1.Controls.Add(this.ValsTab);
+            this.tabControl1.Controls.Add(this.OptionTab);
             this.tabControl1.Location = new System.Drawing.Point(634, 231);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -192,6 +196,23 @@
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
             // 
+            // AddNewVarBtn
+            // 
+            this.AddNewVarBtn.Location = new System.Drawing.Point(191, 425);
+            this.AddNewVarBtn.Name = "AddNewVarBtn";
+            this.AddNewVarBtn.Size = new System.Drawing.Size(82, 31);
+            this.AddNewVarBtn.TabIndex = 11;
+            this.AddNewVarBtn.Text = "Add";
+            this.AddNewVarBtn.UseVisualStyleBackColor = true;
+            this.AddNewVarBtn.Click += new System.EventHandler(this.AddNewVarBtn_Click);
+            // 
+            // NewVarTxt
+            // 
+            this.NewVarTxt.Location = new System.Drawing.Point(7, 425);
+            this.NewVarTxt.Name = "NewVarTxt";
+            this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
+            this.NewVarTxt.TabIndex = 10;
+            // 
             // ValsTab
             // 
             this.ValsTab.BackColor = System.Drawing.Color.Silver;
@@ -205,32 +226,6 @@
             this.ValsTab.TabIndex = 1;
             this.ValsTab.Text = "Values";
             // 
-            // ValuesLbl
-            // 
-            this.ValuesLbl.AutoSize = true;
-            this.ValuesLbl.Location = new System.Drawing.Point(112, 3);
-            this.ValuesLbl.Name = "ValuesLbl";
-            this.ValuesLbl.Size = new System.Drawing.Size(49, 24);
-            this.ValuesLbl.TabIndex = 4;
-            this.ValuesLbl.Text = "test";
-            // 
-            // NewVarTxt
-            // 
-            this.NewVarTxt.Location = new System.Drawing.Point(7, 425);
-            this.NewVarTxt.Name = "NewVarTxt";
-            this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
-            this.NewVarTxt.TabIndex = 10;
-            // 
-            // AddNewVarBtn
-            // 
-            this.AddNewVarBtn.Location = new System.Drawing.Point(191, 425);
-            this.AddNewVarBtn.Name = "AddNewVarBtn";
-            this.AddNewVarBtn.Size = new System.Drawing.Size(82, 31);
-            this.AddNewVarBtn.TabIndex = 11;
-            this.AddNewVarBtn.Text = "Add";
-            this.AddNewVarBtn.UseVisualStyleBackColor = true;
-            this.AddNewVarBtn.Click += new System.EventHandler(this.AddNewVarBtn_Click);
-            // 
             // SaveBtn
             // 
             this.SaveBtn.Location = new System.Drawing.Point(75, 428);
@@ -240,6 +235,37 @@
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // ValuesLbl
+            // 
+            this.ValuesLbl.AutoSize = true;
+            this.ValuesLbl.Location = new System.Drawing.Point(112, 3);
+            this.ValuesLbl.Name = "ValuesLbl";
+            this.ValuesLbl.Size = new System.Drawing.Size(49, 24);
+            this.ValuesLbl.TabIndex = 4;
+            this.ValuesLbl.Text = "test";
+            // 
+            // OptionTab
+            // 
+            this.OptionTab.Controls.Add(this.OptionBox);
+            this.OptionTab.Location = new System.Drawing.Point(8, 39);
+            this.OptionTab.Name = "OptionTab";
+            this.OptionTab.Size = new System.Drawing.Size(303, 466);
+            this.OptionTab.TabIndex = 2;
+            this.OptionTab.Text = "Option";
+            this.OptionTab.UseVisualStyleBackColor = true;
+            // 
+            // OptionBox
+            // 
+            this.OptionBox.CheckOnClick = true;
+            this.OptionBox.FormattingEnabled = true;
+            this.OptionBox.Items.AddRange(new object[] {
+            "Error by undefined variable",
+            "Fix Content-Length header"});
+            this.OptionBox.Location = new System.Drawing.Point(3, 41);
+            this.OptionBox.Name = "OptionBox";
+            this.OptionBox.Size = new System.Drawing.Size(297, 238);
+            this.OptionBox.TabIndex = 0;
             // 
             // PowerComposerView
             // 
@@ -263,6 +289,7 @@
             this.VarsTab.PerformLayout();
             this.ValsTab.ResumeLayout(false);
             this.ValsTab.PerformLayout();
+            this.OptionTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +314,7 @@
         private System.Windows.Forms.Button AddNewVarBtn;
         private System.Windows.Forms.TextBox NewVarTxt;
         private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.TabPage OptionTab;
+        public System.Windows.Forms.CheckedListBox OptionBox;
     }
 }

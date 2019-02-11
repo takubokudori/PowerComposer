@@ -80,7 +80,7 @@ namespace PowerComposer
             return _hasNext;
         }
 
-        public string Generate()
+        public string Generate(bool errorByUndefinedVar = false)
         {
             if (_request == null)
             {
@@ -116,9 +116,12 @@ namespace PowerComposer
                 }
                 else
                 {
-                    MessageBox.Show($@"Undefined variable {varName}.");
-                    _hasNext = false;
-                    return "";
+                    if (errorByUndefinedVar)
+                    {
+                        MessageBox.Show($@"Undefined variable {varName}.");
+                        _hasNext = false;
+                        return "";
+                    }
                 }
 
 //                MessageBox.Show(request.Substring(reqPtr, ps - reqPtr + 1));
