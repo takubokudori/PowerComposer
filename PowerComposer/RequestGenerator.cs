@@ -124,8 +124,6 @@ namespace PowerComposer
                     }
                 }
 
-//                MessageBox.Show(request.Substring(reqPtr, ps - reqPtr + 1));
-//                MessageBox.Show(str);
                 ret += _request.Substring(reqPtr, ps - reqPtr) + str;
 
                 reqPtr = pe + 1;
