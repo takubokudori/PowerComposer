@@ -17,8 +17,10 @@ namespace PowerComposer
 
         public PowerComposerView()
         {
-            vars = new Dictionary<string, string>();
             InitializeComponent();
+            OptionBox.SetItemChecked(0,true);
+            OptionBox.SetItemChecked(1,true);
+            vars = new Dictionary<string, string>();
         }
 
         private void PowerComposerView_Load(object sender, EventArgs e)
@@ -93,6 +95,5 @@ namespace PowerComposer
             tabControl1.SelectTab(ValsTab);
 
         }
-
     }
 }
