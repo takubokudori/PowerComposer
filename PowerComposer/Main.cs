@@ -78,7 +78,6 @@ namespace PowerComposer
                     break;
                 }
 
-//                MessageBox.Show(headerString);
                 if (!_header.AssignFromString(headerString))
                 {
                     // Failed to parse
@@ -87,7 +86,6 @@ namespace PowerComposer
                 }
 
                 string bodyString = _oView.BodyTxt.Text;
-//                bodyString = parseRequest(bodyString);
                 byte[] bodyBytes = new byte[0];
                 if (_oView.BodyTxt.Text.Length > 0)
                 {
