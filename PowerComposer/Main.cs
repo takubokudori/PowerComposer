@@ -72,7 +72,7 @@ namespace PowerComposer
             RequestGenerator rgh = new RequestGenerator(headerString, _oView.GetDict());
             while (rgh.HasNext())
             {
-                if ((headerString = rgh.Generate()).Equals(""))
+                if ((headerString = rgh.Generate(_oView.OptionBox.GetItemChecked(0))).Equals(""))
                 {
                     // An error occured.
                     break;
@@ -92,10 +92,8 @@ namespace PowerComposer
                 if (_oView.BodyTxt.Text.Length > 0)
                 {
                     bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
-                    if (_header["Content-Encoding"].Equals("gzip") && !_header["Transfer-Encoding"].Equals("gzip"))
-                        // GZIP Encode
-                        bodyBytes = Utilities.GzipCompress(bodyBytes);
-                    _header["Content-Length"] = bodyBytes.Length.ToString();
+                    bodyBytes = EncodeRequestIfNeed(ref _header, bodyBytes);
+                    if (_oView.OptionBox.GetItemChecked(1)) _header["Content-Length"] = bodyBytes.Length.ToString();
                 }
 
                 Send(_header, bodyBytes);
@@ -108,9 +106,15 @@ namespace PowerComposer
         }
 
 
-        private static bool EncodeRequestIfNeed(ref byte[] b)
+        private static byte[] EncodeRequestIfNeed(ref HTTPRequestHeaders header, byte[] bodyBytes)
         {
-            return false;
+            if (header["Content-Encoding"].Equals("gzip") && !header["Transfer-Encoding"].Equals("gzip"))
+            {
+                // GZIP Encode
+                bodyBytes = Utilities.GzipCompress(bodyBytes);
+            }
+
+            return bodyBytes;
         }
 
         private static string BuildRequest(string method, string url, string version, string headers, string body)

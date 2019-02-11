@@ -92,5 +92,6 @@ namespace PowerComposer
             tabControl1.SelectTab(ValsTab);
 
         }
+
     }
 }
