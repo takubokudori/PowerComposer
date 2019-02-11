@@ -162,17 +162,11 @@
             // 
             this.VariableBox.FormattingEnabled = true;
             this.VariableBox.ItemHeight = 24;
-            this.VariableBox.Items.AddRange(new object[] {
-            "test",
-            "hello",
-            "directory",
-            "numeral",
-            "alphabet",
-            "ALPHABET"});
             this.VariableBox.Location = new System.Drawing.Point(6, 6);
             this.VariableBox.Name = "VariableBox";
             this.VariableBox.Size = new System.Drawing.Size(179, 412);
             this.VariableBox.TabIndex = 9;
+            this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
             this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
             // 
             // tabControl1

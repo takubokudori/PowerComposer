@@ -86,5 +86,11 @@ namespace PowerComposer
 
             return ret;
         }
+
+        private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(ValsTab);
+
+        }
     }
 }

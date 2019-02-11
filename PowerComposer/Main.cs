@@ -27,7 +27,7 @@ namespace PowerComposer
             _oView.Dock = DockStyle.Fill;
             FiddlerApplication.UI.tabsViews.TabPages.Add(_oPage);
             FiddlerObject.UI.mnuSessionContext.MenuItems[12].MenuItems
-                .Add("Reissue &PowerComposer", ReissueOnClick); //Replay ContextMenu
+                .Add("Reissue from &PowerComposer", ReissueOnClick); //Replay ContextMenu
             _header = null;
         }
 
