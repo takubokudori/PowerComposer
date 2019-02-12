@@ -33,7 +33,6 @@
             this.URITxt = new System.Windows.Forms.TextBox();
             this.HeaderTxt = new System.Windows.Forms.TextBox();
             this.BodyTxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.MethodTxt = new System.Windows.Forms.ComboBox();
             this.VersionTxt = new System.Windows.Forms.ComboBox();
             this.ValuesTxt = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@
             this.ValuesLbl = new System.Windows.Forms.Label();
             this.OptionTab = new System.Windows.Forms.TabPage();
             this.OptionBox = new System.Windows.Forms.CheckedListBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
@@ -86,6 +86,7 @@
             this.HeaderTxt.MaxLength = 0;
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
+            this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.HeaderTxt.Size = new System.Drawing.Size(584, 215);
             this.HeaderTxt.TabIndex = 3;
             // 
@@ -95,18 +96,10 @@
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
+            this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.BodyTxt.Size = new System.Drawing.Size(584, 383);
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 762);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(511, 24);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "https://github.com/takubokudori/PowerComposer";
             // 
             // MethodTxt
             // 
@@ -245,6 +238,7 @@
             this.ValuesLbl.Size = new System.Drawing.Size(49, 24);
             this.ValuesLbl.TabIndex = 4;
             this.ValuesLbl.Text = "test";
+            this.ValuesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OptionTab
             // 
@@ -268,15 +262,26 @@
             this.OptionBox.Size = new System.Drawing.Size(297, 238);
             this.OptionBox.TabIndex = 0;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(22, 760);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(511, 24);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/takubokudori/PowerComposer";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.VersionTxt);
             this.Controls.Add(this.MethodTxt);
             this.Controls.Add(this.HeaderTxt);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.BodyTxt);
             this.Controls.Add(this.URITxt);
             this.Controls.Add(this.ExecBtn);
@@ -303,7 +308,6 @@
         public System.Windows.Forms.TextBox URITxt;
         public System.Windows.Forms.TextBox HeaderTxt;
         public System.Windows.Forms.TextBox BodyTxt;
-        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox MethodTxt;
         public System.Windows.Forms.ComboBox VersionTxt;
         public System.Windows.Forms.TextBox ValuesTxt;
@@ -317,5 +321,6 @@
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.TabPage OptionTab;
         public System.Windows.Forms.CheckedListBox OptionBox;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
