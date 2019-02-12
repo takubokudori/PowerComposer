@@ -150,6 +150,7 @@
             this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
+            this.ValuesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ValuesTxt.Size = new System.Drawing.Size(259, 381);
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
