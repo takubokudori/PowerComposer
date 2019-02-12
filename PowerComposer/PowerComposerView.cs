@@ -18,8 +18,8 @@ namespace PowerComposer
         public PowerComposerView()
         {
             InitializeComponent();
-            OptionBox.SetItemChecked(0,true);
-            OptionBox.SetItemChecked(1,true);
+            OptionBox.SetItemChecked(0, true);
+            OptionBox.SetItemChecked(1, true);
             vars = new Dictionary<string, string>();
         }
 
@@ -53,6 +53,7 @@ namespace PowerComposer
 
         private void AddNewVarBtn_Click(object sender, EventArgs e)
         {
+            if (NewVarTxt.Text.Equals("")) return;
             if (VariableBox.FindStringExact(NewVarTxt.Text) != -1)
             {
                 MessageBox.Show($@"{NewVarTxt.Text} is already exists.");
@@ -93,7 +94,6 @@ namespace PowerComposer
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabControl1.SelectTab(ValsTab);
-
         }
     }
 }
