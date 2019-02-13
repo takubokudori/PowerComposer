@@ -33,7 +33,7 @@ namespace PowerComposer
     {
         private int _placeholderNum;
         private int[] _arrayIter;
-        private string[] _str;
+        private string _request;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
 
@@ -41,13 +41,13 @@ namespace PowerComposer
         {
         }
 
-        public RequestGenerator(string[] s)
+        public RequestGenerator(string s)
         {
             ParseRequest(s);
             SetDict(null);
         }
 
-        public RequestGenerator(string[] s, Dictionary<string, string[]> dict)
+        public RequestGenerator(string s, Dictionary<string, string[]> dict)
         {
             ParseRequest(s);
             SetDict(dict);
