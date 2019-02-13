@@ -115,6 +115,21 @@ namespace PowerComposer
             return ret;
         }
 
+        public bool isErrorByUndefinedVar()
+        {
+            return OptionBox.GetItemChecked(0);
+        }
+
+        public bool isFixContentLength()
+        {
+            return OptionBox.GetItemChecked(1);
+        }
+
+        public bool isFollowRedirect()
+        {
+            return OptionBox.GetItemChecked(2);
+        }
+
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabControl1.SelectTab(ValsTab);

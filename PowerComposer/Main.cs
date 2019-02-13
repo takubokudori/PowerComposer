@@ -25,6 +25,7 @@ SOFTWARE.
 
 using Fiddler;
 using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 [assembly: Fiddler.RequiredVersion("2.3.5.0")]
@@ -121,9 +122,19 @@ namespace PowerComposer
             }
         }
 
-        private static void Send(HTTPRequestHeaders header, byte[] bodyBytes)
+        private static Session Send(string line, string headers, byte[] bodyBytes)
         {
-            FiddlerApplication.oProxy.SendRequest(header, bodyBytes, null, null);
+            string headerString = BuildHeader(line, headers);
+            HTTPRequestHeaders header=new HTTPRequestHeaders();
+            header.AssignFromString(headerString);
+            Session oSession=Send(header, bodyBytes);
+            return oSession;
+        }
+
+        private static Session Send(HTTPRequestHeaders header, byte[] bodyBytes)
+        {
+            Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, null, null);
+            return oSession;
         }
 
 
@@ -143,9 +154,19 @@ namespace PowerComposer
             return $"{method} {url} {version}\n{headers}\n\n{body}";
         }
 
+        private static string BuildStatusLine(string method, string url, string version)
+        {
+            return $"{method} {url} {version}";
+        }
+
+        private static string BuildHeader(string line, string headers)
+        {
+            return $"{line}\n{headers}";
+        }
+
         private static string BuildHeader(string method, string url, string version, string headers)
         {
-            return $"{method} {url} {version}\n{headers}";
+            return BuildHeader(BuildStatusLine(method, url, version), headers);
         }
     }
 }
