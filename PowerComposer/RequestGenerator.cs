@@ -31,8 +31,7 @@ namespace PowerComposer
 {
     public class RequestGenerator
     {
-        private int _placeholderNum;
-        private int[] _arrayIter;
+        private int _arrayIter;
         private string _request;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
@@ -68,8 +67,6 @@ namespace PowerComposer
             // Get the number of Placeholders
             _request = s;
             int num = GetTheNumberOfPlaceholders();
-            _placeholderNum = num;
-            _arrayIter = new int[_placeholderNum];
             InitIterator();
         }
 
@@ -89,12 +86,7 @@ namespace PowerComposer
 
         public void InitIterator()
         {
-            if (_arrayIter == null) return;
-            for (int i = 0; i < _arrayIter.Length; i++)
-            {
-                _arrayIter[i] = 0;
-            }
-
+            _arrayIter = 0;
             _hasNext = true;
         }
 
@@ -114,7 +106,6 @@ namespace PowerComposer
 
             int ps; // ${ , } position
             string ret = ""; // return string
-            int nowPh = 0; // now placeholder
             int reqPtr = 0;
             _hasNext = false;
             while ((ps = _request.IndexOf("${", reqPtr, StringComparison.Ordinal)) != -1)
@@ -131,10 +122,9 @@ namespace PowerComposer
                 string str = "";
                 if (_dict.ContainsKey(varName))
                 {
-                    if (_arrayIter[nowPh] < _dict[varName].Length)
+                    if (_arrayIter < _dict[varName].Length)
                     {
-                        str = _dict[varName][_arrayIter[nowPh]];
-                        _arrayIter[nowPh]++;
+                        str = _dict[varName][_arrayIter];
                         _hasNext = true;
                     }
                 }
@@ -152,10 +142,10 @@ namespace PowerComposer
 
                 reqPtr = pe + 1;
 
-                nowPh++;
             }
 
             ret += _request.Substring(reqPtr);
+            _arrayIter++;
 
             return ret;
         }

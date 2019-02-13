@@ -153,8 +153,8 @@ namespace PowerComposer
         private static Session Send(HTTPRequestHeaders header, byte[] bodyBytes)
         {
             Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, null, null);
-            string hs = header.ToString();
-            hs = hs.Substring(hs.IndexOf("\n") + 1); // Remove status line
+//            string hs = header.ToString();
+//            hs = hs.Substring(hs.IndexOf("\n") + 1); // Remove status line
             return oSession;
         }
 
