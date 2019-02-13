@@ -96,7 +96,7 @@ namespace PowerComposer
             RequestGenerator rgh = new RequestGenerator(headerString, _oView.GetDict());
             while (rgh.HasNext())
             {
-                if ((headerString = rgh.Generate(_oView.OptionBox.GetItemChecked(0))).Equals(""))
+                if ((headerString = rgh.Generate(_oView.isErrorByUndefinedVar())).Equals(""))
                 {
                     // An error occured.
                     break;
@@ -115,19 +115,33 @@ namespace PowerComposer
                 {
                     bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
                     bodyBytes = EncodeRequestIfNeed(ref _header, bodyBytes);
-                    if (_oView.OptionBox.GetItemChecked(1)) _header["Content-Length"] = bodyBytes.Length.ToString();
+                    if (_oView.isFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
                 }
 
                 Send(_header, bodyBytes);
             }
         }
 
-        private static Session Send(string line, string headers, byte[] bodyBytes)
+        private static Session Send(string method, string url, string version, string headers, byte[] bodyBytes)
         {
-            string headerString = BuildHeader(line, headers);
-            HTTPRequestHeaders header=new HTTPRequestHeaders();
+            string headerString = BuildHeader(method, url, version, headers);
+            HTTPRequestHeaders header = new HTTPRequestHeaders();
             header.AssignFromString(headerString);
-            Session oSession=Send(header, bodyBytes);
+            Session oSession = Send(header, bodyBytes);
+            if (_oView.isFollowRedirect()) // redirect
+            {
+                switch (oSession.responseCode)
+                {
+                    case 301: // Moved Permanently
+                    case 302: // Found
+                    case 303: // See Other
+                    case 307: // Temporary Redirect
+                    case 308: // Permanent Redirect
+                        Send("GET", oSession.ResponseHeaders["Location"], version, headers, null);
+                        break;
+                }
+            }
+
             return oSession;
         }
 
