@@ -31,10 +31,11 @@ namespace PowerComposer
 {
     public class RequestGenerator
     {
-        private int _arrayIter;
+        private int _arrayIter; // Dictionary Iterator
         private string _request;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
+        public bool _errorByUndefinedVar = false;
 
         public RequestGenerator()
         {
@@ -96,6 +97,78 @@ namespace PowerComposer
             return _hasNext;
         }
 
+        private void iterate()
+        {
+            _arrayIter++;
+        }
+
+        private string GenerateString(string plaintext)
+        {
+            if (plaintext == null)
+            {
+                MessageBox.Show(@"UnInitialized RequestGenerator!");
+                return "";
+            }
+
+            int ps; // ${ , } position
+            string ret = ""; // return string
+            int reqPtr = 0;
+            _hasNext = false;
+            while ((ps = plaintext.IndexOf("${", reqPtr, StringComparison.Ordinal)) != -1)
+            {
+                int pe = plaintext.IndexOf("}", reqPtr, StringComparison.Ordinal); // }
+                if (pe == -1) // ${...<EOS>
+                {
+                    MessageBox.Show(@"Broken Brackets found!");
+                    _hasNext = false;
+                    return "";
+                }
+
+                string varName = plaintext.Substring(ps + 2, pe - (ps + 2)); // ${varName}
+                string str = "";
+                if (_dict.ContainsKey(varName))
+                {
+                    if (_arrayIter < _dict[varName].Length)
+                    {
+                        str = _dict[varName][_arrayIter];
+                        _hasNext = true;
+                    }
+                }
+                else
+                {
+                    if (_errorByUndefinedVar)
+                    {
+                        MessageBox.Show($@"Undefined variable {varName}.");
+                        _hasNext = false;
+                        return "";
+                    }
+                }
+
+                ret += plaintext.Substring(reqPtr, ps - reqPtr) + str;
+
+                reqPtr = pe + 1;
+            }
+
+            ret += plaintext.Substring(reqPtr);
+            _arrayIter++;
+
+            return ret;
+        }
+
+        public string[] Generate()
+        {
+            string[] _arr = new string[4];
+            string[] ret = new string[4];
+            for (int i = 0; i < _arr.Length; i++)
+            {
+                bool aa = _hasNext;
+                ret[i] = GenerateString(_arr[i]);
+                _hasNext = _hasNext || aa;
+            }
+
+            return ret;
+        }
+
         public string Generate(bool errorByUndefinedVar = false)
         {
             if (_request == null)
@@ -141,7 +214,6 @@ namespace PowerComposer
                 ret += _request.Substring(reqPtr, ps - reqPtr) + str;
 
                 reqPtr = pe + 1;
-
             }
 
             ret += _request.Substring(reqPtr);
