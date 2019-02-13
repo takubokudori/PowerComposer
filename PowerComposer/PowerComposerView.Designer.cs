@@ -257,7 +257,8 @@
             this.OptionBox.FormattingEnabled = true;
             this.OptionBox.Items.AddRange(new object[] {
             "Error by undefined variable",
-            "Fix Content-Length header"});
+            "Fix Content-Length header",
+            "Follow Redirects"});
             this.OptionBox.Location = new System.Drawing.Point(3, 41);
             this.OptionBox.Name = "OptionBox";
             this.OptionBox.Size = new System.Drawing.Size(297, 238);
