@@ -137,7 +137,12 @@ namespace PowerComposer
                     case 303: // See Other
                     case 307: // Temporary Redirect
                     case 308: // Permanent Redirect
-                        Send("GET", oSession.ResponseHeaders["Location"], version, headers, null);
+                        MessageBox.Show(oSession.ResponseHeaders["Location"]);
+                        if (oSession.ResponseHeaders["Location"] != null)
+                        {
+                            Send("GET", oSession.ResponseHeaders["Location"], version, headers, null);
+                        }
+
                         break;
                 }
             }
@@ -148,6 +153,8 @@ namespace PowerComposer
         private static Session Send(HTTPRequestHeaders header, byte[] bodyBytes)
         {
             Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, null, null);
+            string hs = header.ToString();
+            hs = hs.Substring(hs.IndexOf("\n") + 1); // Remove status line
             return oSession;
         }
 
