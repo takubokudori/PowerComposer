@@ -175,58 +175,5 @@ namespace PowerComposer
 
             return ret;
         }
-
-        public string Generate(bool errorByUndefinedVar = false)
-        {
-            if (_request == null)
-            {
-                MessageBox.Show(@"UnInitialized RequestGenerator!");
-                return "";
-            }
-
-            int ps; // ${ , } position
-            string ret = ""; // return string
-            int reqPtr = 0;
-            _hasNext = false;
-            while ((ps = _request.IndexOf("${", reqPtr, StringComparison.Ordinal)) != -1)
-            {
-                int pe = _request.IndexOf("}", reqPtr, StringComparison.Ordinal); // }
-                if (pe == -1) // ${...<EOS>
-                {
-                    MessageBox.Show(@"Broken Brackets found!");
-                    _hasNext = false;
-                    return "";
-                }
-
-                string varName = _request.Substring(ps + 2, pe - (ps + 2)); // ${varName}
-                string str = "";
-                if (_dict.ContainsKey(varName))
-                {
-                    if (_arrayIter < _dict[varName].Length)
-                    {
-                        str = _dict[varName][_arrayIter];
-                        _hasNext = true;
-                    }
-                }
-                else
-                {
-                    if (errorByUndefinedVar)
-                    {
-                        MessageBox.Show($@"Undefined variable {varName}.");
-                        _hasNext = false;
-                        return "";
-                    }
-                }
-
-                ret += _request.Substring(reqPtr, ps - reqPtr) + str;
-
-                reqPtr = pe + 1;
-            }
-
-            ret += _request.Substring(reqPtr);
-            _arrayIter++;
-
-            return ret;
-        }
     }
 }
