@@ -93,7 +93,8 @@ namespace PowerComposer
                 _oView.URITxt.Text,
                 _oView.VersionTxt.Text,
                 _oView.HeaderTxt.Text);
-            RequestGenerator rgh = new RequestGenerator(headerString, _oView.GetDict());
+            string[] sarr = new string[] {headerString};
+            RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
             while (rgh.HasNext())
             {
                 if ((headerString = rgh.Generate(_oView.isErrorByUndefinedVar())).Equals(""))
