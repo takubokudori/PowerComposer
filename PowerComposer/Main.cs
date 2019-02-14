@@ -88,29 +88,18 @@ namespace PowerComposer
         public static void Execute()
         {
             // build header
-            string headerString = BuildHeader(
+            string[] sarr = new string[]
+            {
                 _oView.MethodTxt.Text,
                 _oView.URITxt.Text,
                 _oView.VersionTxt.Text,
-                _oView.HeaderTxt.Text);
-            string[] sarr = new string[] {headerString};
+                _oView.HeaderTxt.Text,
+            };
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
+            rgh._errorByUndefinedVar = _oView.isErrorByUndefinedVar();
             while (rgh.HasNext())
             {
                 sarr = rgh.Generate();
-                if ((headerString=sarr[0]).Equals(""))
-                {
-                    // An error occured.
-                    MessageBox.Show(@"an Error occured");
-                    break;
-                }
-
-                if (!_header.AssignFromString(headerString))
-                {
-                    // Failed to parse
-                    MessageBox.Show(@"Failed to parse header!");
-                    break;
-                }
 
                 string bodyString = _oView.BodyTxt.Text;
                 byte[] bodyBytes = new byte[0];
@@ -121,7 +110,7 @@ namespace PowerComposer
                     if (_oView.isFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
                 }
 
-                Send(_header, bodyBytes);
+                Send(sarr[0], sarr[1], sarr[2], sarr[3], bodyBytes);
             }
         }
 
@@ -129,7 +118,12 @@ namespace PowerComposer
         {
             string headerString = BuildHeader(method, url, version, headers);
             HTTPRequestHeaders header = new HTTPRequestHeaders();
-            header.AssignFromString(headerString);
+            if (!header.AssignFromString(headerString))
+            {
+                // error
+                return null;
+            }
+
             Session oSession = Send(header, bodyBytes);
             if (_oView.isFollowRedirect()) // redirect
             {
@@ -140,7 +134,6 @@ namespace PowerComposer
                     case 303: // See Other
                     case 307: // Temporary Redirect
                     case 308: // Permanent Redirect
-                        MessageBox.Show(oSession.ResponseHeaders["Location"]);
                         if (oSession.ResponseHeaders["Location"] != null)
                         {
                             Send("GET", oSession.ResponseHeaders["Location"], version, headers, null);
@@ -156,8 +149,6 @@ namespace PowerComposer
         private static Session Send(HTTPRequestHeaders header, byte[] bodyBytes)
         {
             Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, null, null);
-//            string hs = header.ToString();
-//            hs = hs.Substring(hs.IndexOf("\n") + 1); // Remove status line
             return oSession;
         }
 
