@@ -33,6 +33,7 @@ namespace PowerComposer
     {
         private int _arrayIter; // Dictionary Iterator
         private string _request;
+        private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
         public bool _errorByUndefinedVar = false;
@@ -41,13 +42,13 @@ namespace PowerComposer
         {
         }
 
-        public RequestGenerator(string s)
+        public RequestGenerator(string[] s)
         {
             ParseRequest(s);
             SetDict(null);
         }
 
-        public RequestGenerator(string s, Dictionary<string, string[]> dict)
+        public RequestGenerator(string[] s, Dictionary<string, string[]> dict)
         {
             ParseRequest(s);
             SetDict(dict);
@@ -63,12 +64,17 @@ namespace PowerComposer
             this._dict = dict ?? new Dictionary<string, string[]>();
         }
 
-        public void ParseRequest(string s)
+        public void ParseRequest(string[] arr)
         {
             // Get the number of Placeholders
-            _request = s;
-            int num = GetTheNumberOfPlaceholders();
+            _arr = new string[arr.Length];
+            Array.Copy(arr, _arr, arr.Length);
             InitIterator();
+        }
+
+        public void SetErrorByUndefinedVar(bool f)
+        {
+            _errorByUndefinedVar = f;
         }
 
         private int GetTheNumberOfPlaceholders()
@@ -104,7 +110,7 @@ namespace PowerComposer
 
         private string GenerateString(string plaintext)
         {
-            if (plaintext == null)
+            if (_dict == null)
             {
                 MessageBox.Show(@"UnInitialized RequestGenerator!");
                 return "";
@@ -150,21 +156,21 @@ namespace PowerComposer
             }
 
             ret += plaintext.Substring(reqPtr);
-            _arrayIter++;
 
             return ret;
         }
 
         public string[] Generate()
         {
-            string[] _arr = new string[4];
-            string[] ret = new string[4];
+            string[] ret = new string[_arr.Length];
             for (int i = 0; i < _arr.Length; i++)
             {
                 bool aa = _hasNext;
                 ret[i] = GenerateString(_arr[i]);
                 _hasNext = _hasNext || aa;
             }
+
+            iterate();
 
             return ret;
         }
