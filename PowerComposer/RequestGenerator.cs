@@ -29,6 +29,11 @@ using System.Windows.Forms;
 
 namespace PowerComposer
 {
+    public class GenerateException : Exception
+    {
+        public GenerateException(string msg) : base(msg){}
+
+    }
     public class RequestGenerator
     {
         private int _arrayIter; // Dictionary Iterator
@@ -91,11 +96,7 @@ namespace PowerComposer
 
         private string GenerateString(string plaintext)
         {
-            if (_dict == null)
-            {
-                MessageBox.Show(@"UnInitialized RequestGenerator!");
-                return "";
-            }
+            if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
 
             int ps; // ${ , } position
             string ret = ""; // return string
