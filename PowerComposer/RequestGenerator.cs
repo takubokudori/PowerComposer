@@ -32,7 +32,6 @@ namespace PowerComposer
     public class RequestGenerator
     {
         private int _arrayIter; // Dictionary Iterator
-        private string _request;
         private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
@@ -72,24 +71,6 @@ namespace PowerComposer
             InitIterator();
         }
 
-        public void SetErrorByUndefinedVar(bool f)
-        {
-            _errorByUndefinedVar = f;
-        }
-
-        private int GetTheNumberOfPlaceholders()
-        {
-            int num = 0;
-            int ds, de = -1;
-            while ((ds = _request.IndexOf("${", de + 1, StringComparison.Ordinal)) != -1)
-            {
-                de = _request.IndexOf("}", ds + 2, StringComparison.Ordinal);
-                if (de == -1) break;
-                num++;
-            }
-
-            return num;
-        }
 
         public void InitIterator()
         {
