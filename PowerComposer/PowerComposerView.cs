@@ -30,6 +30,7 @@ using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -68,16 +69,19 @@ namespace PowerComposer
         private void VariableBox_SelectedValueChanged(object sender, EventArgs e)
         {
             ValuesLbl.Text = VariableBox.Text;
-            if (vars.ContainsKey(VariableBox.Text))
-            {
-                ValuesTxt.Text = vars[VariableBox.Text];
-            }
-            else ValuesTxt.Text = "";
+            ValuesTxt.Text = vars.ContainsKey(VariableBox.Text) ? vars[VariableBox.Text] : "";
         }
 
         private void AddNewVarBtn_Click(object sender, EventArgs e)
         {
             if (NewVarTxt.Text.Equals("")) return;
+            var reg = new Regex("^[a-zA-Z0-9]+$");
+            if (!reg.IsMatch(NewVarTxt.Text))
+            {
+                MessageBox.Show(@"Variable name can include alphanumeric characters only.");
+                return;
+            }
+
             if (VariableBox.FindStringExact(NewVarTxt.Text) != -1)
             {
                 MessageBox.Show($@"{NewVarTxt.Text} is already exists.");
@@ -115,17 +119,17 @@ namespace PowerComposer
             return ret;
         }
 
-        public bool isErrorByUndefinedVar()
+        public bool IsErrorByUndefinedVar()
         {
             return OptionBox.GetItemChecked(0);
         }
 
-        public bool isFixContentLength()
+        public bool IsFixContentLength()
         {
             return OptionBox.GetItemChecked(1);
         }
 
-        public bool isFollowRedirect()
+        public bool IsFollowRedirect()
         {
             return OptionBox.GetItemChecked(2);
         }
@@ -138,7 +142,7 @@ namespace PowerComposer
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabel1.LinkVisited = true;
-            //ブラウザで開く
+            // Open in browser
             System.Diagnostics.Process.Start(linkLabel1.Text);
         }
     }

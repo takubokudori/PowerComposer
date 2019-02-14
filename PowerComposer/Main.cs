@@ -97,7 +97,7 @@ namespace PowerComposer
                 _oView.BodyTxt.Text
             };
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
-            rgh._errorByUndefinedVar = _oView.isErrorByUndefinedVar();
+            rgh._errorByUndefinedVar = _oView.IsErrorByUndefinedVar();
             while (rgh.HasNext())
             {
                 sarr = rgh.Generate();
@@ -118,7 +118,7 @@ namespace PowerComposer
             }
 
             Session oSession = Send(header, bodyBytes);
-            if (_oView.isFollowRedirect()) // redirect
+            if (_oView.IsFollowRedirect()) // redirect
             {
                 switch (oSession.responseCode)
                 {
@@ -153,7 +153,7 @@ namespace PowerComposer
             {
                 bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
                 bodyBytes = EncodeRequestIfNeed(ref _header, bodyBytes);
-                if (_oView.isFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
+                if (_oView.IsFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
             }
 
             return bodyBytes;
