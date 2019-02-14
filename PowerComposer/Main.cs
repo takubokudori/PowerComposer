@@ -94,6 +94,7 @@ namespace PowerComposer
                 _oView.URITxt.Text,
                 _oView.VersionTxt.Text,
                 _oView.HeaderTxt.Text,
+                _oView.BodyTxt.Text
             };
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
             rgh._errorByUndefinedVar = _oView.isErrorByUndefinedVar();
@@ -101,16 +102,8 @@ namespace PowerComposer
             {
                 sarr = rgh.Generate();
 
-                string bodyString = _oView.BodyTxt.Text;
-                byte[] bodyBytes = new byte[0];
-                if (_oView.BodyTxt.Text.Length > 0)
-                {
-                    bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
-                    bodyBytes = EncodeRequestIfNeed(ref _header, bodyBytes);
-                    if (_oView.isFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
-                }
 
-                Send(sarr[0], sarr[1], sarr[2], sarr[3], bodyBytes);
+                Send(sarr[0], sarr[1], sarr[2], sarr[3], GetBodyBytes(sarr[4]));
             }
         }
 
@@ -152,6 +145,19 @@ namespace PowerComposer
             return oSession;
         }
 
+
+        private static byte[] GetBodyBytes(string bodyString)
+        {
+            byte[] bodyBytes = new byte[0];
+            if (!string.IsNullOrEmpty(bodyString))
+            {
+                bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
+                bodyBytes = EncodeRequestIfNeed(ref _header, bodyBytes);
+                if (_oView.isFixContentLength()) _header["Content-Length"] = bodyBytes.Length.ToString();
+            }
+
+            return bodyBytes;
+        }
 
         private static byte[] EncodeRequestIfNeed(ref HTTPRequestHeaders header, byte[] bodyBytes)
         {
