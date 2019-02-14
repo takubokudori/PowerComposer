@@ -118,7 +118,7 @@ namespace PowerComposer
                     if (_arrayIter < _dict[varName].Length)
                     {
                         str = _dict[varName][_arrayIter];
-                        _hasNext = true;
+                        if (_arrayIter + 1 < _dict[varName].Length) _hasNext = true;
                     }
                 }
                 else
@@ -131,7 +131,7 @@ namespace PowerComposer
                     }
                 }
 
-                ret += plaintext.Substring(reqPtr, ps - reqPtr) + str;
+                ret += $@"{plaintext.Substring(reqPtr, ps - reqPtr)}{str}";
 
                 reqPtr = pe + 1;
             }
