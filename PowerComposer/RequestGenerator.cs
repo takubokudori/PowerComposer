@@ -157,12 +157,14 @@ namespace PowerComposer
 
             ret += plaintext.Substring(reqPtr);
 
+            MessageBox.Show(ret);
             return ret;
         }
 
         public string[] Generate()
         {
             string[] ret = new string[_arr.Length];
+            _hasNext = false;
             for (int i = 0; i < _arr.Length; i++)
             {
                 bool aa = _hasNext;

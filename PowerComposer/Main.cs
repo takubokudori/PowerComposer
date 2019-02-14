@@ -97,9 +97,11 @@ namespace PowerComposer
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
             while (rgh.HasNext())
             {
-                if ((headerString = rgh.Generate(_oView.isErrorByUndefinedVar())).Equals(""))
+                sarr = rgh.Generate();
+                if ((headerString=sarr[0]).Equals(""))
                 {
                     // An error occured.
+                    MessageBox.Show(@"an Error occured");
                     break;
                 }
 
@@ -107,7 +109,7 @@ namespace PowerComposer
                 {
                     // Failed to parse
                     MessageBox.Show(@"Failed to parse header!");
-                    return;
+                    break;
                 }
 
                 string bodyString = _oView.BodyTxt.Text;
