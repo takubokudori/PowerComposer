@@ -157,7 +157,6 @@ namespace PowerComposer
 
             ret += plaintext.Substring(reqPtr);
 
-            MessageBox.Show(ret);
             return ret;
         }
 
