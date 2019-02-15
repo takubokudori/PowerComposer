@@ -24,7 +24,6 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace PowerComposer
@@ -67,7 +66,7 @@ namespace PowerComposer
 
         public void SetDict(Dictionary<string, string[]> dict)
         {
-            this._dict = dict ?? new Dictionary<string, string[]>();
+            _dict = dict ?? new Dictionary<string, string[]>();
         }
 
         public void ParseRequest(string[] arr)
@@ -91,7 +90,7 @@ namespace PowerComposer
             return _hasNext;
         }
 
-        private void iterate()
+        private void Iterate()
         {
             _arrayIter++;
         }
@@ -152,10 +151,11 @@ namespace PowerComposer
             {
                 bool aa = _hasNext;
                 ret[i] = GenerateString(_arr[i]);
+                if (ret[i].Equals("")) return null;
                 _hasNext = _hasNext || aa;
             }
 
-            iterate();
+            Iterate();
 
             return ret;
         }
