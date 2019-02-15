@@ -108,6 +108,7 @@ namespace PowerComposer
             SaveValues();
         }
 
+
         public Dictionary<string, string[]> GetDict()
         {
             Dictionary<string, string[]> ret = new Dictionary<string, string[]>();
@@ -144,6 +145,16 @@ namespace PowerComposer
             linkLabel1.LinkVisited = true;
             // Open in browser
             System.Diagnostics.Process.Start(linkLabel1.Text);
+        }
+
+        private void NewVarTxt_Enter(object sender, EventArgs e)
+        {
+            this.ParentForm.AcceptButton = AddNewVarBtn;
+        }
+
+        private void NewVarTxt_Leave(object sender, EventArgs e)
+        {
+            this.ParentForm.AcceptButton = null;
         }
     }
 }
