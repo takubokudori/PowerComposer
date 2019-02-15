@@ -47,6 +47,8 @@
             this.OptionTab = new System.Windows.Forms.TabPage();
             this.OptionBox = new System.Windows.Forms.CheckedListBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.TimesTxt = new System.Windows.Forms.TextBox();
+            this.TimesLbl = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
@@ -277,10 +279,32 @@
             this.linkLabel1.Text = "https://github.com/takubokudori/PowerComposer";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // TimesTxt
+            // 
+            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.TimesTxt.Location = new System.Drawing.Point(634, 138);
+            this.TimesTxt.MaxLength = 32;
+            this.TimesTxt.Name = "TimesTxt";
+            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
+            this.TimesTxt.TabIndex = 12;
+            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
+            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
+            // 
+            // TimesLbl
+            // 
+            this.TimesLbl.AutoSize = true;
+            this.TimesLbl.Location = new System.Drawing.Point(740, 141);
+            this.TimesLbl.Name = "TimesLbl";
+            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
+            this.TimesLbl.TabIndex = 13;
+            this.TimesLbl.Text = "times";
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TimesLbl);
+            this.Controls.Add(this.TimesTxt);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.VersionTxt);
@@ -326,5 +350,7 @@
         private System.Windows.Forms.TabPage OptionTab;
         public System.Windows.Forms.CheckedListBox OptionBox;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        public System.Windows.Forms.TextBox TimesTxt;
+        private System.Windows.Forms.Label TimesLbl;
     }
 }

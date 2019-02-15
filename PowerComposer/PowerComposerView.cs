@@ -63,7 +63,18 @@ namespace PowerComposer
         private void ExecBtn_Click(object sender, EventArgs e)
         {
             // Execute
-            PowerComposer.Execute();
+            int t;
+            if (TimesTxt.Text.Equals("")) t = 1;
+            else if (!int.TryParse(TimesTxt.Text, out t))
+            {
+                MessageBox.Show(@"Input number in Times");
+                return;
+            }
+
+            for (int i = 0; i < t; i++)
+            {
+                PowerComposer.Execute();
+            }
         }
 
         private void VariableBox_SelectedValueChanged(object sender, EventArgs e)
@@ -153,6 +164,16 @@ namespace PowerComposer
         }
 
         private void NewVarTxt_Leave(object sender, EventArgs e)
+        {
+            this.ParentForm.AcceptButton = null;
+        }
+
+        private void TimesTxt_Enter(object sender, EventArgs e)
+        {
+            this.ParentForm.AcceptButton = ExecBtn;
+        }
+
+        private void TimesTxt_Leave(object sender, EventArgs e)
         {
             this.ParentForm.AcceptButton = null;
         }
