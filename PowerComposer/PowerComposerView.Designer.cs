@@ -207,6 +207,8 @@
             this.NewVarTxt.Name = "NewVarTxt";
             this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
             this.NewVarTxt.TabIndex = 10;
+            this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
+            this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
             // 
             // ValsTab
             // 
@@ -234,11 +236,11 @@
             // ValuesLbl
             // 
             this.ValuesLbl.AutoSize = true;
-            this.ValuesLbl.Location = new System.Drawing.Point(118, 3);
+            this.ValuesLbl.Location = new System.Drawing.Point(17, 0);
             this.ValuesLbl.Name = "ValuesLbl";
-            this.ValuesLbl.Size = new System.Drawing.Size(49, 24);
+            this.ValuesLbl.Size = new System.Drawing.Size(278, 24);
             this.ValuesLbl.TabIndex = 4;
-            this.ValuesLbl.Text = "test";
+            this.ValuesLbl.Text = "SELECT YOUR VARIABLE";
             this.ValuesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OptionTab

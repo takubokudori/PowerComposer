@@ -31,9 +31,11 @@ namespace PowerComposer
 {
     public class GenerateException : Exception
     {
-        public GenerateException(string msg) : base(msg){}
-
+        public GenerateException(string msg) : base(msg)
+        {
+        }
     }
+
     public class RequestGenerator
     {
         private int _arrayIter; // Dictionary Iterator
