@@ -23,12 +23,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-using Fiddler;
 using System;
-using System.Security.Cryptography;
 using System.Windows.Forms;
+using Fiddler;
 
-[assembly: Fiddler.RequiredVersion("2.3.5.0")]
+[assembly: RequiredVersion("2.3.5.0")]
 
 namespace PowerComposer
 {
@@ -37,10 +36,6 @@ namespace PowerComposer
         private static TabPage _oPage;
         private static PowerComposerView _oView;
         private static HTTPRequestHeaders _header;
-
-        public PowerComposer()
-        {
-        }
 
         public void OnLoad()
         {
@@ -69,7 +64,7 @@ namespace PowerComposer
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
         }
 
-        private int FindMenuIndexByText(System.Windows.Forms.Menu.MenuItemCollection mic, string s)
+        private int FindMenuIndexByText(Menu.MenuItemCollection mic, string s)
         {
             for (var i = 0; i < mic.Count; i++)
             {
@@ -88,8 +83,7 @@ namespace PowerComposer
         public static void Execute()
         {
             // build header
-            string[] sarr = new string[]
-            {
+            string[] sarr = {
                 _oView.MethodTxt.Text,
                 _oView.URITxt.Text,
                 _oView.VersionTxt.Text,
