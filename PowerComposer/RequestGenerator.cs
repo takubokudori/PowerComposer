@@ -42,7 +42,7 @@ namespace PowerComposer
         private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
-        public bool _errorByUndefinedVar = false;
+        public bool ErrorByUndefinedVar = false;
 
         public RequestGenerator()
         {
@@ -126,7 +126,7 @@ namespace PowerComposer
                 }
                 else
                 {
-                    if (_errorByUndefinedVar)
+                    if (ErrorByUndefinedVar)
                     {
                         MessageBox.Show($@"Undefined variable {varName}.");
                         _hasNext = false;

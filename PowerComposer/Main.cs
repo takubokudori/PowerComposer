@@ -97,7 +97,7 @@ namespace PowerComposer
                 _oView.BodyTxt.Text
             };
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
-            rgh._errorByUndefinedVar = _oView.IsErrorByUndefinedVar();
+            rgh.ErrorByUndefinedVar = _oView.IsErrorByUndefinedVar();
             while (rgh.HasNext())
             {
                 sarr = rgh.Generate();
