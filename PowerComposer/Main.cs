@@ -125,7 +125,7 @@ namespace PowerComposer
             if (!header.AssignFromString(headerString))
             {
                 // error
-                MessageBox.Show("Faild to AssignFromString");
+                MessageBox.Show("Failed to AssignFromString");
                 return null;
             }
 
