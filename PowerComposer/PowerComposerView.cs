@@ -24,14 +24,8 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowerComposer
@@ -155,27 +149,27 @@ namespace PowerComposer
         {
             linkLabel1.LinkVisited = true;
             // Open in browser
-            System.Diagnostics.Process.Start(linkLabel1.Text);
+            Process.Start(linkLabel1.Text);
         }
 
         private void NewVarTxt_Enter(object sender, EventArgs e)
         {
-            this.ParentForm.AcceptButton = AddNewVarBtn;
+            if (ParentForm != null) ParentForm.AcceptButton = AddNewVarBtn;
         }
 
         private void NewVarTxt_Leave(object sender, EventArgs e)
         {
-            this.ParentForm.AcceptButton = null;
+            if (ParentForm != null) ParentForm.AcceptButton = null;
         }
 
         private void TimesTxt_Enter(object sender, EventArgs e)
         {
-            this.ParentForm.AcceptButton = ExecBtn;
+            if (ParentForm != null) ParentForm.AcceptButton = ExecBtn;
         }
 
         private void TimesTxt_Leave(object sender, EventArgs e)
         {
-            this.ParentForm.AcceptButton = null;
+            if (ParentForm != null) ParentForm.AcceptButton = null;
         }
     }
 }

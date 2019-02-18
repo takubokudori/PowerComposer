@@ -24,7 +24,6 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace PowerComposer
@@ -152,6 +151,7 @@ namespace PowerComposer
             {
                 bool aa = _hasNext;
                 ret[i] = GenerateString(_arr[i]);
+                if (ret[i].Equals("")) return null;
                 _hasNext = _hasNext || aa;
             }
 
