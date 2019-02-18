@@ -151,7 +151,6 @@ namespace PowerComposer
             {
                 bool aa = _hasNext;
                 ret[i] = GenerateString(_arr[i]);
-                if (ret[i].Equals("")) return null;
                 _hasNext = _hasNext || aa;
             }
 
