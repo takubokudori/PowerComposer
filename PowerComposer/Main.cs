@@ -121,6 +121,7 @@ namespace PowerComposer
 
         public static Session Send(string method, string url, string version, string headers, byte[] bodyBytes)
         {
+            
             string headerString = BuildHeader(method, url, version, headers);
             HTTPRequestHeaders header = new HTTPRequestHeaders();
             if (!header.AssignFromString(headerString))
