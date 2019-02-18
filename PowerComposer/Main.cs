@@ -100,8 +100,7 @@ namespace PowerComposer
         public static void Execute()
         {
             // build header
-            string[] sarr = new string[]
-            {
+            string[] sarr = {
                 _oView.MethodTxt.Text,
                 _oView.URITxt.Text,
                 _oView.VersionTxt.Text,
@@ -121,7 +120,6 @@ namespace PowerComposer
 
         public static Session Send(string method, string url, string version, string headers, byte[] bodyBytes)
         {
-            
             string headerString = BuildHeader(method, url, version, headers);
             HTTPRequestHeaders header = new HTTPRequestHeaders();
             if (!header.AssignFromString(headerString))
