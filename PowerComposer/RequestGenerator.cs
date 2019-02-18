@@ -67,7 +67,7 @@ namespace PowerComposer
 
         public void SetDict(Dictionary<string, string[]> dict)
         {
-            this._dict = dict ?? new Dictionary<string, string[]>();
+            _dict = dict ?? new Dictionary<string, string[]>();
         }
 
         public void ParseRequest(string[] arr)
@@ -91,7 +91,7 @@ namespace PowerComposer
             return _hasNext;
         }
 
-        private void iterate()
+        private void Iterate()
         {
             _arrayIter++;
         }
@@ -155,7 +155,7 @@ namespace PowerComposer
                 _hasNext = _hasNext || aa;
             }
 
-            iterate();
+            Iterate();
 
             return ret;
         }
