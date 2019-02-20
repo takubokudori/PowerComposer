@@ -42,7 +42,7 @@ namespace PowerComposer
                                 oSession.GetRedirectTargetURL(),
                                 oSession.RequestHeaders.HTTPVersion,
                                 PowerComposer.TrimStatusLineFromHeader(oSession.RequestHeaders.ToString()),
-                                null);
+                                "");
                         }
 
                         break;
