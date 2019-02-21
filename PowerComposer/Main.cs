@@ -73,7 +73,20 @@ namespace PowerComposer
             _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
             string srhStr = _header.ToString();
             _oView.HeaderTxt.Text = TrimStatusLineFromHeader(srhStr);
-            _oView.BodyTxt.Text = s.GetRequestBodyAsString();
+            string body;
+            if (s.ResponseBody.Length != s.GetRequestBodyAsString().Length)
+            {
+                // payload including NULL char.
+                // Append Fiddler-Encoding: base64
+                _oView.HeaderTxt.Text += "\r\nFiddler-Encoding: base64";
+                body = Convert.ToBase64String(s.requestBodyBytes);
+            }
+            else
+            {
+                body = s.GetRequestBodyAsString();
+            }
+
+            _oView.BodyTxt.Text = body;
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
         }
 
@@ -109,8 +122,10 @@ namespace PowerComposer
                 _oView.HeaderTxt.Text,
                 _oView.BodyTxt.Text
             };
-            RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict());
-            rgh.ErrorByUndefinedVar = _oView.IsErrorByUndefinedVar();
+            RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict())
+            {
+                ErrorByUndefinedVar = _oView.IsErrorByUndefinedVar()
+            };
             while (rgh.HasNext())
             {
                 sarr = rgh.Generate();
