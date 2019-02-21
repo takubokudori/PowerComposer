@@ -73,17 +73,13 @@ namespace PowerComposer
             _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
             string srhStr = _header.ToString();
             _oView.HeaderTxt.Text = TrimStatusLineFromHeader(srhStr);
-            string body;
-            if (s.RequestBody.Length != s.GetRequestBodyAsString().Length)
+            string body = s.GetRequestBodyAsString();
+            if (s.RequestBody.Length != body.Length)
             {
                 // payload including NULL char.
                 // Append Fiddler-Encoding: base64
                 _oView.HeaderTxt.Text += "\r\nFiddler-Encoding: base64";
                 body = Convert.ToBase64String(s.requestBodyBytes);
-            }
-            else
-            {
-                body = s.GetRequestBodyAsString();
             }
 
             _oView.BodyTxt.Text = body;
@@ -129,8 +125,6 @@ namespace PowerComposer
             while (rgh.HasNext())
             {
                 sarr = rgh.Generate();
-
-
                 Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4]);
             }
         }
