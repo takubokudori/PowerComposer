@@ -74,7 +74,7 @@ namespace PowerComposer
             string srhStr = _header.ToString();
             _oView.HeaderTxt.Text = TrimStatusLineFromHeader(srhStr);
             string body;
-            if (s.ResponseBody.Length != s.GetRequestBodyAsString().Length)
+            if (s.RequestBody.Length != s.GetRequestBodyAsString().Length)
             {
                 // payload including NULL char.
                 // Append Fiddler-Encoding: base64
