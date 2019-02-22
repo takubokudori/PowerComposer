@@ -79,7 +79,11 @@ namespace PowerComposer
 
         private void AddNewVarBtn_Click(object sender, EventArgs e)
         {
-            if (NewVarTxt.Text.Equals("")) return;
+            if (NewVarTxt.Text.Equals(""))
+            {
+                VariableBox.SelectedIndex = VariableBox.Items.Count-1;
+                return;
+            }
             var reg = new Regex("^[a-zA-Z0-9]+$");
             if (!reg.IsMatch(NewVarTxt.Text))
             {
