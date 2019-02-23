@@ -99,6 +99,8 @@ namespace PowerComposer
             // 
             // BodyTxt
             // 
+            this.BodyTxt.AcceptsTab = true;
+            this.BodyTxt.AllowDrop = true;
             this.BodyTxt.Location = new System.Drawing.Point(26, 361);
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
