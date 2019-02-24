@@ -36,7 +36,7 @@ namespace PowerComposer
                     case 303: // See Other
                     case 307: // Temporary Redirect
                     case 308: // Permanent Redirect
-                        if (!oSession.GetRedirectTargetURL().Equals(""))
+                        if (oSession.GetRedirectTargetURL().Length != 0)
                         {
                             PowerComposer.Send("GET",
                                 oSession.GetRedirectTargetURL(),

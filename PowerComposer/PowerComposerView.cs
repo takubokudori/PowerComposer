@@ -58,7 +58,7 @@ namespace PowerComposer
         {
             // Execute
             int t;
-            if (TimesTxt.Text.Equals("")) t = 1;
+            if (TimesTxt.Text.Length == 0) t = 1;
             else if (!int.TryParse(TimesTxt.Text, out t))
             {
                 MessageBox.Show(@"Input number in Times");
@@ -79,11 +79,12 @@ namespace PowerComposer
 
         private void AddNewVarBtn_Click(object sender, EventArgs e)
         {
-            if (NewVarTxt.Text.Equals(""))
+            if (NewVarTxt.Text.Length == 0)
             {
-                VariableBox.SelectedIndex = VariableBox.Items.Count-1;
+                VariableBox.SelectedIndex = VariableBox.Items.Count - 1;
                 return;
             }
+
             var reg = new Regex("^[a-zA-Z0-9]+$");
             if (!reg.IsMatch(NewVarTxt.Text))
             {
