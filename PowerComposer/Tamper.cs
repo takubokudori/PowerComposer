@@ -29,23 +29,16 @@ namespace PowerComposer
         {
             if (PowerComposer.IsFollowRedirection(oSession)) // redirect
             {
-                switch (oSession.responseCode)
+                if (Utilities.IsRedirectStatus(oSession.responseCode))
                 {
-                    case 301: // Moved Permanently
-                    case 302: // Found
-                    case 303: // See Other
-                    case 307: // Temporary Redirect
-                    case 308: // Permanent Redirect
-                        if (oSession.GetRedirectTargetURL().Length != 0)
-                        {
-                            PowerComposer.Send("GET",
-                                oSession.GetRedirectTargetURL(),
-                                oSession.RequestHeaders.HTTPVersion,
-                                PowerComposer.TrimStatusLineFromHeader(oSession.RequestHeaders.ToString()),
-                                "");
-                        }
-
-                        break;
+                    if (oSession.GetRedirectTargetURL().Length != 0)
+                    {
+                        PowerComposer.Send("GET",
+                            oSession.GetRedirectTargetURL(),
+                            oSession.RequestHeaders.HTTPVersion,
+                            PowerComposer.TrimStatusLineFromHeader(oSession.RequestHeaders.ToString()),
+                            "");
+                    }
                 }
             }
         }
