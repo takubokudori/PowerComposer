@@ -71,8 +71,7 @@ namespace PowerComposer
             _oView.MethodTxt.Text = _header.HTTPMethod.Trim();
             _oView.URITxt.Text = s.fullUrl;
             _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
-            string srhStr = _header.ToString();
-            _oView.HeaderTxt.Text = TrimStatusLineFromHeader(srhStr);
+            _oView.HeaderTxt.Text = _header.ToString(false,false);
             string body = s.GetRequestBodyAsString();
             if (s.RequestBody.Length != body.Length)
             {
@@ -84,11 +83,6 @@ namespace PowerComposer
 
             _oView.BodyTxt.Text = body;
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
-        }
-
-        public static string TrimStatusLineFromHeader(string header)
-        {
-            return header.Substring(header.IndexOf("\n", StringComparison.Ordinal) + 1).Trim('\r', '\n');
         }
 
         private int FindMenuIndexByText(Menu.MenuItemCollection mic, string s)
