@@ -36,7 +36,7 @@ namespace PowerComposer
                         PowerComposer.Send("GET",
                             oSession.GetRedirectTargetURL(),
                             oSession.RequestHeaders.HTTPVersion,
-                            PowerComposer.TrimStatusLineFromHeader(oSession.RequestHeaders.ToString()),
+                            oSession.RequestHeaders.ToString(false,false),
                             "");
                     }
                 }
