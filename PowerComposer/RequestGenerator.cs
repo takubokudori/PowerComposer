@@ -51,23 +51,24 @@ namespace PowerComposer
         public RequestGenerator(string[] s)
         {
             ParseRequest(s);
-            SetDict(null);
+            dict = null;
         }
 
         public RequestGenerator(string[] s, Dictionary<string, string[]> dict)
         {
             ParseRequest(s);
-            SetDict(dict);
+            this.dict = dict;
         }
 
         public RequestGenerator(Dictionary<string, string[]> dict)
         {
-            SetDict(dict);
+            this.dict = dict;
         }
 
-        public void SetDict(Dictionary<string, string[]> dict)
+        public Dictionary<string, string[]> dict
         {
-            _dict = dict ?? new Dictionary<string, string[]>();
+            get => _dict;
+            set => _dict = value ?? new Dictionary<string, string[]>();
         }
 
         public void ParseRequest(string[] arr)
@@ -77,7 +78,6 @@ namespace PowerComposer
             Array.Copy(arr, _arr, arr.Length);
             InitIterator();
         }
-
 
         public void InitIterator()
         {
