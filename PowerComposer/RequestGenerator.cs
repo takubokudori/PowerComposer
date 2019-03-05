@@ -125,9 +125,8 @@ namespace PowerComposer
                 int pe = plaintext.IndexOf("}", reqPtr, StringComparison.Ordinal); // }
                 if (pe == -1) // ${...<EOS>
                 {
-                    MessageBox.Show(@"Broken Brackets found!");
                     _hasNext = false;
-                    return "";
+                    throw new GenerateException("Broken Brackets found");
                 }
 
                 string varName = plaintext.Substring(ps + 2, pe - (ps + 2)); // ${varName}
@@ -144,9 +143,8 @@ namespace PowerComposer
                 {
                     if (ErrorByUndefinedVar)
                     {
-                        MessageBox.Show($@"Undefined variable {varName}.");
                         _hasNext = false;
-                        return "";
+                        throw new GenerateException($"Undefined variable {varName}");
                     }
                 }
 
