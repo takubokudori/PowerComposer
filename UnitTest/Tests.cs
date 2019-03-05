@@ -31,7 +31,7 @@ namespace UnitTest
         public Tests()
         {
             rg = new RequestGenerator();
-            rg.SetDict(new Dictionary<string, string[]>());
+            rg.dict=new Dictionary<string, string[]>();
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace UnitTest
             var dict = dict1;
             var req = new string[] {"test${abc}qqq${help}eee"};
             rg.InitIterator();
-            rg.SetDict(dict);
+            rg.dict=dict;
             rg.ParseRequest(req);
             GenerateTestUnit(ref rg, true, new string[] {$"test{dict["abc"][0]}qqq{dict["help"][0]}eee"});
             GenerateTestUnit(ref rg, true, new string[] {$"test{dict["abc"][1]}qqq{dict["help"][1]}eee"});
@@ -66,7 +66,7 @@ namespace UnitTest
             var dict = dict3;
             var req = new string[] {"abcabc${xss}", "test${num}"};
             rg.InitIterator();
-            rg.SetDict(dict);
+            rg.dict=dict;
             rg.ParseRequest(req);
             GenerateTestUnit(ref rg, true, new string[] {$"abcabc{dict["xss"][0]}", $"test{dict["num"][0]}"});
             GenerateTestUnit(ref rg, true, new string[] {$"abcabc", $"test{dict["num"][1]}"});
