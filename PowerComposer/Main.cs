@@ -118,8 +118,17 @@ namespace PowerComposer
             };
             while (rgh.HasNext())
             {
-                sarr = rgh.Generate();
-                Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4]);
+                try
+                {
+                    sarr = rgh.Generate();
+                    Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4]);
+                }
+                catch (GenerateException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
             }
         }
 
