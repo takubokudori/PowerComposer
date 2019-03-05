@@ -24,6 +24,7 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PowerComposer
@@ -93,6 +94,22 @@ namespace PowerComposer
         private void Iterate()
         {
             _arrayIter++;
+        }
+
+        public string GenerateStringTest(string plaintext)
+        {
+            if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
+            int ps;
+            string ret = "";
+            var variableMatches = Regex.Matches(plaintext, "\\$\\{.*?\\}", RegexOptions.CultureInvariant);
+            var sequenceMatches = Regex.Matches(plaintext, "#\\{.*?\\}", RegexOptions.CultureInvariant);
+            foreach (Match vm in variableMatches)
+            {
+                // vm.Index, vm.Length
+                ret += vm.Value;
+            }
+
+            return ret;
         }
 
         private string GenerateString(string plaintext)
