@@ -3,7 +3,7 @@ using Fiddler;
 
 namespace PowerComposer
 {
-    public class Tamper : IAutoTamper2
+    public class Tamper : IAutoTamper
     {
         public void OnLoad()
         {
@@ -47,8 +47,5 @@ namespace PowerComposer
         {
         }
 
-        public void OnPeekAtResponseHeaders(Session oSession)
-        {
-        }
     }
 }
