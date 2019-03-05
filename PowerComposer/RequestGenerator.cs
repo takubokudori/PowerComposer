@@ -126,7 +126,7 @@ namespace PowerComposer
                 if (pe == -1) // ${...<EOS>
                 {
                     _hasNext = false;
-                    throw new GenerateException("Broken Brackets found");
+                    throw new GenerateException("Broken brackets found");
                 }
 
                 string varName = plaintext.Substring(ps + 2, pe - (ps + 2)); // ${varName}
