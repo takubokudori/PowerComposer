@@ -16,21 +16,29 @@ namespace UnitTest
             ["help"] = new string[] {" UNION SELECT", " OR 1=1 --", " Ruby", "Newbies"}
         };
 
-        private Dictionary<string, string[]> dict2 = new Dictionary<string, string[]>
+        private static readonly Dictionary<string, string[]> dict2 = new Dictionary<string, string[]>
         {
             ["test"] = new string[] { }
         };
 
-        private Dictionary<string, string[]> dict3 = new Dictionary<string, string[]>
+        private static readonly Dictionary<string, string[]> dict3 = new Dictionary<string, string[]>
         {
             ["xss"] = new string[] {"${abc}"},
             ["num"] = new string[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
+        };
+        
+        private static readonly Dictionary<string, string[]> LoopDict = new Dictionary<string, string[]>
+        {
+            ["a"]=new string[]{"${b}"},
+            ["b"]=new string[]{"${c}"},
+            ["c"]=new string[]{"${a}"}
         };
 
         public Tests()
         {
         }
 
+        
         [Test]
         public void GenerateTest()
         {

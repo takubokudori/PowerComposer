@@ -96,23 +96,34 @@ namespace PowerComposer
             _arrayIter++;
         }
 
-        public string GenerateStringTest(string plaintext)
+        private string GenerateString(string plaintext)
         {
             if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
-            int ps;
-            string ret = "";
-            var variableMatches = Regex.Matches(plaintext, "\\$\\{.*?\\}", RegexOptions.CultureInvariant);
-            var sequenceMatches = Regex.Matches(plaintext, "#\\{.*?\\}", RegexOptions.CultureInvariant);
-            foreach (Match vm in variableMatches)
+            _hasNext = false;
+            string ret = Regex.Replace(plaintext, "\\$\\{.*?\\}", m =>
             {
-                // vm.Index, vm.Length
-                ret += vm.Value;
-            }
+                string varName = m.Value.Substring(2, m.Value.Length - 3);
+                string str = "";
+                if (_dict.ContainsKey(varName))
+                {
+                    if (_dict[varName].Length > _arrayIter) str = _dict[varName][_arrayIter];
+                    if (_arrayIter + 1 < _dict[varName].Length) _hasNext = true;
+                }
+                else if (ErrorByUndefinedVar)
+                {
+                    _hasNext = false;
+                    throw new GenerateException($"Undefined variable {varName}");
+                }
+
+                return str;
+            }, RegexOptions.CultureInvariant);
+
 
             return ret;
         }
 
-        private string GenerateString(string plaintext)
+        /*
+        public string GenerateStringTest(string plaintext)
         {
             if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
 
@@ -157,6 +168,7 @@ namespace PowerComposer
 
             return ret;
         }
+        */
 
         public string[] Generate()
         {
