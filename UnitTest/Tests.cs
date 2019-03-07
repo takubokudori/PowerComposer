@@ -51,18 +51,18 @@ namespace UnitTest
         {
             var dict = dict4;
             var rg = new RequestGenerator(dict);
-            var req = new string[] {"My color:${color}", "number:#{1-8}#{8-0}", "tag:${tag}"};
+            var req = new string[] {"My color part #{10-11}:${color}", "number:#{1-8}#{8-0}", "tag:${tag}"};
             rg.InitIterator();
             rg.ParseRequest(req);
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][0]}",$"number:18",$"tag:{dict["tag"][0]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][1]}",$"number:27",$"tag:{dict["tag"][1]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][2]}",$"number:36",$"tag:{dict["tag"][2]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][3]}",$"number:45",$"tag:{dict["tag"][3]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][4]}",$"number:54",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][5]}",$"number:63",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:72",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:81",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:0",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part 10:{dict["color"][0]}",$"number:18",$"tag:{dict["tag"][0]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part 11:{dict["color"][1]}",$"number:27",$"tag:{dict["tag"][1]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][2]}",$"number:36",$"tag:{dict["tag"][2]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][3]}",$"number:45",$"tag:{dict["tag"][3]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][4]}",$"number:54",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][5]}",$"number:63",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:72",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:81",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:0",$"tag:"});
             GenerateTestUnit(ref rg, false);
         }
 
