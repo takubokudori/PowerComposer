@@ -42,7 +42,7 @@ namespace PowerComposer
         private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
-        private Dictionary<int, string> _enumDict;
+        private Dictionary<string, List<string> > _enumDict;
         public bool ErrorByUndefinedVar = false;
 
         public RequestGenerator()
@@ -163,7 +163,7 @@ namespace PowerComposer
                     }
                     else // 9-0
                     {
-                        for (int i = end; i >= start; i--) ret.Add(i.ToString());
+                        for (int i = start; i >= end; i--) ret.Add(i.ToString());
                     }
                 }
                 else if (char.IsUpper(m.Value[0])) // A-Z
