@@ -42,6 +42,7 @@ namespace PowerComposer
         private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
+        private Dictionary<int, string> _enumDict;
         public bool ErrorByUndefinedVar = false;
 
         public RequestGenerator()
@@ -82,6 +83,7 @@ namespace PowerComposer
         public void InitIterator()
         {
             _arrayIter = 0;
+            _enumDict = new Dictionary<int, string>();
             _hasNext = true;
         }
 
@@ -96,23 +98,34 @@ namespace PowerComposer
             _arrayIter++;
         }
 
+        // 1-9 1-99 00-12 a-zzA-Z0-99
+        // 同じ種類のみ可能 a-zzとか a-Zは無理 a,z->aとz
+        // #{0-2}{a-c} OR #{0-2&a-c} 0a 1b 2c
+        // #{0-2|a-c} -> 0a 0b 0c 1a 1b 1c 2a 2b 2c
         private string GenerateString(string plaintext)
         {
             if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
             _hasNext = false;
-            string ret = Regex.Replace(plaintext, "\\$\\{.*?\\}", m =>
+            string ret = Regex.Replace(plaintext, "(#|\\$)\\{.*?\\}", m =>
             {
-                string varName = m.Value.Substring(2, m.Value.Length - 3);
                 string str = "";
-                if (_dict.ContainsKey(varName))
+                if (m.Value[0] == '$') // variable
                 {
-                    if (_dict[varName].Length > _arrayIter) str = _dict[varName][_arrayIter];
-                    if (_arrayIter + 1 < _dict[varName].Length) _hasNext = true;
+                    string varName = m.Value.Substring(2, m.Value.Length - 3); // ${abc} -> abc
+                    if (_dict.ContainsKey(varName))
+                    {
+                        if (_dict[varName].Length > _arrayIter) str = _dict[varName][_arrayIter];
+                        if (_arrayIter + 1 < _dict[varName].Length) _hasNext = true;
+                    }
+                    else if (ErrorByUndefinedVar)
+                    {
+                        _hasNext = false;
+                        throw new GenerateException($"Undefined variable {varName}");
+                    }
                 }
-                else if (ErrorByUndefinedVar)
+                else if (m.Value[0] == '#') // enum
                 {
-                    _hasNext = false;
-                    throw new GenerateException($"Undefined variable {varName}");
+                    string enumString = m.Value.Substring(2, m.Value.Length - 3); // #{1-9} -> 1-9
                 }
 
                 return str;
@@ -122,6 +135,98 @@ namespace PowerComposer
             return ret;
         }
 
+        /*
+         * digit=(0-9)+
+         * alpha=(a-z)+
+         * ALPHA=(A-Z)+
+         * minus=-
+         * or=|
+         * and=&
+         * token=(digit minus digit)|(alpha minus alpha)|(ALPHA minus ALPHA)
+         * expr=token | expr token | (expr or expr) | (expr and expr)
+         */
+        public List<string> GenerateEnumArray(string enumString)
+        {
+            // 1-9a-z
+            var ret = new List<string>();
+            var vm = Regex.Matches(enumString, "([0-9]+-[0-9]+)|([a-z]+-[a-z]+)|([A-Z]+-[A-Z]+)",
+                RegexOptions.CultureInvariant);
+            foreach (Match m in vm)
+            {
+                string[] s = m.Value.Split('-');
+                if (char.IsDigit(m.Value[0])) // 0-9
+                {
+                    int start = Convert.ToInt32(s[0]);
+                    int end = Convert.ToInt32(s[1]);
+                    if (start <= end) // 0-9
+                    {
+                        for (int i = start; i <= end; i++) ret.Add(i.ToString());
+                    }
+                    else // 9-0
+                    {
+                        for (int i = end; i >= start; i--) ret.Add(i.ToString());
+                    }
+                }
+                else if (char.IsUpper(m.Value[0])) // A-Z
+                {
+                    char[] start = s[0].ToCharArray();
+                    char[] end = s[1].ToCharArray();
+                }
+                else if (char.IsLower(m.Value[0])) // a-z
+                {
+                    char[] start = s[0].ToCharArray();
+                    char[] end = s[1].ToCharArray();
+                }
+                else
+                {
+                    throw new GenerateException("Suspicious #Literal");
+                }
+            }
+
+            return ret;
+        }
+
+        public string NextString(ref char[] s)
+        {
+            bool isUpper=char.IsUpper(s[0]);
+            bool carry = true;
+            if (isUpper)
+            {
+                for (int i = s.Length - 1; i >= 0; i--)
+                {
+                    if (carry)
+                    {
+                        s[i]++;
+                        carry = false;
+                    }
+                    else break;
+                    if (s[i] > 'Z')
+                    {
+                        carry = true;
+                        s[i] = 'A';
+                    }
+                    s[i]++;
+                }
+            }else{
+                for (int i = s.Length - 1; i >= 0; i--)
+                {
+                    if (carry)
+                    {
+                        s[i]++;
+                        carry = false;
+                    }
+                    else break;
+                    if (s[i] > 'z')
+                    {
+                        carry = true;
+                        s[i] = 'a';
+                    }
+                    s[i]++;
+                }
+            }
+
+            return carry ? 'A' + Convert.ToString(s) : Convert.ToString(s);
+        }
         /*
         public string GenerateStringTest(string plaintext)
         {
@@ -178,7 +283,7 @@ namespace PowerComposer
             {
                 bool aa = _hasNext;
                 ret[i] = GenerateString(_arr[i]);
-                _hasNext = _hasNext || aa;
+                _hasNext |= aa;
             }
 
             Iterate();
