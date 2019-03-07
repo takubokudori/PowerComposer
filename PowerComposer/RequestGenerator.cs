@@ -42,7 +42,7 @@ namespace PowerComposer
         private string[] _arr;
         private bool _hasNext; //hasNext
         private Dictionary<string, string[]> _dict;
-        private Dictionary<string, List<string> > _enumDict;
+        private Dictionary<string, List<string>> _enumDict;
         public bool ErrorByUndefinedVar = false;
 
         public RequestGenerator()
@@ -83,7 +83,7 @@ namespace PowerComposer
         public void InitIterator()
         {
             _arrayIter = 0;
-            _enumDict = new Dictionary<int, string>();
+            _enumDict = new Dictionary<string, List<string>>();
             _hasNext = true;
         }
 
@@ -125,6 +125,9 @@ namespace PowerComposer
                 else if (m.Value[0] == '#') // enum
                 {
                     string enumString = m.Value.Substring(2, m.Value.Length - 3); // #{1-9} -> 1-9
+                    if (!_enumDict.ContainsKey(enumString)) _enumDict[enumString] = GenerateEnumArray(enumString);
+                    if (_arrayIter + 1 < _enumDict[enumString].Count) _hasNext = true;
+                    str = _enumDict[enumString][_arrayIter];
                 }
 
                 return str;
@@ -187,7 +190,7 @@ namespace PowerComposer
 
         public string NextString(ref char[] s)
         {
-            bool isUpper=char.IsUpper(s[0]);
+            bool isUpper = char.IsUpper(s[0]);
             bool carry = true;
             if (isUpper)
             {
@@ -199,14 +202,18 @@ namespace PowerComposer
                         carry = false;
                     }
                     else break;
+
                     if (s[i] > 'Z')
                     {
                         carry = true;
                         s[i] = 'A';
                     }
+
                     s[i]++;
                 }
-            }else{
+            }
+            else
+            {
                 for (int i = s.Length - 1; i >= 0; i--)
                 {
                     if (carry)
@@ -215,11 +222,13 @@ namespace PowerComposer
                         carry = false;
                     }
                     else break;
+
                     if (s[i] > 'z')
                     {
                         carry = true;
                         s[i] = 'a';
                     }
+
                     s[i]++;
                 }
             }

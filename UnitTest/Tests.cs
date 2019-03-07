@@ -34,6 +34,7 @@ namespace UnitTest
             ["c"] = new string[] {"${a}"}
         };
 
+
         public Tests()
         {
         }
@@ -42,6 +43,12 @@ namespace UnitTest
         [Test]
         public void GenerateTest()
         {
+            var prg = new RequestGenerator(dict1);
+        }
+
+        [Test]
+        public void GenerateConstTest()
+        {
             var prg = new RequestGenerator(new Dictionary<string, string[]>());
             var req = new string[] {"test", "testtest", "QWERTY", "", "}", "$}{", "{}"};
             prg.InitIterator();
@@ -49,6 +56,7 @@ namespace UnitTest
             GenerateTestUnit(ref prg, true, req);
             GenerateTestUnit(ref prg, false);
         }
+
 
         [Test]
         public void GenerateVariableTest1()
@@ -132,45 +140,38 @@ namespace UnitTest
         public void GESTest()
         {
             var rg = new RequestGenerator();
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("abc-xyzANN-JAL115-51419"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("a-zA-Z0-9"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("114-514"));
-            Assert.AreEqual(GetList(0,9),rg.GenerateEnumArray("0-9"));
-            Assert.AreEqual(GetList(9,0),rg.GenerateEnumArray("9-0"));
-            Assert.AreEqual(GetList(15,30),rg.GenerateEnumArray("15-30"));
-            Assert.AreEqual(GetList(1,532),rg.GenerateEnumArray("1-532"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("0-0"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("a-z"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("aa-zz"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("m-m"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("A-Z"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("HL-LN"));
-//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("M-M"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("0-a"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-A"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("A-2"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-Aa"));
-//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("aA-Aa"));
+            Assert.AreEqual(GetList(0, 9), rg.GenerateEnumArray("0-9"));
+            Assert.AreEqual(GetList(0, 9, true), rg.GenerateEnumArray("9-0"));
+            Assert.AreEqual(GetList(15, 30), rg.GenerateEnumArray("15-30"));
+            Assert.AreEqual(GetList(1, 532), rg.GenerateEnumArray("1-532"));
         }
 
-        private List<string> GetList(int s,int t,bool reverse=false)
+        private List<string> GetList(int s, int t, bool reverse = false)
         {
-            List<string> ret=new List<string>();
-            if(!reverse)for (int i = s; i <= t; i++)ret.Add(i.ToString());
-            else for (int i = t; i >= s; i--)ret.Add(i.ToString());
+            List<string> ret = new List<string>();
+            for (int i = s; i <= t; i++) ret.Add(i.ToString());
+            if (reverse) ret.Reverse();
             return ret;
         }
+
         [Test]
         public void GenerateEnumTest()
         {
-            var req = new string[] {"abc#{1..9}def"};
+            var req = new string[] {"abc#{1-9}def"};
             var rg = new RequestGenerator();
             rg.InitIterator();
             rg.dict = null;
             rg.ParseRequest(req);
             GenerateTestUnit(ref rg, true, new string[] {"abc1def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc2def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc3def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc4def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc5def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc6def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc7def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc8def"});
+            GenerateTestUnit(ref rg, true, new string[] {"abc9def"});
+            GenerateTestUnit(ref rg, false);
         }
 
         [Test]
