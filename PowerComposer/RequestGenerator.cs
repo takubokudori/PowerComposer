@@ -126,8 +126,8 @@ namespace PowerComposer
                 {
                     string enumString = m.Value.Substring(2, m.Value.Length - 3); // #{1-9} -> 1-9
                     if (!_enumDict.ContainsKey(enumString)) _enumDict[enumString] = GenerateEnumArray(enumString);
+                    if (_enumDict[enumString].Count > _arrayIter) str = _enumDict[enumString][_arrayIter];
                     if (_arrayIter + 1 < _enumDict[enumString].Count) _hasNext = true;
-                    str = _enumDict[enumString][_arrayIter];
                 }
 
                 return str;
