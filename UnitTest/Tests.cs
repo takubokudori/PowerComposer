@@ -26,19 +26,19 @@ namespace UnitTest
             ["xss"] = new string[] {"${abc}"},
             ["num"] = new string[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
         };
-        
+
         private static readonly Dictionary<string, string[]> LoopDict = new Dictionary<string, string[]>
         {
-            ["a"]=new string[]{"${b}"},
-            ["b"]=new string[]{"${c}"},
-            ["c"]=new string[]{"${a}"}
+            ["a"] = new string[] {"${b}"},
+            ["b"] = new string[] {"${c}"},
+            ["c"] = new string[] {"${a}"}
         };
 
         public Tests()
         {
         }
 
-        
+
         [Test]
         public void GenerateTest()
         {
@@ -126,6 +126,51 @@ namespace UnitTest
             rg.ParseRequest(req);
             var ex = Assert.Throws<GenerateException>(() => { GenerateTestUnit(ref rg, true); });
             Assert.That(ex.Message == "Uninitialized Dictionary");
+        }
+
+        [Test]
+        public void GESTest()
+        {
+            var rg = new RequestGenerator();
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("abc-xyzANN-JAL115-51419"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("a-zA-Z0-9"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("114-514"));
+            Assert.AreEqual(GetList(0,9),rg.GenerateEnumArray("0-9"));
+            Assert.AreEqual(GetList(9,0),rg.GenerateEnumArray("9-0"));
+            Assert.AreEqual(GetList(15,30),rg.GenerateEnumArray("15-30"));
+            Assert.AreEqual(GetList(1,532),rg.GenerateEnumArray("1-532"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("0-0"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("a-z"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("aa-zz"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("m-m"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("A-Z"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("HL-LN"));
+//            Assert.AreEqual(new string[]{"True"},rg.GenerateEnumArray("M-M"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("0-a"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-A"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("A-2"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("a-Aa"));
+//            Assert.AreEqual(new string[]{"False"},rg.GenerateEnumArray("aA-Aa"));
+        }
+
+        private List<string> GetList(int s,int t,bool reverse=false)
+        {
+            List<string> ret=new List<string>();
+            if(!reverse)for (int i = s; i <= t; i++)ret.Add(i.ToString());
+            else for (int i = t; i >= s; i--)ret.Add(i.ToString());
+            return ret;
+        }
+        [Test]
+        public void GenerateEnumTest()
+        {
+            var req = new string[] {"abc#{1..9}def"};
+            var rg = new RequestGenerator();
+            rg.InitIterator();
+            rg.dict = null;
+            rg.ParseRequest(req);
+            GenerateTestUnit(ref rg, true, new string[] {"abc1def"});
         }
 
         [Test]
