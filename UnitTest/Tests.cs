@@ -34,6 +34,12 @@ namespace UnitTest
             ["c"] = new string[] {"${a}"}
         };
 
+        private static readonly Dictionary<string, string[]> dict4 = new Dictionary<string, string[]>
+        {
+            ["color"] = new string[] {"red", "green", "blue", "white", "black", "gray"},
+            ["tag"] = new string[] {"html", "body", "hr", "iframe"},
+            ["a"] = new string[] {"${tag}"}
+        };
 
         public Tests()
         {
@@ -43,7 +49,21 @@ namespace UnitTest
         [Test]
         public void GenerateTest()
         {
-            var prg = new RequestGenerator(dict1);
+            var dict = dict4;
+            var rg = new RequestGenerator(dict);
+            var req = new string[] {"My color:${color}", "number:#{1-8}#{8-0}", "tag:${tag}"};
+            rg.InitIterator();
+            rg.ParseRequest(req);
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][0]}",$"number:18",$"tag:{dict["tag"][0]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][1]}",$"number:27",$"tag:{dict["tag"][1]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][2]}",$"number:36",$"tag:{dict["tag"][2]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][3]}",$"number:45",$"tag:{dict["tag"][3]}"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][4]}",$"number:54",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:{dict["color"][5]}",$"number:63",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:72",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:81",$"tag:"});
+            GenerateTestUnit(ref rg,true,new string[]{$"My color:",$"number:0",$"tag:"});
+            GenerateTestUnit(ref rg, false);
         }
 
         [Test]
