@@ -99,7 +99,6 @@ namespace PowerComposer
         }
 
         // 1-9 1-99 00-12 a-zzA-Z0-99
-        // 同じ種類のみ可能 a-zzとか a-Zは無理 a,z->aとz
         // #{0-2}{a-c} OR #{0-2&a-c} 0a 1b 2c
         // #{0-2|a-c} -> 0a 0b 0c 1a 1b 1c 2a 2b 2c
         private string GenerateString(string plaintext)
@@ -227,53 +226,6 @@ namespace PowerComposer
 
             return carry ? 'A' + Convert.ToString(s) : Convert.ToString(s);
         }
-        /*
-        public string GenerateStringTest(string plaintext)
-        {
-            if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
-
-            int ps; // ${ , } position
-            string ret = ""; // return string
-            int reqPtr = 0;
-            _hasNext = false;
-            while ((ps = plaintext.IndexOf("${", reqPtr, StringComparison.Ordinal)) != -1)
-            {
-                int pe = plaintext.IndexOf("}", reqPtr, StringComparison.Ordinal); // }
-                if (pe == -1) // ${...<EOS>
-                {
-                    _hasNext = false;
-                    throw new GenerateException("Broken brackets found");
-                }
-
-                string varName = plaintext.Substring(ps + 2, pe - (ps + 2)); // ${varName}
-                string str = "";
-                if (_dict.ContainsKey(varName))
-                {
-                    if (_arrayIter < _dict[varName].Length)
-                    {
-                        str = _dict[varName][_arrayIter];
-                        if (_arrayIter + 1 < _dict[varName].Length) _hasNext = true;
-                    }
-                }
-                else
-                {
-                    if (ErrorByUndefinedVar)
-                    {
-                        _hasNext = false;
-                        throw new GenerateException($"Undefined variable {varName}");
-                    }
-                }
-
-                ret += $@"{plaintext.Substring(reqPtr, ps - reqPtr)}{str}";
-
-                reqPtr = pe + 1;
-            }
-
-            ret += plaintext.Substring(reqPtr);
-
-            return ret;
-        }
-        */
 
         public string[] Generate()
         {
