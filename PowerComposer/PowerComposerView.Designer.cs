@@ -89,10 +89,12 @@ namespace PowerComposer
             // 
             // URITxt
             // 
-            this.URITxt.Location = new System.Drawing.Point(214, 3);
+            this.URITxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.URITxt.Location = new System.Drawing.Point(203, 3);
             this.URITxt.MaxLength = 1024;
             this.URITxt.Name = "URITxt";
-            this.URITxt.Size = new System.Drawing.Size(205, 31);
+            this.URITxt.Size = new System.Drawing.Size(270, 31);
             this.URITxt.TabIndex = 2;
             this.URITxt.Text = "http://example.com/";
             // 
@@ -165,7 +167,7 @@ namespace PowerComposer
             "HTTP/1.1",
             "HTTP/1.0",
             "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(425, 3);
+            this.VersionTxt.Location = new System.Drawing.Point(479, 3);
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
@@ -173,12 +175,13 @@ namespace PowerComposer
             // 
             // ValuesTxt
             // 
-            this.ValuesTxt.Location = new System.Drawing.Point(21, 41);
+            this.ValuesTxt.Location = new System.Drawing.Point(240, 6);
             this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
+            this.ValuesTxt.ReadOnly = true;
             this.ValuesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ValuesTxt.Size = new System.Drawing.Size(259, 381);
+            this.ValuesTxt.Size = new System.Drawing.Size(259, 364);
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
@@ -188,7 +191,7 @@ namespace PowerComposer
             this.VariableBox.ItemHeight = 24;
             this.VariableBox.Location = new System.Drawing.Point(6, 6);
             this.VariableBox.Name = "VariableBox";
-            this.VariableBox.Size = new System.Drawing.Size(179, 412);
+            this.VariableBox.Size = new System.Drawing.Size(213, 364);
             this.VariableBox.TabIndex = 9;
             this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
             this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
@@ -245,21 +248,23 @@ namespace PowerComposer
             // VarsTab
             // 
             this.VarsTab.BackColor = System.Drawing.Color.Silver;
+            this.VarsTab.Controls.Add(this.SaveBtn);
             this.VarsTab.Controls.Add(this.ExportBtn);
             this.VarsTab.Controls.Add(this.ImportBtn);
+            this.VarsTab.Controls.Add(this.ValuesTxt);
             this.VarsTab.Controls.Add(this.AddNewVarBtn);
             this.VarsTab.Controls.Add(this.NewVarTxt);
             this.VarsTab.Controls.Add(this.VariableBox);
             this.VarsTab.Location = new System.Drawing.Point(8, 39);
             this.VarsTab.Name = "VarsTab";
             this.VarsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VarsTab.Size = new System.Drawing.Size(1068, 647);
+            this.VarsTab.Size = new System.Drawing.Size(1055, 444);
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
             // 
             // ExportBtn
             // 
-            this.ExportBtn.Location = new System.Drawing.Point(191, 52);
+            this.ExportBtn.Location = new System.Drawing.Point(667, 202);
             this.ExportBtn.Name = "ExportBtn";
             this.ExportBtn.Size = new System.Drawing.Size(100, 40);
             this.ExportBtn.TabIndex = 13;
@@ -269,7 +274,7 @@ namespace PowerComposer
             // 
             // ImportBtn
             // 
-            this.ImportBtn.Location = new System.Drawing.Point(191, 6);
+            this.ImportBtn.Location = new System.Drawing.Point(667, 96);
             this.ImportBtn.Name = "ImportBtn";
             this.ImportBtn.Size = new System.Drawing.Size(100, 40);
             this.ImportBtn.TabIndex = 12;
@@ -279,7 +284,7 @@ namespace PowerComposer
             // 
             // AddNewVarBtn
             // 
-            this.AddNewVarBtn.Location = new System.Drawing.Point(191, 425);
+            this.AddNewVarBtn.Location = new System.Drawing.Point(191, 390);
             this.AddNewVarBtn.Name = "AddNewVarBtn";
             this.AddNewVarBtn.Size = new System.Drawing.Size(82, 31);
             this.AddNewVarBtn.TabIndex = 11;
@@ -289,7 +294,7 @@ namespace PowerComposer
             // 
             // NewVarTxt
             // 
-            this.NewVarTxt.Location = new System.Drawing.Point(7, 425);
+            this.NewVarTxt.Location = new System.Drawing.Point(7, 390);
             this.NewVarTxt.MaxLength = 32;
             this.NewVarTxt.Name = "NewVarTxt";
             this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
@@ -300,19 +305,17 @@ namespace PowerComposer
             // ValsTab
             // 
             this.ValsTab.BackColor = System.Drawing.Color.Silver;
-            this.ValsTab.Controls.Add(this.SaveBtn);
             this.ValsTab.Controls.Add(this.ValuesLbl);
-            this.ValsTab.Controls.Add(this.ValuesTxt);
             this.ValsTab.Location = new System.Drawing.Point(8, 39);
             this.ValsTab.Name = "ValsTab";
             this.ValsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ValsTab.Size = new System.Drawing.Size(1068, 647);
+            this.ValsTab.Size = new System.Drawing.Size(1055, 444);
             this.ValsTab.TabIndex = 1;
             this.ValsTab.Text = "Values";
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(75, 428);
+            this.SaveBtn.Location = new System.Drawing.Point(318, 390);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(143, 32);
             this.SaveBtn.TabIndex = 5;
@@ -335,7 +338,7 @@ namespace PowerComposer
             this.OptionTab.Controls.Add(this.OptionBox);
             this.OptionTab.Location = new System.Drawing.Point(8, 39);
             this.OptionTab.Name = "OptionTab";
-            this.OptionTab.Size = new System.Drawing.Size(1068, 647);
+            this.OptionTab.Size = new System.Drawing.Size(1055, 444);
             this.OptionTab.TabIndex = 2;
             this.OptionTab.Text = "Option";
             this.OptionTab.UseVisualStyleBackColor = true;
@@ -382,9 +385,9 @@ namespace PowerComposer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel1.Controls.Add(this.VersionTxt, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.HeaderTxt, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.MethodTxt, 0, 0);

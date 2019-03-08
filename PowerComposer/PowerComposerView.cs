@@ -168,7 +168,8 @@ namespace PowerComposer
 
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(ValsTab);
+            ValuesTxt.ReadOnly = (VariableBox.SelectedIndex == -1);
+            if(!ValuesTxt.ReadOnly)ValuesTxt.Focus();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
