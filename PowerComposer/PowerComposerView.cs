@@ -205,5 +205,17 @@ namespace PowerComposer
                 vars[f.Substring(0,f.Length-4)]=sm.ReadToEnd();
             }
         }
+
+        private void ImportBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                LoadVars(openFileDialog1.FileName);
+            }
+        }
+
+        private void ExportBtn_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
