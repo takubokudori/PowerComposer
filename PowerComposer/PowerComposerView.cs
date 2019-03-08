@@ -25,6 +25,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -33,7 +34,7 @@ namespace PowerComposer
     public partial class PowerComposerView : UserControl
     {
         private Dictionary<string, string> vars;
-
+        
         public PowerComposerView()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace PowerComposer
         {
         }
 
+        
         private void PowerComposerView_Leave(object sender, EventArgs e)
         {
         }
@@ -175,6 +177,33 @@ namespace PowerComposer
         private void TimesTxt_Leave(object sender, EventArgs e)
         {
             if (ParentForm != null) ParentForm.AcceptButton = null;
+        }
+
+
+        private void CreateDirectoryIfNotExists(string path)
+        {
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+        }
+        
+        private void SaveVars(string path)
+        {
+            CreateDirectoryIfNotExists(path); // mkdir
+            foreach (KeyValuePair<string, string> kvp in vars)
+            {
+                // Write File.
+                var sm=File.CreateText(path+kvp.Key+".txt");
+                sm.Write(kvp.Value);
+                sm.Close();
+            }
+        }
+        
+        private void LoadVars(string path)
+        {
+            foreach (var f in Directory.GetFiles(path,"*.txt"))
+            {
+                var sm=File.OpenText(f);
+                vars[f.Substring(0,f.Length-4)]=sm.ReadToEnd();
+            }
         }
     }
 }
