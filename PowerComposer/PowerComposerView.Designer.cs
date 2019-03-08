@@ -60,6 +60,7 @@ namespace PowerComposer
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.IncludeBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.BuilderTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
@@ -213,6 +214,7 @@ namespace PowerComposer
             // 
             // BuilderTab
             // 
+            this.BuilderTab.Controls.Add(this.IncludeBtn);
             this.BuilderTab.Controls.Add(this.tableLayoutPanel1);
             this.BuilderTab.Controls.Add(this.TimesLbl);
             this.BuilderTab.Controls.Add(this.TimesTxt);
@@ -402,6 +404,16 @@ namespace PowerComposer
             this.tableLayoutPanel1.Size = new System.Drawing.Size(636, 394);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
+            // IncludeBtn
+            // 
+            this.IncludeBtn.Location = new System.Drawing.Point(685, 178);
+            this.IncludeBtn.Name = "IncludeBtn";
+            this.IncludeBtn.Size = new System.Drawing.Size(170, 38);
+            this.IncludeBtn.TabIndex = 15;
+            this.IncludeBtn.Text = "Include";
+            this.IncludeBtn.UseVisualStyleBackColor = true;
+            this.IncludeBtn.Click += new System.EventHandler(this.IncludeBtn_Click);
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -457,5 +469,6 @@ namespace PowerComposer
         private FolderBrowserDialog folderBrowserDialog1;
         private TabPage BuilderTab;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button IncludeBtn;
     }
 }
