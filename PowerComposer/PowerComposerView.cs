@@ -28,16 +28,20 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace PowerComposer
 {
     public partial class PowerComposerView : UserControl
     {
         private Dictionary<string, string> vars;
-        
+        private CommonOpenFileDialog _commonOpenFileDialog1;
+
         public PowerComposerView()
         {
             InitializeComponent();
+            _commonOpenFileDialog1 = new CommonOpenFileDialog();
+            _commonOpenFileDialog1.IsFolderPicker = true;
             OptionBox.SetItemChecked(0, true);
             OptionBox.SetItemChecked(1, true);
             vars = new Dictionary<string, string>();
@@ -47,7 +51,7 @@ namespace PowerComposer
         {
         }
 
-        
+
         private void PowerComposerView_Leave(object sender, EventArgs e)
         {
         }
@@ -184,7 +188,7 @@ namespace PowerComposer
         {
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
-        
+
         private void ExportVars(string path)
         {
             CreateDirectoryIfNotExists(path); // mkdir
@@ -192,38 +196,58 @@ namespace PowerComposer
             foreach (KeyValuePair<string, string> kvp in vars)
             {
                 // Write File.
-                var sm=File.CreateText(path+kvp.Key+".txt");
+                var sm = File.CreateText(path + kvp.Key + ".txt");
                 sm.Write(kvp.Value);
                 sm.Close();
             }
         }
-        
+
         private void ImportVars(string path)
         {
-            foreach (var f in Directory.GetFiles(path,"*.txt"))
+            foreach (var f in Directory.GetFiles(path, "*.txt"))
             {
-                var sm=File.OpenText(f);
-                vars[f.Substring(0,f.Length-4)]=sm.ReadToEnd();
+                var sm = File.OpenText(f);
+                int fnamehead = f.LastIndexOf(Path.DirectorySeparatorChar); // C:\xxx\yyy\test.txt -> test.txt
+                if (fnamehead == -1) fnamehead = 0;
+                string s = f.Substring(fnamehead + 1, f.Length - fnamehead - 5); // test.txt -> test
+                if (s.Length > 0)
+                {
+                    vars[s] = sm.ReadToEnd();
+                }
+            }
+
+            RefreshVars();
+        }
+
+        private void RefreshVars()
+        {
+            foreach (KeyValuePair<string, string> kvp in vars)
+            {
+                if (!VariableBox.Items.Contains(kvp.Key))
+                {
+                    VariableBox.Items.Add(kvp.Key);
+                }
             }
         }
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
+//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ImportVars(folderBrowserDialog1.SelectedPath);
+                MessageBox.Show(@"Imported variables successfully.");
             }
-            MessageBox.Show(@"Imported variables successfully.");
         }
 
         private void ExportBtn_Click(object sender, EventArgs e)
         {
+//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ExportVars(folderBrowserDialog1.SelectedPath);
+                MessageBox.Show(@"Exported variables successfully.");
             }
-
-            MessageBox.Show(@"Exported variables successfully.");
         }
     }
 }
