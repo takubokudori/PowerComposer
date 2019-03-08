@@ -43,6 +43,9 @@ namespace PowerComposer
             this.ValuesTxt = new System.Windows.Forms.TextBox();
             this.VariableBox = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.BuilderTab = new System.Windows.Forms.TabPage();
+            this.TimesLbl = new System.Windows.Forms.Label();
+            this.TimesTxt = new System.Windows.Forms.TextBox();
             this.VarsTab = new System.Windows.Forms.TabPage();
             this.ExportBtn = new System.Windows.Forms.Button();
             this.ImportBtn = new System.Windows.Forms.Button();
@@ -54,20 +57,21 @@ namespace PowerComposer
             this.OptionTab = new System.Windows.Forms.TabPage();
             this.OptionBox = new System.Windows.Forms.CheckedListBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.TimesTxt = new System.Windows.Forms.TextBox();
-            this.TimesLbl = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
+            this.BuilderTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
             this.OptionTab.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLbl
             // 
             this.TitleLbl.AutoSize = true;
-            this.TitleLbl.Location = new System.Drawing.Point(22, 23);
+            this.TitleLbl.Location = new System.Drawing.Point(22, 11);
             this.TitleLbl.Name = "TitleLbl";
             this.TitleLbl.Size = new System.Drawing.Size(174, 24);
             this.TitleLbl.TabIndex = 0;
@@ -75,7 +79,7 @@ namespace PowerComposer
             // 
             // ExecBtn
             // 
-            this.ExecBtn.Location = new System.Drawing.Point(634, 23);
+            this.ExecBtn.Location = new System.Drawing.Point(685, 19);
             this.ExecBtn.Name = "ExecBtn";
             this.ExecBtn.Size = new System.Drawing.Size(165, 96);
             this.ExecBtn.TabIndex = 1;
@@ -85,21 +89,25 @@ namespace PowerComposer
             // 
             // URITxt
             // 
-            this.URITxt.Location = new System.Drawing.Point(212, 72);
+            this.URITxt.Location = new System.Drawing.Point(214, 3);
             this.URITxt.MaxLength = 1024;
             this.URITxt.Name = "URITxt";
-            this.URITxt.Size = new System.Drawing.Size(252, 31);
+            this.URITxt.Size = new System.Drawing.Size(205, 31);
             this.URITxt.TabIndex = 2;
             this.URITxt.Text = "http://example.com/";
             // 
             // HeaderTxt
             // 
-            this.HeaderTxt.Location = new System.Drawing.Point(26, 122);
+            this.HeaderTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.HeaderTxt, 13);
+            this.HeaderTxt.Location = new System.Drawing.Point(3, 43);
             this.HeaderTxt.MaxLength = 0;
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HeaderTxt.Size = new System.Drawing.Size(584, 215);
+            this.HeaderTxt.Size = new System.Drawing.Size(630, 100);
             this.HeaderTxt.TabIndex = 3;
             this.HeaderTxt.Text = "User-Agent: Fiddler";
             // 
@@ -107,12 +115,16 @@ namespace PowerComposer
             // 
             this.BodyTxt.AcceptsTab = true;
             this.BodyTxt.AllowDrop = true;
-            this.BodyTxt.Location = new System.Drawing.Point(26, 361);
+            this.BodyTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
+            this.BodyTxt.Location = new System.Drawing.Point(3, 149);
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
             this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BodyTxt.Size = new System.Drawing.Size(584, 383);
+            this.BodyTxt.Size = new System.Drawing.Size(630, 242);
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
             // 
@@ -138,7 +150,7 @@ namespace PowerComposer
             "LOCK",
             "UNLOCK",
             "OPTIONS"});
-            this.MethodTxt.Location = new System.Drawing.Point(26, 71);
+            this.MethodTxt.Location = new System.Drawing.Point(3, 3);
             this.MethodTxt.Name = "MethodTxt";
             this.MethodTxt.Size = new System.Drawing.Size(180, 32);
             this.MethodTxt.TabIndex = 7;
@@ -153,7 +165,7 @@ namespace PowerComposer
             "HTTP/1.1",
             "HTTP/1.0",
             "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(470, 71);
+            this.VersionTxt.Location = new System.Drawing.Point(425, 3);
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
@@ -183,14 +195,52 @@ namespace PowerComposer
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.BuilderTab);
             this.tabControl1.Controls.Add(this.VarsTab);
             this.tabControl1.Controls.Add(this.ValsTab);
             this.tabControl1.Controls.Add(this.OptionTab);
-            this.tabControl1.Location = new System.Drawing.Point(634, 231);
+            this.tabControl1.Location = new System.Drawing.Point(3, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(319, 513);
+            this.tabControl1.Size = new System.Drawing.Size(1071, 491);
             this.tabControl1.TabIndex = 10;
+            // 
+            // BuilderTab
+            // 
+            this.BuilderTab.Controls.Add(this.tableLayoutPanel1);
+            this.BuilderTab.Controls.Add(this.TimesLbl);
+            this.BuilderTab.Controls.Add(this.TimesTxt);
+            this.BuilderTab.Controls.Add(this.ExecBtn);
+            this.BuilderTab.Location = new System.Drawing.Point(8, 39);
+            this.BuilderTab.Name = "BuilderTab";
+            this.BuilderTab.Size = new System.Drawing.Size(1055, 444);
+            this.BuilderTab.TabIndex = 3;
+            this.BuilderTab.Text = "Builder";
+            this.BuilderTab.UseVisualStyleBackColor = true;
+            // 
+            // TimesLbl
+            // 
+            this.TimesLbl.AutoSize = true;
+            this.TimesLbl.Location = new System.Drawing.Point(791, 147);
+            this.TimesLbl.Name = "TimesLbl";
+            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
+            this.TimesLbl.TabIndex = 13;
+            this.TimesLbl.Text = "times";
+            // 
+            // TimesTxt
+            // 
+            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.TimesTxt.Location = new System.Drawing.Point(685, 140);
+            this.TimesTxt.MaxLength = 32;
+            this.TimesTxt.Name = "TimesTxt";
+            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
+            this.TimesTxt.TabIndex = 12;
+            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
+            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
             // 
             // VarsTab
             // 
@@ -203,7 +253,7 @@ namespace PowerComposer
             this.VarsTab.Location = new System.Drawing.Point(8, 39);
             this.VarsTab.Name = "VarsTab";
             this.VarsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VarsTab.Size = new System.Drawing.Size(303, 466);
+            this.VarsTab.Size = new System.Drawing.Size(1068, 647);
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
             // 
@@ -256,7 +306,7 @@ namespace PowerComposer
             this.ValsTab.Location = new System.Drawing.Point(8, 39);
             this.ValsTab.Name = "ValsTab";
             this.ValsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ValsTab.Size = new System.Drawing.Size(303, 466);
+            this.ValsTab.Size = new System.Drawing.Size(1068, 647);
             this.ValsTab.TabIndex = 1;
             this.ValsTab.Text = "Values";
             // 
@@ -285,7 +335,7 @@ namespace PowerComposer
             this.OptionTab.Controls.Add(this.OptionBox);
             this.OptionTab.Location = new System.Drawing.Point(8, 39);
             this.OptionTab.Name = "OptionTab";
-            this.OptionTab.Size = new System.Drawing.Size(303, 466);
+            this.OptionTab.Size = new System.Drawing.Size(1068, 647);
             this.OptionTab.TabIndex = 2;
             this.OptionTab.Text = "Option";
             this.OptionTab.UseVisualStyleBackColor = true;
@@ -308,34 +358,13 @@ namespace PowerComposer
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(22, 760);
+            this.linkLabel1.Location = new System.Drawing.Point(378, 11);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(511, 24);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/takubokudori/PowerComposer";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // TimesTxt
-            // 
-            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(634, 138);
-            this.TimesTxt.MaxLength = 32;
-            this.TimesTxt.Name = "TimesTxt";
-            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
-            this.TimesTxt.TabIndex = 12;
-            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
-            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
-            // 
-            // TimesLbl
-            // 
-            this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Location = new System.Drawing.Point(740, 141);
-            this.TimesLbl.Name = "TimesLbl";
-            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
-            this.TimesLbl.TabIndex = 13;
-            this.TimesLbl.Text = "times";
             // 
             // openFileDialog1
             // 
@@ -347,31 +376,50 @@ namespace PowerComposer
             // 
             this.folderBrowserDialog1.Description = "Hello";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.VersionTxt, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.HeaderTxt, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.MethodTxt, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BodyTxt, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.URITxt, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(27, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(636, 394);
+            this.tableLayoutPanel1.TabIndex = 14;
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.TimesLbl);
-            this.Controls.Add(this.TimesTxt);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.VersionTxt);
-            this.Controls.Add(this.MethodTxt);
-            this.Controls.Add(this.HeaderTxt);
-            this.Controls.Add(this.BodyTxt);
-            this.Controls.Add(this.URITxt);
-            this.Controls.Add(this.ExecBtn);
             this.Controls.Add(this.TitleLbl);
             this.Name = "PowerComposerView";
-            this.Size = new System.Drawing.Size(1103, 799);
+            this.Size = new System.Drawing.Size(1090, 563);
             this.Load += new System.EventHandler(this.PowerComposerView_Load);
             this.Leave += new System.EventHandler(this.PowerComposerView_Leave);
             this.tabControl1.ResumeLayout(false);
+            this.BuilderTab.ResumeLayout(false);
+            this.BuilderTab.PerformLayout();
             this.VarsTab.ResumeLayout(false);
             this.VarsTab.PerformLayout();
             this.ValsTab.ResumeLayout(false);
             this.ValsTab.PerformLayout();
             this.OptionTab.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +452,7 @@ namespace PowerComposer
         private Button ExportBtn;
         private Button ImportBtn;
         private FolderBrowserDialog folderBrowserDialog1;
+        private TabPage BuilderTab;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
