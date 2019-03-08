@@ -169,7 +169,7 @@ namespace PowerComposer
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValuesTxt.ReadOnly = (VariableBox.SelectedIndex == -1);
-            if(!ValuesTxt.ReadOnly)ValuesTxt.Focus();
+            if (!ValuesTxt.ReadOnly) ValuesTxt.Focus();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -283,9 +283,13 @@ namespace PowerComposer
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                BodyTxt.Text+=@"!{"+openFileDialog1.FileName+@"}";
+                string str1 = BodyTxt.Text.Substring(0, BodyTxt.SelectionStart);
+                string str2 = BodyTxt.Text.Substring(BodyTxt.SelectionStart);
+//                MessageBox.Show(BodyTxt.SelectionStart.ToString());
+                BodyTxt.Text = str1
+                               + @"!{" + openFileDialog1.FileName + @"}"
+                               + str2;
             }
-
         }
     }
 }

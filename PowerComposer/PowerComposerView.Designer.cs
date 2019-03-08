@@ -61,6 +61,7 @@ namespace PowerComposer
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.IncludeBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.BuilderTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
@@ -80,7 +81,7 @@ namespace PowerComposer
             // 
             // ExecBtn
             // 
-            this.ExecBtn.Location = new System.Drawing.Point(685, 19);
+            this.ExecBtn.Location = new System.Drawing.Point(869, 22);
             this.ExecBtn.Name = "ExecBtn";
             this.ExecBtn.Size = new System.Drawing.Size(165, 96);
             this.ExecBtn.TabIndex = 1;
@@ -104,13 +105,13 @@ namespace PowerComposer
             this.HeaderTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.HeaderTxt, 13);
+            this.tableLayoutPanel1.SetColumnSpan(this.HeaderTxt, 3);
             this.HeaderTxt.Location = new System.Drawing.Point(3, 43);
             this.HeaderTxt.MaxLength = 0;
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HeaderTxt.Size = new System.Drawing.Size(630, 100);
+            this.HeaderTxt.Size = new System.Drawing.Size(630, 88);
             this.HeaderTxt.TabIndex = 3;
             this.HeaderTxt.Text = "User-Agent: Fiddler";
             // 
@@ -122,12 +123,12 @@ namespace PowerComposer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
-            this.BodyTxt.Location = new System.Drawing.Point(3, 149);
+            this.BodyTxt.Location = new System.Drawing.Point(3, 177);
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
             this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BodyTxt.Size = new System.Drawing.Size(630, 242);
+            this.BodyTxt.Size = new System.Drawing.Size(630, 214);
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
             // 
@@ -214,7 +215,6 @@ namespace PowerComposer
             // 
             // BuilderTab
             // 
-            this.BuilderTab.Controls.Add(this.IncludeBtn);
             this.BuilderTab.Controls.Add(this.tableLayoutPanel1);
             this.BuilderTab.Controls.Add(this.TimesLbl);
             this.BuilderTab.Controls.Add(this.TimesTxt);
@@ -229,7 +229,7 @@ namespace PowerComposer
             // TimesLbl
             // 
             this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Location = new System.Drawing.Point(791, 147);
+            this.TimesLbl.Location = new System.Drawing.Point(940, 149);
             this.TimesLbl.Name = "TimesLbl";
             this.TimesLbl.Size = new System.Drawing.Size(64, 24);
             this.TimesLbl.TabIndex = 13;
@@ -238,7 +238,7 @@ namespace PowerComposer
             // TimesTxt
             // 
             this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(685, 140);
+            this.TimesTxt.Location = new System.Drawing.Point(834, 142);
             this.TimesTxt.MaxLength = 32;
             this.TimesTxt.Name = "TimesTxt";
             this.TimesTxt.Size = new System.Drawing.Size(100, 31);
@@ -390,29 +390,42 @@ namespace PowerComposer
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.Controls.Add(this.IncludeBtn, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.VersionTxt, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.HeaderTxt, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.MethodTxt, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BodyTxt, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BodyTxt, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.URITxt, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(27, 19);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(636, 394);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // IncludeBtn
             // 
-            this.IncludeBtn.Location = new System.Drawing.Point(685, 178);
+            this.IncludeBtn.Location = new System.Drawing.Point(479, 137);
             this.IncludeBtn.Name = "IncludeBtn";
-            this.IncludeBtn.Size = new System.Drawing.Size(170, 38);
+            this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
             this.IncludeBtn.TabIndex = 15;
-            this.IncludeBtn.Text = "Include";
+            this.IncludeBtn.TabStop = false;
+            this.IncludeBtn.Text = "Include file";
             this.IncludeBtn.UseVisualStyleBackColor = true;
             this.IncludeBtn.Click += new System.EventHandler(this.IncludeBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 24);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Request Body:";
             // 
             // PowerComposerView
             // 
@@ -470,5 +483,6 @@ namespace PowerComposer
         private TabPage BuilderTab;
         private TableLayoutPanel tableLayoutPanel1;
         private Button IncludeBtn;
+        private Label label1;
     }
 }
