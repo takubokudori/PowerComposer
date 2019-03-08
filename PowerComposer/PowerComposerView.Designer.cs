@@ -44,6 +44,8 @@ namespace PowerComposer
             this.VariableBox = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.VarsTab = new System.Windows.Forms.TabPage();
+            this.ExportBtn = new System.Windows.Forms.Button();
+            this.ImportBtn = new System.Windows.Forms.Button();
             this.AddNewVarBtn = new System.Windows.Forms.Button();
             this.NewVarTxt = new System.Windows.Forms.TextBox();
             this.ValsTab = new System.Windows.Forms.TabPage();
@@ -55,8 +57,6 @@ namespace PowerComposer
             this.TimesTxt = new System.Windows.Forms.TextBox();
             this.TimesLbl = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.ImportBtn = new System.Windows.Forms.Button();
-            this.ExportBtn = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
@@ -205,6 +205,26 @@ namespace PowerComposer
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
             // 
+            // ExportBtn
+            // 
+            this.ExportBtn.Location = new System.Drawing.Point(191, 52);
+            this.ExportBtn.Name = "ExportBtn";
+            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ExportBtn.TabIndex = 13;
+            this.ExportBtn.Text = "Export";
+            this.ExportBtn.UseVisualStyleBackColor = true;
+            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            // 
+            // ImportBtn
+            // 
+            this.ImportBtn.Location = new System.Drawing.Point(191, 6);
+            this.ImportBtn.Name = "ImportBtn";
+            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ImportBtn.TabIndex = 12;
+            this.ImportBtn.Text = "Import";
+            this.ImportBtn.UseVisualStyleBackColor = true;
+            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
+            // 
             // AddNewVarBtn
             // 
             this.AddNewVarBtn.Location = new System.Drawing.Point(191, 425);
@@ -318,26 +338,6 @@ namespace PowerComposer
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.InitialDirectory = "%userprofile%";
             this.openFileDialog1.Title = "Import Variables";
-            // 
-            // ImportBtn
-            // 
-            this.ImportBtn.Location = new System.Drawing.Point(191, 6);
-            this.ImportBtn.Name = "ImportBtn";
-            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
-            this.ImportBtn.TabIndex = 12;
-            this.ImportBtn.Text = "Import";
-            this.ImportBtn.UseVisualStyleBackColor = true;
-            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
-            // 
-            // ExportBtn
-            // 
-            this.ExportBtn.Location = new System.Drawing.Point(191, 52);
-            this.ExportBtn.Name = "ExportBtn";
-            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
-            this.ExportBtn.TabIndex = 13;
-            this.ExportBtn.Text = "Export";
-            this.ExportBtn.UseVisualStyleBackColor = true;
-            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
             // folderBrowserDialog1
             // 
