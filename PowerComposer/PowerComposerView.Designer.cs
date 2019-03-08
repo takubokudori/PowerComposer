@@ -295,7 +295,9 @@ namespace PowerComposer
             this.OptionBox.Items.AddRange(new object[] {
             "Error by undefined variable",
             "Fix Content-Length header",
-            "Follow Redirects"});
+            "Follow Redirects",
+            "Automatically Authenticate",
+            "Inspect Session"});
             this.OptionBox.Location = new System.Drawing.Point(3, 41);
             this.OptionBox.Name = "OptionBox";
             this.OptionBox.Size = new System.Drawing.Size(297, 238);
