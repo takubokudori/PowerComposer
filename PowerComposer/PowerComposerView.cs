@@ -188,6 +188,7 @@ namespace PowerComposer
         private void ExportVars(string path)
         {
             CreateDirectoryIfNotExists(path); // mkdir
+            if (path[path.Length - 1] != Path.DirectorySeparatorChar) path += Path.DirectorySeparatorChar;
             foreach (KeyValuePair<string, string> kvp in vars)
             {
                 // Write File.
@@ -212,6 +213,7 @@ namespace PowerComposer
             {
                 ImportVars(folderBrowserDialog1.SelectedPath);
             }
+            MessageBox.Show(@"Imported variables successfully.");
         }
 
         private void ExportBtn_Click(object sender, EventArgs e)
@@ -220,6 +222,8 @@ namespace PowerComposer
             {
                 ExportVars(folderBrowserDialog1.SelectedPath);
             }
+
+            MessageBox.Show(@"Exported variables successfully.");
         }
     }
 }
