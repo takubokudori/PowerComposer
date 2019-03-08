@@ -278,5 +278,14 @@ namespace PowerComposer
                 MessageBox.Show(@"Exported successfully.");
             }
         }
+
+        private void IncludeBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                BodyTxt.Text+=@"!{"+openFileDialog1.FileName+@"}";
+            }
+
+        }
     }
 }
