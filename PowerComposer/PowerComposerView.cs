@@ -221,7 +221,7 @@ namespace PowerComposer
                     if (vars.ContainsKey(s))
                     {
                         var x = MessageBox.Show(
-                            s + @" is already exists." + Environment.NewLine + "Do you want to overwrite this anyway?",
+                            s + @" is already exists." + Environment.NewLine + @"Do you want to overwrite this anyway?",
                             @"Warning", MessageBoxButtons.YesNo);
                         sure = x == DialogResult.Yes;
                     }

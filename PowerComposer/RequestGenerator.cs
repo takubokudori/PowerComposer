@@ -147,7 +147,7 @@ namespace PowerComposer
          * token=(digit minus digit)|(alpha minus alpha)|(ALPHA minus ALPHA)
          * expr=token | expr token | (expr or expr) | (expr and expr)
          */
-        public List<string> GenerateEnumArray(string enumString)
+        public static List<string> GenerateEnumArray(string enumString)
         {
             // 1-9a-z
             var ret = new List<string>();
