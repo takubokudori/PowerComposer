@@ -54,15 +54,19 @@ namespace UnitTest
             var req = new string[] {"My color part #{10-11}:${color}", "number:#{1-8}#{8-0}", "tag:${tag}"};
             rg.InitIterator();
             rg.ParseRequest(req);
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part 10:{dict["color"][0]}",$"number:18",$"tag:{dict["tag"][0]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part 11:{dict["color"][1]}",$"number:27",$"tag:{dict["tag"][1]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][2]}",$"number:36",$"tag:{dict["tag"][2]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][3]}",$"number:45",$"tag:{dict["tag"][3]}"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][4]}",$"number:54",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :{dict["color"][5]}",$"number:63",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:72",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:81",$"tag:"});
-            GenerateTestUnit(ref rg,true,new string[]{$"My color part :",$"number:0",$"tag:"});
+            GenerateTestUnit(ref rg, true,
+                new string[] {$"My color part 10:{dict["color"][0]}", $"number:18", $"tag:{dict["tag"][0]}"});
+            GenerateTestUnit(ref rg, true,
+                new string[] {$"My color part 11:{dict["color"][1]}", $"number:27", $"tag:{dict["tag"][1]}"});
+            GenerateTestUnit(ref rg, true,
+                new string[] {$"My color part :{dict["color"][2]}", $"number:36", $"tag:{dict["tag"][2]}"});
+            GenerateTestUnit(ref rg, true,
+                new string[] {$"My color part :{dict["color"][3]}", $"number:45", $"tag:{dict["tag"][3]}"});
+            GenerateTestUnit(ref rg, true, new string[] {$"My color part :{dict["color"][4]}", $"number:54", $"tag:"});
+            GenerateTestUnit(ref rg, true, new string[] {$"My color part :{dict["color"][5]}", $"number:63", $"tag:"});
+            GenerateTestUnit(ref rg, true, new string[] {$"My color part :", $"number:72", $"tag:"});
+            GenerateTestUnit(ref rg, true, new string[] {$"My color part :", $"number:81", $"tag:"});
+            GenerateTestUnit(ref rg, true, new string[] {$"My color part :", $"number:0", $"tag:"});
             GenerateTestUnit(ref rg, false);
         }
 
@@ -194,18 +198,6 @@ namespace UnitTest
             GenerateTestUnit(ref rg, false);
         }
 
-        [Test]
-        public void GenerateBrokenBracketsTest()
-        {
-            var dict = dict1;
-            var req = new string[] {"${"};
-            var rg = new RequestGenerator();
-            rg.InitIterator();
-            rg.dict = dict;
-            rg.ParseRequest(req);
-            var ex = Assert.Throws<GenerateException>(() => { GenerateTestUnit(ref rg, true); });
-            Assert.That(ex.Message == "Broken brackets found");
-        }
 
         private void GenerateTestUnit(ref RequestGenerator prg, bool expectedHasNext, string[] expectedReturn = null)
         {
