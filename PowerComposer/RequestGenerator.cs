@@ -108,7 +108,7 @@ namespace PowerComposer
         {
             if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
             _hasNext = false;
-            string ret = Regex.Replace(plaintext, "(#|\\$)\\{.*?\\}", m =>
+            string ret = Regex.Replace(plaintext, "(#|\\$|!)\\{.*?\\}", m =>
             {
                 string str = "";
                 if (m.Value[0] == '$') // variable
