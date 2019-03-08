@@ -54,6 +54,9 @@ namespace PowerComposer
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.TimesTxt = new System.Windows.Forms.TextBox();
             this.TimesLbl = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ImportBtn = new System.Windows.Forms.Button();
+            this.ExportBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
@@ -189,6 +192,8 @@ namespace PowerComposer
             // VarsTab
             // 
             this.VarsTab.BackColor = System.Drawing.Color.Silver;
+            this.VarsTab.Controls.Add(this.ExportBtn);
+            this.VarsTab.Controls.Add(this.ImportBtn);
             this.VarsTab.Controls.Add(this.AddNewVarBtn);
             this.VarsTab.Controls.Add(this.NewVarTxt);
             this.VarsTab.Controls.Add(this.VariableBox);
@@ -307,6 +312,32 @@ namespace PowerComposer
             this.TimesLbl.TabIndex = 13;
             this.TimesLbl.Text = "times";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.InitialDirectory = "%userprofile%";
+            this.openFileDialog1.Title = "Import Variables";
+            // 
+            // ImportBtn
+            // 
+            this.ImportBtn.Location = new System.Drawing.Point(191, 6);
+            this.ImportBtn.Name = "ImportBtn";
+            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ImportBtn.TabIndex = 12;
+            this.ImportBtn.Text = "Import";
+            this.ImportBtn.UseVisualStyleBackColor = true;
+            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
+            // 
+            // ExportBtn
+            // 
+            this.ExportBtn.Location = new System.Drawing.Point(191, 52);
+            this.ExportBtn.Name = "ExportBtn";
+            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ExportBtn.TabIndex = 13;
+            this.ExportBtn.Text = "Export";
+            this.ExportBtn.UseVisualStyleBackColor = true;
+            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -360,5 +391,8 @@ namespace PowerComposer
         private LinkLabel linkLabel1;
         public TextBox TimesTxt;
         private Label TimesLbl;
+        private OpenFileDialog openFileDialog1;
+        private Button ExportBtn;
+        private Button ImportBtn;
     }
 }
