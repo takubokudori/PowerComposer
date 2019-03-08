@@ -57,6 +57,7 @@ namespace PowerComposer
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.ImportBtn = new System.Windows.Forms.Button();
             this.ExportBtn = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
@@ -338,6 +339,10 @@ namespace PowerComposer
             this.ExportBtn.UseVisualStyleBackColor = true;
             this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.Description = "Hello";
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -394,5 +399,6 @@ namespace PowerComposer
         private OpenFileDialog openFileDialog1;
         private Button ExportBtn;
         private Button ImportBtn;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

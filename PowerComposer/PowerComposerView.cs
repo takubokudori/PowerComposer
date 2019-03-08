@@ -185,7 +185,7 @@ namespace PowerComposer
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
         
-        private void SaveVars(string path)
+        private void ExportVars(string path)
         {
             CreateDirectoryIfNotExists(path); // mkdir
             foreach (KeyValuePair<string, string> kvp in vars)
@@ -197,7 +197,7 @@ namespace PowerComposer
             }
         }
         
-        private void LoadVars(string path)
+        private void ImportVars(string path)
         {
             foreach (var f in Directory.GetFiles(path,"*.txt"))
             {
@@ -208,14 +208,18 @@ namespace PowerComposer
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                LoadVars(openFileDialog1.FileName);
+                ImportVars(folderBrowserDialog1.SelectedPath);
             }
         }
 
         private void ExportBtn_Click(object sender, EventArgs e)
         {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ExportVars(folderBrowserDialog1.SelectedPath);
+            }
         }
     }
 }
