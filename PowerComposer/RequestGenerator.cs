@@ -97,7 +97,8 @@ namespace PowerComposer
         {
             _arrayIter++;
         }
-
+        
+        // TODO: below
         // 1-9 1-99 00-12 a-zzA-Z0-99
         // #{0-2}{a-c} OR #{0-2&a-c} 0a 1b 2c
         // #{0-2|a-c} -> 0a 0b 0c 1a 1b 1c 2a 2b 2c
