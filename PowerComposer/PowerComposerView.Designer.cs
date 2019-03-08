@@ -90,6 +90,7 @@ namespace PowerComposer
             this.URITxt.Name = "URITxt";
             this.URITxt.Size = new System.Drawing.Size(252, 31);
             this.URITxt.TabIndex = 2;
+            this.URITxt.Text = "http://example.com/";
             // 
             // HeaderTxt
             // 
@@ -100,6 +101,7 @@ namespace PowerComposer
             this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.HeaderTxt.Size = new System.Drawing.Size(584, 215);
             this.HeaderTxt.TabIndex = 3;
+            this.HeaderTxt.Text = "User-Agent: Fiddler";
             // 
             // BodyTxt
             // 

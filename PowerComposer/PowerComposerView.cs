@@ -156,6 +156,16 @@ namespace PowerComposer
             return OptionBox.GetItemChecked(2);
         }
 
+        public bool IsAutoAuth()
+        {
+            return OptionBox.GetItemChecked(3);
+        }
+
+        public bool IsInspectSession()
+        {
+            return OptionBox.GetItemChecked(4);
+        }
+
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabControl1.SelectTab(ValsTab);
