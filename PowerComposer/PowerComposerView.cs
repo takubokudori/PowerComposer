@@ -36,6 +36,7 @@ namespace PowerComposer
     {
         private Dictionary<string, string> vars;
         private CommonOpenFileDialog _commonOpenFileDialog1;
+        private static readonly Regex VarNameRegex = new Regex("^[a-zA-Z0-9]+$");
 
         public PowerComposerView()
         {
@@ -83,6 +84,11 @@ namespace PowerComposer
             ValuesTxt.Text = vars.ContainsKey(VariableBox.Text) ? vars[VariableBox.Text] : "";
         }
 
+        private static bool IsValidVarName(string s)
+        {
+            return VarNameRegex.IsMatch(s);
+        }
+
         private void AddNewVarBtn_Click(object sender, EventArgs e)
         {
             if (NewVarTxt.Text.Length == 0)
@@ -91,8 +97,7 @@ namespace PowerComposer
                 return;
             }
 
-            var reg = new Regex("^[a-zA-Z0-9]+$");
-            if (!reg.IsMatch(NewVarTxt.Text))
+            if (!IsValidVarName(NewVarTxt.Text))
             {
                 MessageBox.Show(@"Variable name can include alphanumeric characters only.");
                 return;
@@ -210,9 +215,22 @@ namespace PowerComposer
                 int fnamehead = f.LastIndexOf(Path.DirectorySeparatorChar); // C:\xxx\yyy\test.txt -> test.txt
                 if (fnamehead == -1) fnamehead = 0;
                 string s = f.Substring(fnamehead + 1, f.Length - fnamehead - 5); // test.txt -> test
-                if (s.Length > 0)
+                if (s.Length > 0 && IsValidVarName(s))
                 {
-                    vars[s] = sm.ReadToEnd();
+                    bool sure = true;
+                    if (vars.ContainsKey(s))
+                    {
+                        var x = MessageBox.Show(
+                            s + @" is already exists." + Environment.NewLine + "Do you want to overwrite this anyway?",
+                            @"Warning", MessageBoxButtons.YesNo);
+                        sure = x == DialogResult.Yes;
+                    }
+
+                    if (sure) vars[s] = sm.ReadToEnd();
+                }
+                else
+                {
+                    MessageBox.Show(@"Invalid variable name found:" + s);
                 }
             }
 
@@ -236,7 +254,7 @@ namespace PowerComposer
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ImportVars(folderBrowserDialog1.SelectedPath);
-                MessageBox.Show(@"Imported variables successfully.");
+                MessageBox.Show(@" Imported successfully.");
             }
         }
 
@@ -246,7 +264,7 @@ namespace PowerComposer
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ExportVars(folderBrowserDialog1.SelectedPath);
-                MessageBox.Show(@"Exported variables successfully.");
+                MessageBox.Show(@"Exported successfully.");
             }
         }
     }
