@@ -230,7 +230,6 @@ namespace PowerComposer
                 if (k != -1) hostname = hostname.Substring(k + 3);
                 k = hostname.IndexOf(@"/", StringComparison.Ordinal);
                 if (k != -1) hostname = hostname.Substring(0, k);
-                MessageBox.Show(hostname);
                 header["host"] = hostname;
             }
         }
