@@ -62,12 +62,14 @@ namespace PowerComposer
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.BuilderTab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.ValsTab.SuspendLayout();
             this.OptionTab.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLbl
@@ -141,6 +143,7 @@ namespace PowerComposer
             // 
             // MethodTxt
             // 
+            this.MethodTxt.Dock = System.Windows.Forms.DockStyle.Left;
             this.MethodTxt.DropDownWidth = 80;
             this.MethodTxt.FormattingEnabled = true;
             this.MethodTxt.Items.AddRange(new object[] {
@@ -169,6 +172,7 @@ namespace PowerComposer
             // 
             // VersionTxt
             // 
+            this.VersionTxt.Dock = System.Windows.Forms.DockStyle.Right;
             this.VersionTxt.FormattingEnabled = true;
             this.VersionTxt.Items.AddRange(new object[] {
             "HTTP/2.0",
@@ -176,7 +180,7 @@ namespace PowerComposer
             "HTTP/1.1",
             "HTTP/1.0",
             "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(479, 3);
+            this.VersionTxt.Location = new System.Drawing.Point(493, 3);
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
@@ -184,23 +188,32 @@ namespace PowerComposer
             // 
             // ValuesTxt
             // 
-            this.ValuesTxt.Location = new System.Drawing.Point(240, 6);
+            this.ValuesTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ValuesTxt.Location = new System.Drawing.Point(368, 3);
             this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
             this.ValuesTxt.ReadOnly = true;
+            this.tableLayoutPanel2.SetRowSpan(this.ValuesTxt, 2);
             this.ValuesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ValuesTxt.Size = new System.Drawing.Size(259, 364);
+            this.ValuesTxt.Size = new System.Drawing.Size(260, 270);
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
             // VariableBox
             // 
+            this.VariableBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VariableBox.FormattingEnabled = true;
             this.VariableBox.ItemHeight = 24;
-            this.VariableBox.Location = new System.Drawing.Point(6, 6);
+            this.VariableBox.Location = new System.Drawing.Point(3, 3);
             this.VariableBox.Name = "VariableBox";
-            this.VariableBox.Size = new System.Drawing.Size(213, 364);
+            this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 2);
+            this.VariableBox.ScrollAlwaysVisible = true;
+            this.VariableBox.Size = new System.Drawing.Size(259, 268);
             this.VariableBox.TabIndex = 9;
             this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
             this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
@@ -261,6 +274,7 @@ namespace PowerComposer
             // 
             // IncludeBtn
             // 
+            this.IncludeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IncludeBtn.Location = new System.Drawing.Point(479, 137);
             this.IncludeBtn.Name = "IncludeBtn";
             this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
@@ -273,11 +287,13 @@ namespace PowerComposer
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 134);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 24);
+            this.label1.Size = new System.Drawing.Size(194, 40);
             this.label1.TabIndex = 16;
             this.label1.Text = "Request Body:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TimesLbl
             // 
@@ -303,13 +319,9 @@ namespace PowerComposer
             // VarsTab
             // 
             this.VarsTab.BackColor = System.Drawing.Color.Silver;
-            this.VarsTab.Controls.Add(this.SaveBtn);
+            this.VarsTab.Controls.Add(this.tableLayoutPanel2);
             this.VarsTab.Controls.Add(this.ExportBtn);
             this.VarsTab.Controls.Add(this.ImportBtn);
-            this.VarsTab.Controls.Add(this.ValuesTxt);
-            this.VarsTab.Controls.Add(this.AddNewVarBtn);
-            this.VarsTab.Controls.Add(this.NewVarTxt);
-            this.VarsTab.Controls.Add(this.VariableBox);
             this.VarsTab.Location = new System.Drawing.Point(8, 39);
             this.VarsTab.Name = "VarsTab";
             this.VarsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -319,7 +331,8 @@ namespace PowerComposer
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(318, 390);
+            this.SaveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SaveBtn.Location = new System.Drawing.Point(426, 280);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(143, 32);
             this.SaveBtn.TabIndex = 5;
@@ -349,9 +362,10 @@ namespace PowerComposer
             // 
             // AddNewVarBtn
             // 
-            this.AddNewVarBtn.Location = new System.Drawing.Point(191, 390);
+            this.AddNewVarBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddNewVarBtn.Location = new System.Drawing.Point(268, 279);
             this.AddNewVarBtn.Name = "AddNewVarBtn";
-            this.AddNewVarBtn.Size = new System.Drawing.Size(82, 31);
+            this.AddNewVarBtn.Size = new System.Drawing.Size(94, 35);
             this.AddNewVarBtn.TabIndex = 11;
             this.AddNewVarBtn.Text = "Add";
             this.AddNewVarBtn.UseVisualStyleBackColor = true;
@@ -359,10 +373,12 @@ namespace PowerComposer
             // 
             // NewVarTxt
             // 
-            this.NewVarTxt.Location = new System.Drawing.Point(7, 390);
+            this.NewVarTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewVarTxt.Location = new System.Drawing.Point(3, 279);
             this.NewVarTxt.MaxLength = 32;
             this.NewVarTxt.Name = "NewVarTxt";
-            this.NewVarTxt.Size = new System.Drawing.Size(178, 31);
+            this.NewVarTxt.Size = new System.Drawing.Size(259, 31);
             this.NewVarTxt.TabIndex = 10;
             this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
             this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
@@ -434,6 +450,29 @@ namespace PowerComposer
             // 
             this.folderBrowserDialog1.Description = "Hello";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.VariableBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.SaveBtn, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.ValuesTxt, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.NewVarTxt, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.AddNewVarBtn, 1, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 21);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(631, 317);
+            this.tableLayoutPanel2.TabIndex = 14;
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -451,10 +490,11 @@ namespace PowerComposer
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.VarsTab.ResumeLayout(false);
-            this.VarsTab.PerformLayout();
             this.ValsTab.ResumeLayout(false);
             this.ValsTab.PerformLayout();
             this.OptionTab.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,5 +531,6 @@ namespace PowerComposer
         private TableLayoutPanel tableLayoutPanel1;
         private Button IncludeBtn;
         private Label label1;
+        private TableLayoutPanel tableLayoutPanel2;
     }
 }
