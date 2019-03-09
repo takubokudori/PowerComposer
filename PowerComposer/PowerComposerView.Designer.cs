@@ -61,6 +61,7 @@ namespace PowerComposer
             this.VersionTxt = new System.Windows.Forms.ComboBox();
             this.IncludeBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.BuilderTipsLbl = new System.Windows.Forms.Label();
             this.OptionTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -249,9 +250,6 @@ namespace PowerComposer
             // BuilderTab
             // 
             this.BuilderTab.Controls.Add(this.tableLayoutPanel1);
-            this.BuilderTab.Controls.Add(this.TimesLbl);
-            this.BuilderTab.Controls.Add(this.TimesTxt);
-            this.BuilderTab.Controls.Add(this.ExecBtn);
             this.BuilderTab.Location = new System.Drawing.Point(8, 39);
             this.BuilderTab.Name = "BuilderTab";
             this.BuilderTab.Size = new System.Drawing.Size(1055, 444);
@@ -261,7 +259,7 @@ namespace PowerComposer
             // 
             // ExecBtn
             // 
-            this.ExecBtn.Location = new System.Drawing.Point(869, 22);
+            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
             this.ExecBtn.Name = "ExecBtn";
             this.ExecBtn.Size = new System.Drawing.Size(165, 96);
             this.ExecBtn.TabIndex = 1;
@@ -272,7 +270,7 @@ namespace PowerComposer
             // TimesTxt
             // 
             this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(834, 142);
+            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
             this.TimesTxt.MaxLength = 32;
             this.TimesTxt.Name = "TimesTxt";
             this.TimesTxt.Size = new System.Drawing.Size(100, 31);
@@ -284,7 +282,7 @@ namespace PowerComposer
             // TimesLbl
             // 
             this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Location = new System.Drawing.Point(940, 149);
+            this.TimesLbl.Location = new System.Drawing.Point(852, 0);
             this.TimesLbl.Name = "TimesLbl";
             this.TimesLbl.Size = new System.Drawing.Size(64, 24);
             this.TimesLbl.TabIndex = 13;
@@ -295,32 +293,37 @@ namespace PowerComposer
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.Controls.Add(this.IncludeBtn, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TimesLbl, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.VersionTxt, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TimesTxt, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.HeaderTxt, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ExecBtn, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.MethodTxt, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BodyTxt, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.URITxt, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(27, 19);
+            this.tableLayoutPanel1.Controls.Add(this.BuilderTipsLbl, 3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(636, 394);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1049, 438);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 134);
+            this.label1.Location = new System.Drawing.Point(3, 147);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 40);
             this.label1.TabIndex = 16;
@@ -334,7 +337,7 @@ namespace PowerComposer
             this.URITxt.Location = new System.Drawing.Point(203, 3);
             this.URITxt.MaxLength = 1024;
             this.URITxt.Name = "URITxt";
-            this.URITxt.Size = new System.Drawing.Size(270, 31);
+            this.URITxt.Size = new System.Drawing.Size(483, 31);
             this.URITxt.TabIndex = 2;
             this.URITxt.Text = "http://example.com/";
             this.URITxt.Enter += new System.EventHandler(this.URITxt_Enter);
@@ -347,12 +350,12 @@ namespace PowerComposer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
-            this.BodyTxt.Location = new System.Drawing.Point(3, 177);
+            this.BodyTxt.Location = new System.Drawing.Point(3, 190);
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
             this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BodyTxt.Size = new System.Drawing.Size(630, 214);
+            this.BodyTxt.Size = new System.Drawing.Size(843, 245);
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.WordWrap = false;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
@@ -400,7 +403,7 @@ namespace PowerComposer
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HeaderTxt.Size = new System.Drawing.Size(630, 88);
+            this.HeaderTxt.Size = new System.Drawing.Size(843, 101);
             this.HeaderTxt.TabIndex = 3;
             this.HeaderTxt.Text = "User-Agent: Fiddler";
             this.HeaderTxt.WordWrap = false;
@@ -416,7 +419,7 @@ namespace PowerComposer
             "HTTP/1.1",
             "HTTP/1.0",
             "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(493, 3);
+            this.VersionTxt.Location = new System.Drawing.Point(706, 3);
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
@@ -425,7 +428,7 @@ namespace PowerComposer
             // IncludeBtn
             // 
             this.IncludeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IncludeBtn.Location = new System.Drawing.Point(479, 137);
+            this.IncludeBtn.Location = new System.Drawing.Point(692, 150);
             this.IncludeBtn.Name = "IncludeBtn";
             this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
             this.IncludeBtn.TabIndex = 15;
@@ -448,6 +451,17 @@ namespace PowerComposer
             this.tabControl1.Size = new System.Drawing.Size(1071, 491);
             this.tabControl1.TabIndex = 10;
             // 
+            // BuilderTipsLbl
+            // 
+            this.BuilderTipsLbl.AutoSize = true;
+            this.BuilderTipsLbl.Location = new System.Drawing.Point(852, 187);
+            this.BuilderTipsLbl.Name = "BuilderTipsLbl";
+            this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
+            this.BuilderTipsLbl.TabIndex = 17;
+            this.BuilderTipsLbl.Text = "Tips\r\n${varName}: Expand variable\r\n#{enumString}: Expand enumeration\r\ne.g. #{5-12" +
+    "} -> 5, 6, ..., 12\r\ne.g. #{12-5} -> 12, 11, ..., 5\r\n!{filePath}: Expand file";
+            this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -464,7 +478,6 @@ namespace PowerComposer
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.BuilderTab.ResumeLayout(false);
-            this.BuilderTab.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -503,5 +516,6 @@ namespace PowerComposer
         public TextBox TimesTxt;
         public Button ExecBtn;
         private TabControl tabControl1;
+        private Label BuilderTipsLbl;
     }
 }
