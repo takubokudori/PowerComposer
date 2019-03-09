@@ -37,9 +37,11 @@ namespace PowerComposer
         private Dictionary<string, string> vars;
         private CommonOpenFileDialog _commonOpenFileDialog1;
         private static readonly Regex VarNameRegex = new Regex("^[a-zA-Z0-9]+$");
+        private TextBox _prevTxt;
 
         public PowerComposerView()
         {
+            _prevTxt = BodyTxt;
             InitializeComponent();
             _commonOpenFileDialog1 = new CommonOpenFileDialog();
             _commonOpenFileDialog1.IsFolderPicker = true;
@@ -283,13 +285,28 @@ namespace PowerComposer
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string str1 = BodyTxt.Text.Substring(0, BodyTxt.SelectionStart);
-                string str2 = BodyTxt.Text.Substring(BodyTxt.SelectionStart);
+                string str1 = _prevTxt.Text.Substring(0, _prevTxt.SelectionStart);
+                string str2 = _prevTxt.Text.Substring(_prevTxt.SelectionStart);
 //                MessageBox.Show(BodyTxt.SelectionStart.ToString());
-                BodyTxt.Text = str1
+                _prevTxt.Text = str1
                                + @"!{" + openFileDialog1.FileName + @"}"
                                + str2;
             }
+        }
+
+        private void HeaderTxt_Enter(object sender, EventArgs e)
+        {
+            _prevTxt = HeaderTxt;
+        }
+
+        private void BodyTxt_Enter(object sender, EventArgs e)
+        {
+           _prevTxt  = BodyTxt;
+        }
+
+        private void URITxt_Enter(object sender, EventArgs e)
+        {
+            _prevTxt = URITxt;
         }
     }
 }
