@@ -28,6 +28,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Fiddler;
 
 namespace PowerComposer
 {
@@ -41,8 +42,6 @@ namespace PowerComposer
         {
             _prevTxt = BodyTxt;
             InitializeComponent();
-            OptionBox.SetItemChecked(0, true);
-            OptionBox.SetItemChecked(1, true);
             vars = new Dictionary<string, string>();
         }
 
@@ -139,29 +138,48 @@ namespace PowerComposer
             return ret;
         }
 
-        public bool IsErrorByUndefinedVar()
+        public bool IsErrorByUndefinedVar
         {
-            return OptionBox.GetItemChecked(0);
+            get => ErrorUndefinedChk.Checked;
+            set => ErrorUndefinedChk.Checked = value;
         }
 
-        public bool IsFixContentLength()
+        public bool IsFixContentLength
         {
-            return OptionBox.GetItemChecked(1);
+            get => ErrorUndefinedChk.Checked;
+            set => ErrorUndefinedChk.Checked = value;
         }
 
-        public bool IsFollowRedirect()
+        public int MaxFollowRedirect
         {
-            return OptionBox.GetItemChecked(2);
+            get
+            {
+                if (int.TryParse(FollowRedirectsTxt.Text, out var res) && res >= 0)
+                {
+                    return res;
+                }
+
+                return -1;
+            }
+            set => FollowRedirectsTxt.Text = value.ToString();
         }
 
-        public bool IsAutoAuth()
+        public bool IsAutoAuth
         {
-            return OptionBox.GetItemChecked(3);
+            get => AutoAuthChk.Checked;
+            set => AutoAuthChk.Checked = value;
         }
 
-        public bool IsInspectSession()
+        public bool IsInspectSession
         {
-            return OptionBox.GetItemChecked(4);
+            get => InspectChk.Checked;
+            set => InspectChk.Checked = value;
+        }
+
+        public bool IsFixHostHeader
+        {
+            get => HostChk.Checked;
+            set => HostChk.Checked = value;
         }
 
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -307,6 +325,11 @@ namespace PowerComposer
         private void BuilderTipsLbl_Click(object sender, EventArgs e)
         {
             MessageBox.Show(BuilderTipsLbl.Text);
+        }
+
+        private void FRTimesLbl_Click(object sender, EventArgs e)
+        {
+            FollowRedirectsTxt.Focus();
         }
     }
 }

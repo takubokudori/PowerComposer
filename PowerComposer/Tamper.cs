@@ -33,11 +33,15 @@ namespace PowerComposer
                 {
                     if (oSession.GetRedirectTargetURL().Length != 0)
                     {
+                        PowerComposer.IncrementRedir(ref oSession);
+                        oSession["x-PC-host"] = "host";
                         PowerComposer.Send("GET",
                             oSession.GetRedirectTargetURL(),
                             oSession.RequestHeaders.HTTPVersion,
-                            oSession.RequestHeaders.ToString(false,false),
-                            "");
+                            oSession.RequestHeaders.ToString(false, false),
+                            "",
+                            oSession.oFlags,
+                            oSession.GetRedirectTargetURL());
                     }
                 }
             }
@@ -46,6 +50,5 @@ namespace PowerComposer
         public void OnBeforeReturningError(Session oSession)
         {
         }
-
     }
 }
