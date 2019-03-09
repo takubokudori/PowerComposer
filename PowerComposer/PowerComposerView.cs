@@ -78,7 +78,6 @@ namespace PowerComposer
 
         private void VariableBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            ValuesLbl.Text = VariableBox.Text;
             ValuesTxt.Text = vars.ContainsKey(VariableBox.Text) ? vars[VariableBox.Text] : "";
         }
 
@@ -303,6 +302,11 @@ namespace PowerComposer
         private void URITxt_Enter(object sender, EventArgs e)
         {
             _prevTxt = URITxt;
+        }
+
+        private void BuilderTipsLbl_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(BuilderTipsLbl.Text);
         }
     }
 }
