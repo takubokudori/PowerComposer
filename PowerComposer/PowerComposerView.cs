@@ -26,6 +26,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Fiddler;
@@ -223,59 +225,64 @@ namespace PowerComposer
 
         private void ExportVars(string path)
         {
-            CreateDirectoryIfNotExists(path); // mkdir
-            if (path[path.Length - 1] != Path.DirectorySeparatorChar) path += Path.DirectorySeparatorChar;
-            foreach (KeyValuePair<string, string> kvp in vars)
+            using (ZipArchive za = ZipFile.Open(path, ZipArchiveMode.Update))
             {
-                // Write File.
-                string keypath = path + kvp.Key + ".txt";
-                bool sure = true;
-                if (File.Exists(keypath))
+                foreach (KeyValuePair<string, string> kvp in vars)
                 {
-                    var x = MessageBox.Show(
-                        kvp.Key + @" is already exists." + Environment.NewLine +
-                        @"Do you want to overwrite this anyway?",
-                        @"Warning", MessageBoxButtons.YesNo);
-                    sure = x == DialogResult.Yes;
-                }
-
-                if (sure)
-                {
-                    var sm = File.CreateText(path + kvp.Key + ".txt");
-                    sm.Write(kvp.Value);
-                    sm.Close();
+                    ZipArchiveEntry entry = za.CreateEntry(kvp.Key + ".txt");
+                    using (StreamWriter s = new StreamWriter(entry.Open(), Encoding.UTF8))
+                    {
+                        s.Write(kvp.Value);
+                    }
                 }
             }
         }
 
         private void ImportVars(string path)
         {
-            foreach (var f in Directory.GetFiles(path, "*.txt"))
+            if (File.Exists(path))
             {
-                var sm = File.OpenText(f);
-                int fnamehead = f.LastIndexOf(Path.DirectorySeparatorChar); // C:\xxx\yyy\test.txt -> test.txt
-                if (fnamehead == -1) fnamehead = 0;
-                string s = f.Substring(fnamehead + 1, f.Length - fnamehead - 5); // test.txt -> test
-                if (s.Length > 0 && IsValidVarName(s))
+                using (ZipArchive za = ZipFile.OpenRead(path))
                 {
-                    bool sure = true;
-                    if (vars.ContainsKey(s)) // Warning
+                    foreach (var e in za.Entries)
                     {
-                        var x = MessageBox.Show(
-                            s + @" is already exists." + Environment.NewLine + @"Do you want to overwrite this anyway?",
-                            @"Warning", MessageBoxButtons.YesNo);
-                        sure = x == DialogResult.Yes;
-                    }
+                        string f = e.Name;
+                        int fnameext = f.LastIndexOf('.');
+                        if (fnameext == -1) fnameext = 0;
+                        string s = f.Substring(0, fnameext); // test.txt -> test
 
-                    if (sure) vars[s] = sm.ReadToEnd();
-                }
-                else
-                {
-                    MessageBox.Show(@"Invalid variable name found:" + s);
+                        if (s.Length > 0 && IsValidVarName(s))
+                        {
+                            bool sure = true;
+                            if (vars.ContainsKey(s)) // Warning
+                            {
+                                var x = MessageBox.Show(
+                                    s + @" is already exists." + Environment.NewLine +
+                                    @"Do you want to overwrite this anyway?",
+                                    @"Warning", MessageBoxButtons.YesNo);
+                                sure = x == DialogResult.Yes;
+                            }
+
+                            if (sure)
+                            {
+                                using (StreamReader sr = new StreamReader(e.Open(), Encoding.UTF8))
+                                {
+                                    //すべて読み込む
+                                    vars[s] = sr.ReadToEnd();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"Invalid variable name found:" + s);
+                        }
+                    }
                 }
             }
-
-            RefreshVars();
+            else
+            {
+                MessageBox.Show(path + @" is not exists.");
+            }
         }
 
         private void RefreshVars()
@@ -293,18 +300,19 @@ namespace PowerComposer
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ImportVars(folderBrowserDialog1.SelectedPath);
-                MessageBox.Show(@" Imported successfully.");
+                ImportVars(openFileDialog1.FileName);
+                RefreshVars();
+                MessageBox.Show(@"Imported successfully.");
             }
         }
 
         private void ExportBtn_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExportVars(folderBrowserDialog1.SelectedPath);
+                ExportVars(saveFileDialog1.FileName);
                 MessageBox.Show(@"Exported successfully.");
             }
         }
