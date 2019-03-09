@@ -39,36 +39,36 @@ namespace PowerComposer
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.OptionTab = new System.Windows.Forms.TabPage();
-            this.VarsTab = new System.Windows.Forms.TabPage();
-            this.ImportBtn = new System.Windows.Forms.Button();
-            this.ExportBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.AddNewVarBtn = new System.Windows.Forms.Button();
-            this.NewVarTxt = new System.Windows.Forms.TextBox();
-            this.ValuesTxt = new System.Windows.Forms.TextBox();
-            this.SaveBtn = new System.Windows.Forms.Button();
-            this.VariableBox = new System.Windows.Forms.ListBox();
-            this.BuilderTab = new System.Windows.Forms.TabPage();
-            this.ExecBtn = new System.Windows.Forms.Button();
-            this.TimesTxt = new System.Windows.Forms.TextBox();
-            this.TimesLbl = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.URITxt = new System.Windows.Forms.TextBox();
-            this.BodyTxt = new System.Windows.Forms.TextBox();
-            this.MethodTxt = new System.Windows.Forms.ComboBox();
-            this.HeaderTxt = new System.Windows.Forms.TextBox();
-            this.VersionTxt = new System.Windows.Forms.ComboBox();
-            this.IncludeBtn = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.BuilderTipsLbl = new System.Windows.Forms.Label();
-            this.ErrorUndefinedChk = new System.Windows.Forms.CheckBox();
-            this.FixLengthChk = new System.Windows.Forms.CheckBox();
-            this.AutoAuthChk = new System.Windows.Forms.CheckBox();
-            this.InspectChk = new System.Windows.Forms.CheckBox();
-            this.FRTimesLbl = new System.Windows.Forms.Label();
-            this.FollowRedirectsTxt = new System.Windows.Forms.TextBox();
             this.HostChk = new System.Windows.Forms.CheckBox();
+            this.FollowRedirectsTxt = new System.Windows.Forms.TextBox();
+            this.FRTimesLbl = new System.Windows.Forms.Label();
+            this.InspectChk = new System.Windows.Forms.CheckBox();
+            this.AutoAuthChk = new System.Windows.Forms.CheckBox();
+            this.FixLengthChk = new System.Windows.Forms.CheckBox();
+            this.ErrorUndefinedChk = new System.Windows.Forms.CheckBox();
+            this.VarsTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.VariableBox = new System.Windows.Forms.ListBox();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.ValuesTxt = new System.Windows.Forms.TextBox();
+            this.NewVarTxt = new System.Windows.Forms.TextBox();
+            this.AddNewVarBtn = new System.Windows.Forms.Button();
+            this.ExportBtn = new System.Windows.Forms.Button();
+            this.ImportBtn = new System.Windows.Forms.Button();
+            this.BuilderTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.IncludeBtn = new System.Windows.Forms.Button();
+            this.TimesLbl = new System.Windows.Forms.Label();
+            this.VersionTxt = new System.Windows.Forms.ComboBox();
+            this.TimesTxt = new System.Windows.Forms.TextBox();
+            this.HeaderTxt = new System.Windows.Forms.TextBox();
+            this.ExecBtn = new System.Windows.Forms.Button();
+            this.MethodTxt = new System.Windows.Forms.ComboBox();
+            this.BodyTxt = new System.Windows.Forms.TextBox();
+            this.URITxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BuilderTipsLbl = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.OptionTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -123,6 +123,81 @@ namespace PowerComposer
             this.OptionTab.Text = "Option";
             this.OptionTab.UseVisualStyleBackColor = true;
             // 
+            // HostChk
+            // 
+            this.HostChk.AutoSize = true;
+            this.HostChk.Checked = true;
+            this.HostChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HostChk.Location = new System.Drawing.Point(15, 166);
+            this.HostChk.Name = "HostChk";
+            this.HostChk.Size = new System.Drawing.Size(296, 28);
+            this.HostChk.TabIndex = 7;
+            this.HostChk.Text = "Fix Host header with URL";
+            this.HostChk.UseVisualStyleBackColor = true;
+            // 
+            // FollowRedirectsTxt
+            // 
+            this.FollowRedirectsTxt.Location = new System.Drawing.Point(384, 29);
+            this.FollowRedirectsTxt.MaxLength = 10;
+            this.FollowRedirectsTxt.Name = "FollowRedirectsTxt";
+            this.FollowRedirectsTxt.Size = new System.Drawing.Size(72, 31);
+            this.FollowRedirectsTxt.TabIndex = 6;
+            this.FollowRedirectsTxt.Text = "10";
+            // 
+            // FRTimesLbl
+            // 
+            this.FRTimesLbl.AutoSize = true;
+            this.FRTimesLbl.Location = new System.Drawing.Point(462, 36);
+            this.FRTimesLbl.Name = "FRTimesLbl";
+            this.FRTimesLbl.Size = new System.Drawing.Size(283, 24);
+            this.FRTimesLbl.TabIndex = 5;
+            this.FRTimesLbl.Text = "Follow Redirects max times";
+            this.FRTimesLbl.Click += new System.EventHandler(this.FRTimesLbl_Click);
+            // 
+            // InspectChk
+            // 
+            this.InspectChk.AutoSize = true;
+            this.InspectChk.Location = new System.Drawing.Point(15, 131);
+            this.InspectChk.Name = "InspectChk";
+            this.InspectChk.Size = new System.Drawing.Size(199, 28);
+            this.InspectChk.TabIndex = 4;
+            this.InspectChk.Text = "Inspect Session";
+            this.InspectChk.UseVisualStyleBackColor = true;
+            // 
+            // AutoAuthChk
+            // 
+            this.AutoAuthChk.AutoSize = true;
+            this.AutoAuthChk.Location = new System.Drawing.Point(15, 97);
+            this.AutoAuthChk.Name = "AutoAuthChk";
+            this.AutoAuthChk.Size = new System.Drawing.Size(309, 28);
+            this.AutoAuthChk.TabIndex = 3;
+            this.AutoAuthChk.Text = "Automatically Authenticate";
+            this.AutoAuthChk.UseVisualStyleBackColor = true;
+            // 
+            // FixLengthChk
+            // 
+            this.FixLengthChk.AutoSize = true;
+            this.FixLengthChk.Checked = true;
+            this.FixLengthChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.FixLengthChk.Location = new System.Drawing.Point(15, 63);
+            this.FixLengthChk.Name = "FixLengthChk";
+            this.FixLengthChk.Size = new System.Drawing.Size(312, 28);
+            this.FixLengthChk.TabIndex = 2;
+            this.FixLengthChk.Text = "Fix Content-Length header";
+            this.FixLengthChk.UseVisualStyleBackColor = true;
+            // 
+            // ErrorUndefinedChk
+            // 
+            this.ErrorUndefinedChk.AutoSize = true;
+            this.ErrorUndefinedChk.Checked = true;
+            this.ErrorUndefinedChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ErrorUndefinedChk.Location = new System.Drawing.Point(15, 29);
+            this.ErrorUndefinedChk.Name = "ErrorUndefinedChk";
+            this.ErrorUndefinedChk.Size = new System.Drawing.Size(307, 28);
+            this.ErrorUndefinedChk.TabIndex = 1;
+            this.ErrorUndefinedChk.Text = "Error by undefined variable";
+            this.ErrorUndefinedChk.UseVisualStyleBackColor = true;
+            // 
             // VarsTab
             // 
             this.VarsTab.BackColor = System.Drawing.Color.Silver;
@@ -135,26 +210,6 @@ namespace PowerComposer
             this.VarsTab.Size = new System.Drawing.Size(1055, 444);
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
-            // 
-            // ImportBtn
-            // 
-            this.ImportBtn.Location = new System.Drawing.Point(667, 96);
-            this.ImportBtn.Name = "ImportBtn";
-            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
-            this.ImportBtn.TabIndex = 12;
-            this.ImportBtn.Text = "Import";
-            this.ImportBtn.UseVisualStyleBackColor = true;
-            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
-            // 
-            // ExportBtn
-            // 
-            this.ExportBtn.Location = new System.Drawing.Point(667, 202);
-            this.ExportBtn.Name = "ExportBtn";
-            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
-            this.ExportBtn.TabIndex = 13;
-            this.ExportBtn.Text = "Export";
-            this.ExportBtn.UseVisualStyleBackColor = true;
-            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -179,28 +234,32 @@ namespace PowerComposer
             this.tableLayoutPanel2.Size = new System.Drawing.Size(631, 317);
             this.tableLayoutPanel2.TabIndex = 14;
             // 
-            // AddNewVarBtn
+            // VariableBox
             // 
-            this.AddNewVarBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddNewVarBtn.Location = new System.Drawing.Point(268, 279);
-            this.AddNewVarBtn.Name = "AddNewVarBtn";
-            this.AddNewVarBtn.Size = new System.Drawing.Size(94, 35);
-            this.AddNewVarBtn.TabIndex = 11;
-            this.AddNewVarBtn.Text = "Add";
-            this.AddNewVarBtn.UseVisualStyleBackColor = true;
-            this.AddNewVarBtn.Click += new System.EventHandler(this.AddNewVarBtn_Click);
-            // 
-            // NewVarTxt
-            // 
-            this.NewVarTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.VariableBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewVarTxt.Location = new System.Drawing.Point(3, 279);
-            this.NewVarTxt.MaxLength = 32;
-            this.NewVarTxt.Name = "NewVarTxt";
-            this.NewVarTxt.Size = new System.Drawing.Size(259, 31);
-            this.NewVarTxt.TabIndex = 10;
-            this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
-            this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
+            this.VariableBox.FormattingEnabled = true;
+            this.VariableBox.ItemHeight = 24;
+            this.VariableBox.Location = new System.Drawing.Point(3, 3);
+            this.VariableBox.Name = "VariableBox";
+            this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 2);
+            this.VariableBox.ScrollAlwaysVisible = true;
+            this.VariableBox.Size = new System.Drawing.Size(259, 268);
+            this.VariableBox.TabIndex = 9;
+            this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
+            this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
+            // 
+            // SaveBtn
+            // 
+            this.SaveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SaveBtn.Location = new System.Drawing.Point(426, 280);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(143, 32);
+            this.SaveBtn.TabIndex = 5;
+            this.SaveBtn.Text = "Save";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // ValuesTxt
             // 
@@ -218,32 +277,48 @@ namespace PowerComposer
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
-            // SaveBtn
+            // NewVarTxt
             // 
-            this.SaveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SaveBtn.Location = new System.Drawing.Point(426, 280);
-            this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(143, 32);
-            this.SaveBtn.TabIndex = 5;
-            this.SaveBtn.Text = "Save";
-            this.SaveBtn.UseVisualStyleBackColor = true;
-            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
-            // 
-            // VariableBox
-            // 
-            this.VariableBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.NewVarTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.VariableBox.FormattingEnabled = true;
-            this.VariableBox.ItemHeight = 24;
-            this.VariableBox.Location = new System.Drawing.Point(3, 3);
-            this.VariableBox.Name = "VariableBox";
-            this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 2);
-            this.VariableBox.ScrollAlwaysVisible = true;
-            this.VariableBox.Size = new System.Drawing.Size(259, 268);
-            this.VariableBox.TabIndex = 9;
-            this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
-            this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
+            this.NewVarTxt.Location = new System.Drawing.Point(3, 279);
+            this.NewVarTxt.MaxLength = 32;
+            this.NewVarTxt.Name = "NewVarTxt";
+            this.NewVarTxt.Size = new System.Drawing.Size(259, 31);
+            this.NewVarTxt.TabIndex = 10;
+            this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
+            this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
+            // 
+            // AddNewVarBtn
+            // 
+            this.AddNewVarBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddNewVarBtn.Location = new System.Drawing.Point(268, 279);
+            this.AddNewVarBtn.Name = "AddNewVarBtn";
+            this.AddNewVarBtn.Size = new System.Drawing.Size(94, 35);
+            this.AddNewVarBtn.TabIndex = 11;
+            this.AddNewVarBtn.Text = "Add";
+            this.AddNewVarBtn.UseVisualStyleBackColor = true;
+            this.AddNewVarBtn.Click += new System.EventHandler(this.AddNewVarBtn_Click);
+            // 
+            // ExportBtn
+            // 
+            this.ExportBtn.Location = new System.Drawing.Point(667, 202);
+            this.ExportBtn.Name = "ExportBtn";
+            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ExportBtn.TabIndex = 13;
+            this.ExportBtn.Text = "Export";
+            this.ExportBtn.UseVisualStyleBackColor = true;
+            this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            // 
+            // ImportBtn
+            // 
+            this.ImportBtn.Location = new System.Drawing.Point(667, 96);
+            this.ImportBtn.Name = "ImportBtn";
+            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ImportBtn.TabIndex = 12;
+            this.ImportBtn.Text = "Import";
+            this.ImportBtn.UseVisualStyleBackColor = true;
+            this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
             // 
             // BuilderTab
             // 
@@ -254,37 +329,6 @@ namespace PowerComposer
             this.BuilderTab.TabIndex = 3;
             this.BuilderTab.Text = "Builder";
             this.BuilderTab.UseVisualStyleBackColor = true;
-            // 
-            // ExecBtn
-            // 
-            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
-            this.ExecBtn.Name = "ExecBtn";
-            this.ExecBtn.Size = new System.Drawing.Size(165, 96);
-            this.ExecBtn.TabIndex = 1;
-            this.ExecBtn.Text = "Execute";
-            this.ExecBtn.UseVisualStyleBackColor = true;
-            this.ExecBtn.Click += new System.EventHandler(this.ExecBtn_Click);
-            // 
-            // TimesTxt
-            // 
-            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
-            this.TimesTxt.MaxLength = 32;
-            this.TimesTxt.Name = "TimesTxt";
-            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
-            this.TimesTxt.TabIndex = 12;
-            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
-            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
-            // 
-            // TimesLbl
-            // 
-            this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Location = new System.Drawing.Point(852, 0);
-            this.TimesLbl.Name = "TimesLbl";
-            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
-            this.TimesLbl.TabIndex = 13;
-            this.TimesLbl.Text = "times";
             // 
             // tableLayoutPanel1
             // 
@@ -317,47 +361,83 @@ namespace PowerComposer
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1049, 438);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
-            // label1
+            // IncludeBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 40);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Request Body:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.IncludeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IncludeBtn.Location = new System.Drawing.Point(692, 150);
+            this.IncludeBtn.Name = "IncludeBtn";
+            this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
+            this.IncludeBtn.TabIndex = 15;
+            this.IncludeBtn.TabStop = false;
+            this.IncludeBtn.Text = "Include file";
+            this.IncludeBtn.UseVisualStyleBackColor = true;
+            this.IncludeBtn.Click += new System.EventHandler(this.IncludeBtn_Click);
             // 
-            // URITxt
+            // TimesLbl
             // 
-            this.URITxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.URITxt.Location = new System.Drawing.Point(203, 3);
-            this.URITxt.MaxLength = 1024;
-            this.URITxt.Name = "URITxt";
-            this.URITxt.Size = new System.Drawing.Size(483, 31);
-            this.URITxt.TabIndex = 2;
-            this.URITxt.Text = "http://example.com/";
-            this.URITxt.Enter += new System.EventHandler(this.URITxt_Enter);
+            this.TimesLbl.AutoSize = true;
+            this.TimesLbl.Location = new System.Drawing.Point(852, 0);
+            this.TimesLbl.Name = "TimesLbl";
+            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
+            this.TimesLbl.TabIndex = 13;
+            this.TimesLbl.Text = "times";
             // 
-            // BodyTxt
+            // VersionTxt
             // 
-            this.BodyTxt.AcceptsTab = true;
-            this.BodyTxt.AllowDrop = true;
-            this.BodyTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.VersionTxt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.VersionTxt.FormattingEnabled = true;
+            this.VersionTxt.Items.AddRange(new object[] {
+            "HTTP/2.0",
+            "HTTP/1.2",
+            "HTTP/1.1",
+            "HTTP/1.0",
+            "HTTP/0.9"});
+            this.VersionTxt.Location = new System.Drawing.Point(706, 3);
+            this.VersionTxt.Name = "VersionTxt";
+            this.VersionTxt.Size = new System.Drawing.Size(140, 32);
+            this.VersionTxt.TabIndex = 8;
+            this.VersionTxt.Text = "HTTP/1.1";
+            // 
+            // TimesTxt
+            // 
+            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
+            this.TimesTxt.MaxLength = 32;
+            this.TimesTxt.Name = "TimesTxt";
+            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
+            this.TimesTxt.TabIndex = 12;
+            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
+            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
+            // 
+            // HeaderTxt
+            // 
+            this.HeaderTxt.AcceptsTab = true;
+            this.HeaderTxt.AllowDrop = true;
+            this.HeaderTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
-            this.BodyTxt.Location = new System.Drawing.Point(3, 190);
-            this.BodyTxt.MaxLength = 0;
-            this.BodyTxt.Multiline = true;
-            this.BodyTxt.Name = "BodyTxt";
-            this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BodyTxt.Size = new System.Drawing.Size(843, 245);
-            this.BodyTxt.TabIndex = 4;
-            this.BodyTxt.WordWrap = false;
-            this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
-            this.BodyTxt.Enter += new System.EventHandler(this.BodyTxt_Enter);
+            this.tableLayoutPanel1.SetColumnSpan(this.HeaderTxt, 3);
+            this.HeaderTxt.Location = new System.Drawing.Point(3, 43);
+            this.HeaderTxt.MaxLength = 0;
+            this.HeaderTxt.Multiline = true;
+            this.HeaderTxt.Name = "HeaderTxt";
+            this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.HeaderTxt.Size = new System.Drawing.Size(843, 101);
+            this.HeaderTxt.TabIndex = 3;
+            this.HeaderTxt.Text = "User-Agent: Fiddler";
+            this.HeaderTxt.WordWrap = false;
+            this.HeaderTxt.Enter += new System.EventHandler(this.HeaderTxt_Enter);
+            // 
+            // ExecBtn
+            // 
+            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
+            this.ExecBtn.Name = "ExecBtn";
+            this.ExecBtn.Size = new System.Drawing.Size(165, 96);
+            this.ExecBtn.TabIndex = 1;
+            this.ExecBtn.Text = "Execute";
+            this.ExecBtn.UseVisualStyleBackColor = true;
+            this.ExecBtn.Click += new System.EventHandler(this.ExecBtn_Click);
             // 
             // MethodTxt
             // 
@@ -388,52 +468,57 @@ namespace PowerComposer
             this.MethodTxt.TabIndex = 7;
             this.MethodTxt.Text = "GET";
             // 
-            // HeaderTxt
+            // BodyTxt
             // 
-            this.HeaderTxt.AcceptsTab = true;
-            this.HeaderTxt.AllowDrop = true;
-            this.HeaderTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BodyTxt.AcceptsTab = true;
+            this.BodyTxt.AllowDrop = true;
+            this.BodyTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.HeaderTxt, 3);
-            this.HeaderTxt.Location = new System.Drawing.Point(3, 43);
-            this.HeaderTxt.MaxLength = 0;
-            this.HeaderTxt.Multiline = true;
-            this.HeaderTxt.Name = "HeaderTxt";
-            this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HeaderTxt.Size = new System.Drawing.Size(843, 101);
-            this.HeaderTxt.TabIndex = 3;
-            this.HeaderTxt.Text = "User-Agent: Fiddler";
-            this.HeaderTxt.WordWrap = false;
-            this.HeaderTxt.Enter += new System.EventHandler(this.HeaderTxt_Enter);
+            this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
+            this.BodyTxt.Location = new System.Drawing.Point(3, 190);
+            this.BodyTxt.MaxLength = 0;
+            this.BodyTxt.Multiline = true;
+            this.BodyTxt.Name = "BodyTxt";
+            this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.BodyTxt.Size = new System.Drawing.Size(843, 245);
+            this.BodyTxt.TabIndex = 4;
+            this.BodyTxt.WordWrap = false;
+            this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
+            this.BodyTxt.Enter += new System.EventHandler(this.BodyTxt_Enter);
             // 
-            // VersionTxt
+            // URITxt
             // 
-            this.VersionTxt.Dock = System.Windows.Forms.DockStyle.Right;
-            this.VersionTxt.FormattingEnabled = true;
-            this.VersionTxt.Items.AddRange(new object[] {
-            "HTTP/2.0",
-            "HTTP/1.2",
-            "HTTP/1.1",
-            "HTTP/1.0",
-            "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(706, 3);
-            this.VersionTxt.Name = "VersionTxt";
-            this.VersionTxt.Size = new System.Drawing.Size(140, 32);
-            this.VersionTxt.TabIndex = 8;
-            this.VersionTxt.Text = "HTTP/1.1";
+            this.URITxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.URITxt.Location = new System.Drawing.Point(203, 3);
+            this.URITxt.MaxLength = 1024;
+            this.URITxt.Name = "URITxt";
+            this.URITxt.Size = new System.Drawing.Size(483, 31);
+            this.URITxt.TabIndex = 2;
+            this.URITxt.Text = "http://example.com/";
+            this.URITxt.Enter += new System.EventHandler(this.URITxt_Enter);
             // 
-            // IncludeBtn
+            // label1
             // 
-            this.IncludeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IncludeBtn.Location = new System.Drawing.Point(692, 150);
-            this.IncludeBtn.Name = "IncludeBtn";
-            this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
-            this.IncludeBtn.TabIndex = 15;
-            this.IncludeBtn.TabStop = false;
-            this.IncludeBtn.Text = "Include file";
-            this.IncludeBtn.UseVisualStyleBackColor = true;
-            this.IncludeBtn.Click += new System.EventHandler(this.IncludeBtn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(194, 40);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Request Body:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BuilderTipsLbl
+            // 
+            this.BuilderTipsLbl.AutoSize = true;
+            this.BuilderTipsLbl.Location = new System.Drawing.Point(852, 187);
+            this.BuilderTipsLbl.Name = "BuilderTipsLbl";
+            this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
+            this.BuilderTipsLbl.TabIndex = 17;
+            this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
+            this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
             // 
             // tabControl1
             // 
@@ -448,91 +533,6 @@ namespace PowerComposer
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1071, 491);
             this.tabControl1.TabIndex = 10;
-            // 
-            // BuilderTipsLbl
-            // 
-            this.BuilderTipsLbl.AutoSize = true;
-            this.BuilderTipsLbl.Location = new System.Drawing.Point(852, 187);
-            this.BuilderTipsLbl.Name = "BuilderTipsLbl";
-            this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
-            this.BuilderTipsLbl.TabIndex = 17;
-            this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
-            this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
-            // 
-            // ErrorUndefinedChk
-            // 
-            this.ErrorUndefinedChk.AutoSize = true;
-            this.ErrorUndefinedChk.Checked = true;
-            this.ErrorUndefinedChk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ErrorUndefinedChk.Location = new System.Drawing.Point(15, 29);
-            this.ErrorUndefinedChk.Name = "ErrorUndefinedChk";
-            this.ErrorUndefinedChk.Size = new System.Drawing.Size(307, 28);
-            this.ErrorUndefinedChk.TabIndex = 1;
-            this.ErrorUndefinedChk.Text = "Error by undefined variable";
-            this.ErrorUndefinedChk.UseVisualStyleBackColor = true;
-            // 
-            // FixLengthChk
-            // 
-            this.FixLengthChk.AutoSize = true;
-            this.FixLengthChk.Checked = true;
-            this.FixLengthChk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.FixLengthChk.Location = new System.Drawing.Point(15, 63);
-            this.FixLengthChk.Name = "FixLengthChk";
-            this.FixLengthChk.Size = new System.Drawing.Size(312, 28);
-            this.FixLengthChk.TabIndex = 2;
-            this.FixLengthChk.Text = "Fix Content-Length header";
-            this.FixLengthChk.UseVisualStyleBackColor = true;
-            // 
-            // AutoAuthChk
-            // 
-            this.AutoAuthChk.AutoSize = true;
-            this.AutoAuthChk.Location = new System.Drawing.Point(15, 97);
-            this.AutoAuthChk.Name = "AutoAuthChk";
-            this.AutoAuthChk.Size = new System.Drawing.Size(309, 28);
-            this.AutoAuthChk.TabIndex = 3;
-            this.AutoAuthChk.Text = "Automatically Authenticate";
-            this.AutoAuthChk.UseVisualStyleBackColor = true;
-            // 
-            // InspectChk
-            // 
-            this.InspectChk.AutoSize = true;
-            this.InspectChk.Location = new System.Drawing.Point(15, 131);
-            this.InspectChk.Name = "InspectChk";
-            this.InspectChk.Size = new System.Drawing.Size(199, 28);
-            this.InspectChk.TabIndex = 4;
-            this.InspectChk.Text = "Inspect Session";
-            this.InspectChk.UseVisualStyleBackColor = true;
-            // 
-            // FRTimesLbl
-            // 
-            this.FRTimesLbl.AutoSize = true;
-            this.FRTimesLbl.Location = new System.Drawing.Point(462, 36);
-            this.FRTimesLbl.Name = "FRTimesLbl";
-            this.FRTimesLbl.Size = new System.Drawing.Size(283, 24);
-            this.FRTimesLbl.TabIndex = 5;
-            this.FRTimesLbl.Text = "Follow Redirects max times";
-            this.FRTimesLbl.Click += new System.EventHandler(this.FRTimesLbl_Click);
-            // 
-            // FollowRedirectsTxt
-            // 
-            this.FollowRedirectsTxt.Location = new System.Drawing.Point(384, 29);
-            this.FollowRedirectsTxt.MaxLength = 10;
-            this.FollowRedirectsTxt.Name = "FollowRedirectsTxt";
-            this.FollowRedirectsTxt.Size = new System.Drawing.Size(72, 31);
-            this.FollowRedirectsTxt.TabIndex = 6;
-            this.FollowRedirectsTxt.Text = "10";
-            // 
-            // HostChk
-            // 
-            this.HostChk.AutoSize = true;
-            this.HostChk.Checked = true;
-            this.HostChk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.HostChk.Location = new System.Drawing.Point(15, 166);
-            this.HostChk.Name = "HostChk";
-            this.HostChk.Size = new System.Drawing.Size(296, 28);
-            this.HostChk.TabIndex = 7;
-            this.HostChk.Text = "Fix Host header with URL";
-            this.HostChk.UseVisualStyleBackColor = true;
             // 
             // PowerComposerView
             // 
