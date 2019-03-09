@@ -112,6 +112,7 @@ namespace PowerComposer
             }
 
             VariableBox.Items.Add(NewVarTxt.Text);
+            VariableBox.TopIndex = VariableBox.Items.Count - 1;
             NewVarTxt.Text = "";
         }
 
@@ -259,11 +260,12 @@ namespace PowerComposer
                     VariableBox.Items.Add(kvp.Key);
                 }
             }
+
+            VariableBox.TopIndex = VariableBox.Items.Count - 1;
         }
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ImportVars(folderBrowserDialog1.SelectedPath);
@@ -273,7 +275,6 @@ namespace PowerComposer
 
         private void ExportBtn_Click(object sender, EventArgs e)
         {
-//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ExportVars(folderBrowserDialog1.SelectedPath);
@@ -289,8 +290,8 @@ namespace PowerComposer
                 string str2 = _prevTxt.Text.Substring(_prevTxt.SelectionStart);
 //                MessageBox.Show(BodyTxt.SelectionStart.ToString());
                 _prevTxt.Text = str1
-                               + @"!{" + openFileDialog1.FileName + @"}"
-                               + str2;
+                                + @"!{" + openFileDialog1.FileName + @"}"
+                                + str2;
             }
         }
 
@@ -301,7 +302,7 @@ namespace PowerComposer
 
         private void BodyTxt_Enter(object sender, EventArgs e)
         {
-           _prevTxt  = BodyTxt;
+            _prevTxt = BodyTxt;
         }
 
         private void URITxt_Enter(object sender, EventArgs e)
