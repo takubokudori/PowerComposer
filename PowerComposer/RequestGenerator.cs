@@ -88,7 +88,6 @@ namespace PowerComposer
             _hasNext = true;
         }
 
-        // Generate hasNext
         public bool HasNext()
         {
             return _hasNext;
