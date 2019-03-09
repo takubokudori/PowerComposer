@@ -28,14 +28,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace PowerComposer
 {
     public partial class PowerComposerView : UserControl
     {
         private Dictionary<string, string> vars;
-        private CommonOpenFileDialog _commonOpenFileDialog1;
         private static readonly Regex VarNameRegex = new Regex("^[a-zA-Z0-9]+$");
         private TextBox _prevTxt;
 
@@ -43,8 +41,6 @@ namespace PowerComposer
         {
             _prevTxt = BodyTxt;
             InitializeComponent();
-            _commonOpenFileDialog1 = new CommonOpenFileDialog();
-            _commonOpenFileDialog1.IsFolderPicker = true;
             OptionBox.SetItemChecked(0, true);
             OptionBox.SetItemChecked(1, true);
             vars = new Dictionary<string, string>();
