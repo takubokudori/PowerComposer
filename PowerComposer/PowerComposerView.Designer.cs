@@ -33,6 +33,7 @@ namespace PowerComposer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerComposerView));
             this.TitleLbl = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -458,8 +459,7 @@ namespace PowerComposer
             this.BuilderTipsLbl.Name = "BuilderTipsLbl";
             this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
             this.BuilderTipsLbl.TabIndex = 17;
-            this.BuilderTipsLbl.Text = "Tips\r\n${varName}: Expand variable\r\n#{enumString}: Expand enumeration\r\ne.g. #{5-12" +
-    "} -> 5, 6, ..., 12\r\ne.g. #{12-5} -> 12, 11, ..., 5\r\n!{filePath}: Expand file";
+            this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
             this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
             // 
             // PowerComposerView
