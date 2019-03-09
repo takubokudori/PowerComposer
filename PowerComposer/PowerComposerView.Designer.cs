@@ -202,8 +202,6 @@ namespace PowerComposer
             // 
             this.VarsTab.BackColor = System.Drawing.Color.Silver;
             this.VarsTab.Controls.Add(this.tableLayoutPanel2);
-            this.VarsTab.Controls.Add(this.ExportBtn);
-            this.VarsTab.Controls.Add(this.ImportBtn);
             this.VarsTab.Location = new System.Drawing.Point(8, 39);
             this.VarsTab.Name = "VarsTab";
             this.VarsTab.Padding = new System.Windows.Forms.Padding(3);
@@ -218,16 +216,20 @@ namespace PowerComposer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.ExportBtn, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.SaveBtn, 2, 4);
+            this.tableLayoutPanel2.Controls.Add(this.ImportBtn, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.NewVarTxt, 0, 4);
+            this.tableLayoutPanel2.Controls.Add(this.AddNewVarBtn, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.VariableBox, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.SaveBtn, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.ValuesTxt, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.NewVarTxt, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.AddNewVarBtn, 1, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 21);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
@@ -243,9 +245,9 @@ namespace PowerComposer
             this.VariableBox.ItemHeight = 24;
             this.VariableBox.Location = new System.Drawing.Point(3, 3);
             this.VariableBox.Name = "VariableBox";
-            this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 2);
+            this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 4);
             this.VariableBox.ScrollAlwaysVisible = true;
-            this.VariableBox.Size = new System.Drawing.Size(259, 268);
+            this.VariableBox.Size = new System.Drawing.Size(239, 268);
             this.VariableBox.TabIndex = 9;
             this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
             this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
@@ -253,7 +255,7 @@ namespace PowerComposer
             // SaveBtn
             // 
             this.SaveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SaveBtn.Location = new System.Drawing.Point(426, 280);
+            this.SaveBtn.Location = new System.Drawing.Point(436, 280);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(143, 32);
             this.SaveBtn.TabIndex = 5;
@@ -266,14 +268,14 @@ namespace PowerComposer
             this.ValuesTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ValuesTxt.Location = new System.Drawing.Point(368, 3);
+            this.ValuesTxt.Location = new System.Drawing.Point(388, 3);
             this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
             this.ValuesTxt.ReadOnly = true;
-            this.tableLayoutPanel2.SetRowSpan(this.ValuesTxt, 2);
+            this.tableLayoutPanel2.SetRowSpan(this.ValuesTxt, 4);
             this.ValuesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ValuesTxt.Size = new System.Drawing.Size(260, 270);
+            this.ValuesTxt.Size = new System.Drawing.Size(240, 270);
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
@@ -284,7 +286,7 @@ namespace PowerComposer
             this.NewVarTxt.Location = new System.Drawing.Point(3, 279);
             this.NewVarTxt.MaxLength = 32;
             this.NewVarTxt.Name = "NewVarTxt";
-            this.NewVarTxt.Size = new System.Drawing.Size(259, 31);
+            this.NewVarTxt.Size = new System.Drawing.Size(239, 31);
             this.NewVarTxt.TabIndex = 10;
             this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
             this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
@@ -292,9 +294,9 @@ namespace PowerComposer
             // AddNewVarBtn
             // 
             this.AddNewVarBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddNewVarBtn.Location = new System.Drawing.Point(268, 279);
+            this.AddNewVarBtn.Location = new System.Drawing.Point(248, 279);
             this.AddNewVarBtn.Name = "AddNewVarBtn";
-            this.AddNewVarBtn.Size = new System.Drawing.Size(94, 35);
+            this.AddNewVarBtn.Size = new System.Drawing.Size(134, 35);
             this.AddNewVarBtn.TabIndex = 11;
             this.AddNewVarBtn.Text = "Add";
             this.AddNewVarBtn.UseVisualStyleBackColor = true;
@@ -302,9 +304,11 @@ namespace PowerComposer
             // 
             // ExportBtn
             // 
-            this.ExportBtn.Location = new System.Drawing.Point(667, 202);
+            this.ExportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExportBtn.Location = new System.Drawing.Point(248, 43);
             this.ExportBtn.Name = "ExportBtn";
-            this.ExportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ExportBtn.Size = new System.Drawing.Size(134, 34);
             this.ExportBtn.TabIndex = 13;
             this.ExportBtn.Text = "Export";
             this.ExportBtn.UseVisualStyleBackColor = true;
@@ -312,9 +316,11 @@ namespace PowerComposer
             // 
             // ImportBtn
             // 
-            this.ImportBtn.Location = new System.Drawing.Point(667, 96);
+            this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImportBtn.Location = new System.Drawing.Point(248, 3);
             this.ImportBtn.Name = "ImportBtn";
-            this.ImportBtn.Size = new System.Drawing.Size(100, 40);
+            this.ImportBtn.Size = new System.Drawing.Size(134, 34);
             this.ImportBtn.TabIndex = 12;
             this.ImportBtn.Text = "Import";
             this.ImportBtn.UseVisualStyleBackColor = true;

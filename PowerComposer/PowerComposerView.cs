@@ -228,9 +228,23 @@ namespace PowerComposer
             foreach (KeyValuePair<string, string> kvp in vars)
             {
                 // Write File.
-                var sm = File.CreateText(path + kvp.Key + ".txt");
-                sm.Write(kvp.Value);
-                sm.Close();
+                string keypath = path + kvp.Key + ".txt";
+                bool sure = true;
+                if (File.Exists(keypath))
+                {
+                    var x = MessageBox.Show(
+                        kvp.Key + @" is already exists." + Environment.NewLine +
+                        @"Do you want to overwrite this anyway?",
+                        @"Warning", MessageBoxButtons.YesNo);
+                    sure = x == DialogResult.Yes;
+                }
+
+                if (sure)
+                {
+                    var sm = File.CreateText(path + kvp.Key + ".txt");
+                    sm.Write(kvp.Value);
+                    sm.Close();
+                }
             }
         }
 
@@ -245,7 +259,7 @@ namespace PowerComposer
                 if (s.Length > 0 && IsValidVarName(s))
                 {
                     bool sure = true;
-                    if (vars.ContainsKey(s))
+                    if (vars.ContainsKey(s)) // Warning
                     {
                         var x = MessageBox.Show(
                             s + @" is already exists." + Environment.NewLine + @"Do you want to overwrite this anyway?",
