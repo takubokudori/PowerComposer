@@ -43,7 +43,16 @@ namespace PowerComposer
 
         public static bool IsFollowRedirection(Session oSession)
         {
-            return oSession["root"] == PCName && oSession["redirection"] == "true";
+            if (oSession["root"] != PCName) return false;
+            if (!int.TryParse(oSession["x-PC-now-redir"], out var now) ||
+                !int.TryParse(oSession["x-PC-max-redir"], out var max)) return false;
+            return now < max;
+        }
+
+        public static void IncrementRedir(ref Session oSession)
+        {
+            if (!int.TryParse(oSession["x-PC-now-redir"], out var now)) return;
+            oSession["x-PC-now-redir"] = (now + 1).ToString();
         }
 
 
@@ -71,18 +80,33 @@ namespace PowerComposer
             _oView.MethodTxt.Text = _header.HTTPMethod.Trim();
             _oView.URITxt.Text = s.fullUrl;
             _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
-            _oView.HeaderTxt.Text = _header.ToString(false,false);
-            string body = s.GetRequestBodyAsString();
-            if (s.RequestBody.Length != body.Length)
+            _oView.HeaderTxt.Text = _header.ToString(false, false);
+            string body = "";
+            if (IsBinary(s.requestBodyBytes))
             {
                 // payload including NULL char.
                 // Append Fiddler-Encoding: base64
                 _oView.HeaderTxt.Text += "\r\nFiddler-Encoding: base64";
                 body = Convert.ToBase64String(s.requestBodyBytes);
             }
+            else
+            {
+                body = s.GetRequestBodyAsString();
+            }
 
             _oView.BodyTxt.Text = body;
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
+        }
+
+        private static bool IsBinary(byte[] bytes)
+        {
+            if (bytes == null) return false;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] == 0) return true;
+            }
+
+            return false;
         }
 
         private int FindMenuIndexByText(Menu.MenuItemCollection mic, string s)
@@ -114,66 +138,101 @@ namespace PowerComposer
             };
             RequestGenerator rgh = new RequestGenerator(sarr, _oView.GetDict())
             {
-                ErrorByUndefinedVar = _oView.IsErrorByUndefinedVar()
+                ErrorByUndefinedVar = _oView.IsErrorByUndefinedVar
             };
             while (rgh.HasNext())
             {
                 try
                 {
                     sarr = rgh.Generate();
-                    Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4]);
+                    if (_oView.IsFixHostHeader)
+                    {
+                        Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4], null, sarr[1]);
+                    }
+                    else
+                    {
+                        Send(sarr[0], sarr[1], sarr[2], sarr[3], sarr[4]);
+                    }
                 }
                 catch (GenerateException ex)
                 {
                     MessageBox.Show(ex.Message);
                     return;
                 }
-
             }
         }
 
-        public static Session Send(string method, string url, string version, string headers, string bodyString)
+        public static Session Send(string method, string url, string version, string headers, string bodyString,
+            StringDictionary oNewFlags = null, string hostname = null)
         {
             string headerString = BuildHeader(method, url, version, headers);
             HTTPRequestHeaders header = new HTTPRequestHeaders();
             if (!header.AssignFromString(headerString))
             {
                 // error
-                MessageBox.Show("Failed to AssignFromString");
+                MessageBox.Show(@"Failed to AssignFromString");
                 return null;
             }
 
-            Session oSession = Send(header, GetBodyBytes(header, bodyString));
+            if (hostname != null) overrideHost(ref header, hostname);
+
+            Session oSession = Send(header, GetBodyBytes(header, bodyString), oNewFlags);
 
             return oSession;
         }
 
-        public static Session Send(string method, string url, string version, string headers, byte[] bodyBytes)
+        public static Session Send(string method, string url, string version, string headers, byte[] bodyBytes,
+            StringDictionary oNewFlags = null, string hostname = null)
         {
             string headerString = BuildHeader(method, url, version, headers);
             HTTPRequestHeaders header = new HTTPRequestHeaders();
             if (!header.AssignFromString(headerString))
             {
                 // error
-                MessageBox.Show("Failed to AssignFromString");
+                MessageBox.Show(@"Failed to AssignFromString");
                 return null;
             }
 
+            if (hostname != null) overrideHost(ref header, hostname);
             Session oSession = Send(header, bodyBytes);
 
             return oSession;
         }
 
-        public static Session Send(HTTPRequestHeaders header, byte[] bodyBytes)
+        public static Session Send(HTTPRequestHeaders header, byte[] bodyBytes, StringDictionary oNewFlags = null,
+            string hostname = null)
         {
-            var a = new StringDictionary
-                {["root"] = PCName}; // Generated by PowerComposer Flag
-            if (_oView.IsFollowRedirect()) a["redirection"] = "true";
-            if (_oView.IsFixContentLength()) header["Content-Length"] = ((long)bodyBytes.Length).ToString();
-            Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, a, null);
+            if (oNewFlags == null)
+            {
+                oNewFlags = new StringDictionary
+                    {["root"] = PCName}; // Generated by PowerComposer Flag
+                if (_oView.MaxFollowRedirect > 0)
+                {
+                    oNewFlags["x-PC-now-redir"] = "0";
+                    oNewFlags["x-PC-max-redir"] = _oView.MaxFollowRedirect.ToString();
+                }
+
+                if (_oView.IsFixContentLength) oNewFlags["x-Builder-FixContentLength"] = "PowerComposer-required";
+                if (_oView.IsAutoAuth) oNewFlags["x-AutoAuth"] = "PowerComposer-required";
+                if (_oView.IsInspectSession) oNewFlags["x-breakrequest"] = "PowerComposer-required";
+            }
+
+            if (hostname != null) overrideHost(ref header, hostname);
+            Session oSession = FiddlerApplication.oProxy.SendRequest(header, bodyBytes, oNewFlags, null);
             return oSession;
         }
 
+        public static void overrideHost(ref HTTPRequestHeaders header, string hostname)
+        {
+            if (hostname != null)
+            {
+                int k = hostname.IndexOf(@"://", StringComparison.Ordinal);
+                if (k != -1) hostname = hostname.Substring(k + 3);
+                k = hostname.IndexOf(@"/", StringComparison.Ordinal);
+                if (k != -1) hostname = hostname.Substring(0, k);
+                header["host"] = hostname;
+            }
+        }
 
         private static byte[] GetBodyBytes(HTTPRequestHeaders header, string bodyString)
         {
