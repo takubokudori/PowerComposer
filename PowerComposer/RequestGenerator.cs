@@ -249,7 +249,7 @@ namespace PowerComposer
                 }
             }
 
-            return carry ? 'A' + Convert.ToString(s) : Convert.ToString(s);
+            return carry ? "A" + Convert.ToString(s) : Convert.ToString(s);
         }
 
         public string[] Generate()
