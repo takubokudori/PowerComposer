@@ -134,7 +134,6 @@ namespace PowerComposer
                 return str;
             }, RegexOptions.CultureInvariant);
 
-
             return ret;
         }
 
