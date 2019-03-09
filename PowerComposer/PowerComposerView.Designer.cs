@@ -39,7 +39,6 @@ namespace PowerComposer
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.OptionTab = new System.Windows.Forms.TabPage();
-            this.OptionBox = new System.Windows.Forms.CheckedListBox();
             this.VarsTab = new System.Windows.Forms.TabPage();
             this.ImportBtn = new System.Windows.Forms.Button();
             this.ExportBtn = new System.Windows.Forms.Button();
@@ -63,6 +62,13 @@ namespace PowerComposer
             this.IncludeBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.BuilderTipsLbl = new System.Windows.Forms.Label();
+            this.ErrorUndefinedChk = new System.Windows.Forms.CheckBox();
+            this.FixLengthChk = new System.Windows.Forms.CheckBox();
+            this.AutoAuthChk = new System.Windows.Forms.CheckBox();
+            this.InspectChk = new System.Windows.Forms.CheckBox();
+            this.FRTimesLbl = new System.Windows.Forms.Label();
+            this.FollowRedirectsTxt = new System.Windows.Forms.TextBox();
+            this.HostChk = new System.Windows.Forms.CheckBox();
             this.OptionTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -103,28 +109,19 @@ namespace PowerComposer
             // 
             // OptionTab
             // 
-            this.OptionTab.Controls.Add(this.OptionBox);
+            this.OptionTab.Controls.Add(this.HostChk);
+            this.OptionTab.Controls.Add(this.FollowRedirectsTxt);
+            this.OptionTab.Controls.Add(this.FRTimesLbl);
+            this.OptionTab.Controls.Add(this.InspectChk);
+            this.OptionTab.Controls.Add(this.AutoAuthChk);
+            this.OptionTab.Controls.Add(this.FixLengthChk);
+            this.OptionTab.Controls.Add(this.ErrorUndefinedChk);
             this.OptionTab.Location = new System.Drawing.Point(8, 39);
             this.OptionTab.Name = "OptionTab";
             this.OptionTab.Size = new System.Drawing.Size(1055, 444);
             this.OptionTab.TabIndex = 2;
             this.OptionTab.Text = "Option";
             this.OptionTab.UseVisualStyleBackColor = true;
-            // 
-            // OptionBox
-            // 
-            this.OptionBox.CheckOnClick = true;
-            this.OptionBox.FormattingEnabled = true;
-            this.OptionBox.Items.AddRange(new object[] {
-            "Error by undefined variable",
-            "Fix Content-Length header",
-            "Follow Redirects",
-            "Automatically Authenticate",
-            "Inspect Session"});
-            this.OptionBox.Location = new System.Drawing.Point(3, 41);
-            this.OptionBox.Name = "OptionBox";
-            this.OptionBox.Size = new System.Drawing.Size(297, 238);
-            this.OptionBox.TabIndex = 0;
             // 
             // VarsTab
             // 
@@ -462,6 +459,81 @@ namespace PowerComposer
             this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
             this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
             // 
+            // ErrorUndefinedChk
+            // 
+            this.ErrorUndefinedChk.AutoSize = true;
+            this.ErrorUndefinedChk.Checked = true;
+            this.ErrorUndefinedChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ErrorUndefinedChk.Location = new System.Drawing.Point(15, 29);
+            this.ErrorUndefinedChk.Name = "ErrorUndefinedChk";
+            this.ErrorUndefinedChk.Size = new System.Drawing.Size(307, 28);
+            this.ErrorUndefinedChk.TabIndex = 1;
+            this.ErrorUndefinedChk.Text = "Error by undefined variable";
+            this.ErrorUndefinedChk.UseVisualStyleBackColor = true;
+            // 
+            // FixLengthChk
+            // 
+            this.FixLengthChk.AutoSize = true;
+            this.FixLengthChk.Checked = true;
+            this.FixLengthChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.FixLengthChk.Location = new System.Drawing.Point(15, 63);
+            this.FixLengthChk.Name = "FixLengthChk";
+            this.FixLengthChk.Size = new System.Drawing.Size(312, 28);
+            this.FixLengthChk.TabIndex = 2;
+            this.FixLengthChk.Text = "Fix Content-Length header";
+            this.FixLengthChk.UseVisualStyleBackColor = true;
+            // 
+            // AutoAuthChk
+            // 
+            this.AutoAuthChk.AutoSize = true;
+            this.AutoAuthChk.Location = new System.Drawing.Point(15, 97);
+            this.AutoAuthChk.Name = "AutoAuthChk";
+            this.AutoAuthChk.Size = new System.Drawing.Size(309, 28);
+            this.AutoAuthChk.TabIndex = 3;
+            this.AutoAuthChk.Text = "Automatically Authenticate";
+            this.AutoAuthChk.UseVisualStyleBackColor = true;
+            // 
+            // InspectChk
+            // 
+            this.InspectChk.AutoSize = true;
+            this.InspectChk.Location = new System.Drawing.Point(15, 131);
+            this.InspectChk.Name = "InspectChk";
+            this.InspectChk.Size = new System.Drawing.Size(199, 28);
+            this.InspectChk.TabIndex = 4;
+            this.InspectChk.Text = "Inspect Session";
+            this.InspectChk.UseVisualStyleBackColor = true;
+            // 
+            // FRTimesLbl
+            // 
+            this.FRTimesLbl.AutoSize = true;
+            this.FRTimesLbl.Location = new System.Drawing.Point(462, 36);
+            this.FRTimesLbl.Name = "FRTimesLbl";
+            this.FRTimesLbl.Size = new System.Drawing.Size(283, 24);
+            this.FRTimesLbl.TabIndex = 5;
+            this.FRTimesLbl.Text = "Follow Redirects max times";
+            this.FRTimesLbl.Click += new System.EventHandler(this.FRTimesLbl_Click);
+            // 
+            // FollowRedirectsTxt
+            // 
+            this.FollowRedirectsTxt.Location = new System.Drawing.Point(384, 29);
+            this.FollowRedirectsTxt.MaxLength = 10;
+            this.FollowRedirectsTxt.Name = "FollowRedirectsTxt";
+            this.FollowRedirectsTxt.Size = new System.Drawing.Size(72, 31);
+            this.FollowRedirectsTxt.TabIndex = 6;
+            this.FollowRedirectsTxt.Text = "10";
+            // 
+            // HostChk
+            // 
+            this.HostChk.AutoSize = true;
+            this.HostChk.Checked = true;
+            this.HostChk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HostChk.Location = new System.Drawing.Point(15, 166);
+            this.HostChk.Name = "HostChk";
+            this.HostChk.Size = new System.Drawing.Size(296, 28);
+            this.HostChk.TabIndex = 7;
+            this.HostChk.Text = "Fix Host header with URL";
+            this.HostChk.UseVisualStyleBackColor = true;
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -474,6 +546,7 @@ namespace PowerComposer
             this.Load += new System.EventHandler(this.PowerComposerView_Load);
             this.Leave += new System.EventHandler(this.PowerComposerView_Leave);
             this.OptionTab.ResumeLayout(false);
+            this.OptionTab.PerformLayout();
             this.VarsTab.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -493,7 +566,6 @@ namespace PowerComposer
         private OpenFileDialog openFileDialog1;
         private FolderBrowserDialog folderBrowserDialog1;
         private TabPage OptionTab;
-        public CheckedListBox OptionBox;
         public TabPage VarsTab;
         private TableLayoutPanel tableLayoutPanel2;
         public ListBox VariableBox;
@@ -517,5 +589,12 @@ namespace PowerComposer
         public Button ExecBtn;
         private TabControl tabControl1;
         private Label BuilderTipsLbl;
+        private TextBox FollowRedirectsTxt;
+        private Label FRTimesLbl;
+        private CheckBox InspectChk;
+        private CheckBox AutoAuthChk;
+        private CheckBox FixLengthChk;
+        private CheckBox ErrorUndefinedChk;
+        private CheckBox HostChk;
     }
 }
