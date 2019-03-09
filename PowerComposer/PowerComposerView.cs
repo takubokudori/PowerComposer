@@ -28,23 +28,20 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Fiddler;
 
 namespace PowerComposer
 {
     public partial class PowerComposerView : UserControl
     {
         private Dictionary<string, string> vars;
-        private CommonOpenFileDialog _commonOpenFileDialog1;
         private static readonly Regex VarNameRegex = new Regex("^[a-zA-Z0-9]+$");
+        private TextBox _prevTxt;
 
         public PowerComposerView()
         {
+            _prevTxt = BodyTxt;
             InitializeComponent();
-            _commonOpenFileDialog1 = new CommonOpenFileDialog();
-            _commonOpenFileDialog1.IsFolderPicker = true;
-            OptionBox.SetItemChecked(0, true);
-            OptionBox.SetItemChecked(1, true);
             vars = new Dictionary<string, string>();
         }
 
@@ -80,7 +77,6 @@ namespace PowerComposer
 
         private void VariableBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            ValuesLbl.Text = VariableBox.Text;
             ValuesTxt.Text = vars.ContainsKey(VariableBox.Text) ? vars[VariableBox.Text] : "";
         }
 
@@ -110,6 +106,7 @@ namespace PowerComposer
             }
 
             VariableBox.Items.Add(NewVarTxt.Text);
+            VariableBox.TopIndex = VariableBox.Items.Count - 1;
             NewVarTxt.Text = "";
         }
 
@@ -141,24 +138,54 @@ namespace PowerComposer
             return ret;
         }
 
-        public bool IsErrorByUndefinedVar()
+        public bool IsErrorByUndefinedVar
         {
-            return OptionBox.GetItemChecked(0);
+            get => ErrorUndefinedChk.Checked;
+            set => ErrorUndefinedChk.Checked = value;
         }
 
-        public bool IsFixContentLength()
+        public bool IsFixContentLength
         {
-            return OptionBox.GetItemChecked(1);
+            get => ErrorUndefinedChk.Checked;
+            set => ErrorUndefinedChk.Checked = value;
         }
 
-        public bool IsFollowRedirect()
+        public int MaxFollowRedirect
         {
-            return OptionBox.GetItemChecked(2);
+            get
+            {
+                if (int.TryParse(FollowRedirectsTxt.Text, out var res) && res >= 0)
+                {
+                    return res;
+                }
+
+                return -1;
+            }
+            set => FollowRedirectsTxt.Text = value.ToString();
+        }
+
+        public bool IsAutoAuth
+        {
+            get => AutoAuthChk.Checked;
+            set => AutoAuthChk.Checked = value;
+        }
+
+        public bool IsInspectSession
+        {
+            get => InspectChk.Checked;
+            set => InspectChk.Checked = value;
+        }
+
+        public bool IsFixHostHeader
+        {
+            get => HostChk.Checked;
+            set => HostChk.Checked = value;
         }
 
         private void VariableBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(ValsTab);
+            ValuesTxt.ReadOnly = (VariableBox.SelectedIndex == -1);
+            if (!ValuesTxt.ReadOnly) ValuesTxt.Focus();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -246,11 +273,12 @@ namespace PowerComposer
                     VariableBox.Items.Add(kvp.Key);
                 }
             }
+
+            VariableBox.TopIndex = VariableBox.Items.Count - 1;
         }
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ImportVars(folderBrowserDialog1.SelectedPath);
@@ -260,12 +288,48 @@ namespace PowerComposer
 
         private void ExportBtn_Click(object sender, EventArgs e)
         {
-//            if (_commonOpenFileDialog1.ShowDialog() == CommonFileDialogResult.Ok)
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 ExportVars(folderBrowserDialog1.SelectedPath);
                 MessageBox.Show(@"Exported successfully.");
             }
+        }
+
+        private void IncludeBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string str1 = _prevTxt.Text.Substring(0, _prevTxt.SelectionStart);
+                string str2 = _prevTxt.Text.Substring(_prevTxt.SelectionStart);
+                _prevTxt.Text = str1
+                                + @"!{" + openFileDialog1.FileName + @"}"
+                                + str2;
+            }
+        }
+
+        private void HeaderTxt_Enter(object sender, EventArgs e)
+        {
+            _prevTxt = HeaderTxt;
+        }
+
+        private void BodyTxt_Enter(object sender, EventArgs e)
+        {
+            _prevTxt = BodyTxt;
+        }
+
+        private void URITxt_Enter(object sender, EventArgs e)
+        {
+            _prevTxt = URITxt;
+        }
+
+        private void BuilderTipsLbl_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(BuilderTipsLbl.Text);
+        }
+
+        private void FRTimesLbl_Click(object sender, EventArgs e)
+        {
+            FollowRedirectsTxt.Focus();
         }
     }
 }

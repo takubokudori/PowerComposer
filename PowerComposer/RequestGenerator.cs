@@ -24,6 +24,7 @@ SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -98,14 +99,16 @@ namespace PowerComposer
             _arrayIter++;
         }
 
+        // TODO: below
         // 1-9 1-99 00-12 a-zzA-Z0-99
         // #{0-2}{a-c} OR #{0-2&a-c} 0a 1b 2c
         // #{0-2|a-c} -> 0a 0b 0c 1a 1b 1c 2a 2b 2c
+        // !{C:\test\test.txt} -> the contents of test.txt
         private string GenerateString(string plaintext)
         {
             if (_dict == null) throw new GenerateException("Uninitialized Dictionary");
             _hasNext = false;
-            string ret = Regex.Replace(plaintext, "(#|\\$)\\{.*?\\}", m =>
+            string ret = Regex.Replace(plaintext, "(#|\\$|!)\\{.*?\\}", m =>
             {
                 string str = "";
                 if (m.Value[0] == '$') // variable
@@ -129,6 +132,19 @@ namespace PowerComposer
                     if (_enumDict[enumString].Count > _arrayIter) str = _enumDict[enumString][_arrayIter];
                     if (_arrayIter + 1 < _enumDict[enumString].Count) _hasNext = true;
                 }
+                else if (m.Value[0] == '!') // include
+                {
+                    string filePath = m.Value.Substring(2, m.Value.Length - 3); // #{C:\test.txt} -> C:\test.txt
+                    if (File.Exists(filePath))
+                    {
+                        str = File.OpenText(filePath).ReadToEnd();
+                    }
+                    else
+                    {
+                        _hasNext = false;
+                        throw new GenerateException($"File: {filePath} is not exists");
+                    }
+                }
 
                 return str;
             }, RegexOptions.CultureInvariant);
@@ -147,7 +163,7 @@ namespace PowerComposer
          * token=(digit minus digit)|(alpha minus alpha)|(ALPHA minus ALPHA)
          * expr=token | expr token | (expr or expr) | (expr and expr)
          */
-        public static List<string> GenerateEnumArray(string enumString)
+        public List<string> GenerateEnumArray(string enumString)
         {
             // 1-9a-z
             var ret = new List<string>();
@@ -233,7 +249,7 @@ namespace PowerComposer
                 }
             }
 
-            return carry ? 'A' + Convert.ToString(s) : Convert.ToString(s);
+            return carry ? "A" + Convert.ToString(s) : Convert.ToString(s);
         }
 
         public string[] Generate()
