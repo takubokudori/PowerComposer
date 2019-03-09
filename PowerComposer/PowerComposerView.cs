@@ -284,7 +284,6 @@ namespace PowerComposer
             {
                 string str1 = _prevTxt.Text.Substring(0, _prevTxt.SelectionStart);
                 string str2 = _prevTxt.Text.Substring(_prevTxt.SelectionStart);
-//                MessageBox.Show(BodyTxt.SelectionStart.ToString());
                 _prevTxt.Text = str1
                                 + @"!{" + openFileDialog1.FileName + @"}"
                                 + str2;
