@@ -132,7 +132,7 @@ namespace PowerComposer
         public Dictionary<string, string[]> GetDict()
         {
             Dictionary<string, string[]> ret = new Dictionary<string, string[]>();
-            foreach (KeyValuePair<string, string> kvp in vars)
+            foreach (var kvp in vars)
             {
                 ret[kvp.Key] = kvp.Value.Split(new[] {"\r\n", "\n"}, StringSplitOptions.None);
             }
@@ -225,9 +225,9 @@ namespace PowerComposer
 
         private void ExportVars(string path)
         {
-            using (ZipArchive za = ZipFile.Open(path, ZipArchiveMode.Update))
+            using (var za = ZipFile.Open(path, ZipArchiveMode.Update))
             {
-                foreach (KeyValuePair<string, string> kvp in vars)
+                foreach (var kvp in vars)
                 {
                     ZipArchiveEntry entry = za.CreateEntry(kvp.Key + ".txt");
                     using (StreamWriter s = new StreamWriter(entry.Open(), Encoding.UTF8))
@@ -242,14 +242,14 @@ namespace PowerComposer
         {
             if (File.Exists(path))
             {
-                using (ZipArchive za = ZipFile.OpenRead(path))
+                using (var za = ZipFile.OpenRead(path))
                 {
                     foreach (var e in za.Entries)
                     {
                         string f = e.Name;
-                        int fnameext = f.LastIndexOf('.');
-                        if (fnameext == -1) fnameext = 0;
-                        string s = f.Substring(0, fnameext); // test.txt -> test
+                        int posExt = f.LastIndexOf('.');
+                        if (posExt == -1) posExt = 0;
+                        string s = f.Substring(0, posExt); // test.txt -> test
 
                         if (s.Length > 0 && IsValidVarName(s))
                         {
@@ -267,7 +267,6 @@ namespace PowerComposer
                             {
                                 using (StreamReader sr = new StreamReader(e.Open(), Encoding.UTF8))
                                 {
-                                    //すべて読み込む
                                     vars[s] = sr.ReadToEnd();
                                 }
                             }
@@ -287,7 +286,7 @@ namespace PowerComposer
 
         private void RefreshVars()
         {
-            foreach (KeyValuePair<string, string> kvp in vars)
+            foreach (var kvp in vars)
             {
                 if (!VariableBox.Items.Contains(kvp.Key))
                 {
