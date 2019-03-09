@@ -70,6 +70,7 @@ namespace PowerComposer
             this.BuilderTipsLbl = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.OptionTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -342,22 +343,23 @@ namespace PowerComposer
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.IncludeBtn, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.TimesLbl, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.VersionTxt, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.TimesTxt, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.HeaderTxt, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ExecBtn, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.MethodTxt, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BodyTxt, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.URITxt, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TimesTxt, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TimesLbl, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.BuilderTipsLbl, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ExecBtn, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -383,9 +385,10 @@ namespace PowerComposer
             // TimesLbl
             // 
             this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Location = new System.Drawing.Point(852, 0);
+            this.TimesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimesLbl.Location = new System.Drawing.Point(972, 147);
             this.TimesLbl.Name = "TimesLbl";
-            this.TimesLbl.Size = new System.Drawing.Size(64, 24);
+            this.TimesLbl.Size = new System.Drawing.Size(74, 40);
             this.TimesLbl.TabIndex = 13;
             this.TimesLbl.Text = "times";
             // 
@@ -407,11 +410,12 @@ namespace PowerComposer
             // 
             // TimesTxt
             // 
+            this.TimesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.TimesTxt.Location = new System.Drawing.Point(852, 150);
-            this.TimesTxt.MaxLength = 32;
+            this.TimesTxt.MaxLength = 11;
             this.TimesTxt.Name = "TimesTxt";
-            this.TimesTxt.Size = new System.Drawing.Size(100, 31);
+            this.TimesTxt.Size = new System.Drawing.Size(114, 31);
             this.TimesTxt.TabIndex = 12;
             this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
@@ -438,9 +442,10 @@ namespace PowerComposer
             // 
             // ExecBtn
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.ExecBtn, 2);
             this.ExecBtn.Location = new System.Drawing.Point(852, 43);
             this.ExecBtn.Name = "ExecBtn";
-            this.ExecBtn.Size = new System.Drawing.Size(165, 96);
+            this.ExecBtn.Size = new System.Drawing.Size(184, 96);
             this.ExecBtn.TabIndex = 1;
             this.ExecBtn.Text = "Execute";
             this.ExecBtn.UseVisualStyleBackColor = true;
@@ -520,6 +525,7 @@ namespace PowerComposer
             // BuilderTipsLbl
             // 
             this.BuilderTipsLbl.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.BuilderTipsLbl, 2);
             this.BuilderTipsLbl.Location = new System.Drawing.Point(852, 187);
             this.BuilderTipsLbl.Name = "BuilderTipsLbl";
             this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
@@ -609,5 +615,6 @@ namespace PowerComposer
         private CheckBox ErrorUndefinedChk;
         private CheckBox HostChk;
         private SaveFileDialog saveFileDialog1;
+        private ColorDialog colorDialog1;
     }
 }
