@@ -508,7 +508,7 @@ namespace PowerComposer
             this.URITxt.Name = "URITxt";
             this.URITxt.Size = new System.Drawing.Size(483, 31);
             this.URITxt.TabIndex = 2;
-            this.URITxt.Text = "http://example.com/";
+            this.URITxt.Text = "http://localhost/";
             this.URITxt.Enter += new System.EventHandler(this.URITxt_Enter);
             // 
             // label1
