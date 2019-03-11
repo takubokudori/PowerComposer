@@ -71,6 +71,7 @@ namespace PowerComposer
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.OptionTab.SuspendLayout();
             this.VarsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -91,7 +92,7 @@ namespace PowerComposer
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(378, 11);
+            this.linkLabel1.Location = new System.Drawing.Point(218, 11);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(511, 24);
             this.linkLabel1.TabIndex = 11;
@@ -120,7 +121,7 @@ namespace PowerComposer
             this.OptionTab.Controls.Add(this.ErrorUndefinedChk);
             this.OptionTab.Location = new System.Drawing.Point(8, 39);
             this.OptionTab.Name = "OptionTab";
-            this.OptionTab.Size = new System.Drawing.Size(1055, 444);
+            this.OptionTab.Size = new System.Drawing.Size(1084, 475);
             this.OptionTab.TabIndex = 2;
             this.OptionTab.Text = "Option";
             this.OptionTab.UseVisualStyleBackColor = true;
@@ -207,7 +208,7 @@ namespace PowerComposer
             this.VarsTab.Location = new System.Drawing.Point(8, 39);
             this.VarsTab.Name = "VarsTab";
             this.VarsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VarsTab.Size = new System.Drawing.Size(1055, 444);
+            this.VarsTab.Size = new System.Drawing.Size(1084, 475);
             this.VarsTab.TabIndex = 0;
             this.VarsTab.Text = "Variables";
             // 
@@ -235,14 +236,14 @@ namespace PowerComposer
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(631, 317);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(660, 348);
             this.tableLayoutPanel2.TabIndex = 14;
             // 
             // ExportBtn
             // 
             this.ExportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExportBtn.Location = new System.Drawing.Point(248, 43);
+            this.ExportBtn.Location = new System.Drawing.Point(263, 43);
             this.ExportBtn.Name = "ExportBtn";
             this.ExportBtn.Size = new System.Drawing.Size(134, 34);
             this.ExportBtn.TabIndex = 13;
@@ -253,7 +254,7 @@ namespace PowerComposer
             // SaveBtn
             // 
             this.SaveBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SaveBtn.Location = new System.Drawing.Point(436, 280);
+            this.SaveBtn.Location = new System.Drawing.Point(458, 312);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(143, 32);
             this.SaveBtn.TabIndex = 5;
@@ -265,7 +266,7 @@ namespace PowerComposer
             // 
             this.ImportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImportBtn.Location = new System.Drawing.Point(248, 3);
+            this.ImportBtn.Location = new System.Drawing.Point(263, 3);
             this.ImportBtn.Name = "ImportBtn";
             this.ImportBtn.Size = new System.Drawing.Size(134, 34);
             this.ImportBtn.TabIndex = 12;
@@ -277,10 +278,10 @@ namespace PowerComposer
             // 
             this.NewVarTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewVarTxt.Location = new System.Drawing.Point(3, 279);
+            this.NewVarTxt.Location = new System.Drawing.Point(3, 311);
             this.NewVarTxt.MaxLength = 32;
             this.NewVarTxt.Name = "NewVarTxt";
-            this.NewVarTxt.Size = new System.Drawing.Size(239, 31);
+            this.NewVarTxt.Size = new System.Drawing.Size(254, 31);
             this.NewVarTxt.TabIndex = 10;
             this.NewVarTxt.Enter += new System.EventHandler(this.NewVarTxt_Enter);
             this.NewVarTxt.Leave += new System.EventHandler(this.NewVarTxt_Leave);
@@ -288,9 +289,9 @@ namespace PowerComposer
             // AddNewVarBtn
             // 
             this.AddNewVarBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddNewVarBtn.Location = new System.Drawing.Point(248, 279);
+            this.AddNewVarBtn.Location = new System.Drawing.Point(263, 311);
             this.AddNewVarBtn.Name = "AddNewVarBtn";
-            this.AddNewVarBtn.Size = new System.Drawing.Size(134, 35);
+            this.AddNewVarBtn.Size = new System.Drawing.Size(134, 34);
             this.AddNewVarBtn.TabIndex = 11;
             this.AddNewVarBtn.Text = "Add";
             this.AddNewVarBtn.UseVisualStyleBackColor = true;
@@ -307,7 +308,7 @@ namespace PowerComposer
             this.VariableBox.Name = "VariableBox";
             this.tableLayoutPanel2.SetRowSpan(this.VariableBox, 4);
             this.VariableBox.ScrollAlwaysVisible = true;
-            this.VariableBox.Size = new System.Drawing.Size(239, 268);
+            this.VariableBox.Size = new System.Drawing.Size(254, 292);
             this.VariableBox.TabIndex = 9;
             this.VariableBox.SelectedIndexChanged += new System.EventHandler(this.VariableBox_SelectedIndexChanged);
             this.VariableBox.SelectedValueChanged += new System.EventHandler(this.VariableBox_SelectedValueChanged);
@@ -317,14 +318,14 @@ namespace PowerComposer
             this.ValuesTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ValuesTxt.Location = new System.Drawing.Point(388, 3);
+            this.ValuesTxt.Location = new System.Drawing.Point(403, 3);
             this.ValuesTxt.MaxLength = 0;
             this.ValuesTxt.Multiline = true;
             this.ValuesTxt.Name = "ValuesTxt";
             this.ValuesTxt.ReadOnly = true;
             this.tableLayoutPanel2.SetRowSpan(this.ValuesTxt, 4);
             this.ValuesTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ValuesTxt.Size = new System.Drawing.Size(240, 270);
+            this.ValuesTxt.Size = new System.Drawing.Size(254, 302);
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
@@ -333,7 +334,7 @@ namespace PowerComposer
             this.BuilderTab.Controls.Add(this.tableLayoutPanel1);
             this.BuilderTab.Location = new System.Drawing.Point(8, 39);
             this.BuilderTab.Name = "BuilderTab";
-            this.BuilderTab.Size = new System.Drawing.Size(1055, 444);
+            this.BuilderTab.Size = new System.Drawing.Size(1084, 475);
             this.BuilderTab.TabIndex = 3;
             this.BuilderTab.Text = "Builder";
             this.BuilderTab.UseVisualStyleBackColor = true;
@@ -368,15 +369,16 @@ namespace PowerComposer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1049, 438);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1078, 469);
             this.tableLayoutPanel1.TabIndex = 14;
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragEnter);
+            this.tableLayoutPanel1.DragLeave += new System.EventHandler(this.tableLayoutPanel1_DragLeave);
             // 
             // IncludeBtn
             // 
             this.IncludeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IncludeBtn.Location = new System.Drawing.Point(692, 150);
+            this.IncludeBtn.Location = new System.Drawing.Point(721, 159);
             this.IncludeBtn.Name = "IncludeBtn";
             this.IncludeBtn.Size = new System.Drawing.Size(154, 34);
             this.IncludeBtn.TabIndex = 15;
@@ -395,7 +397,7 @@ namespace PowerComposer
             "HTTP/1.1",
             "HTTP/1.0",
             "HTTP/0.9"});
-            this.VersionTxt.Location = new System.Drawing.Point(706, 3);
+            this.VersionTxt.Location = new System.Drawing.Point(735, 3);
             this.VersionTxt.Name = "VersionTxt";
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
@@ -404,7 +406,6 @@ namespace PowerComposer
             // HeaderTxt
             // 
             this.HeaderTxt.AcceptsTab = true;
-            this.HeaderTxt.AllowDrop = true;
             this.HeaderTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -414,7 +415,7 @@ namespace PowerComposer
             this.HeaderTxt.Multiline = true;
             this.HeaderTxt.Name = "HeaderTxt";
             this.HeaderTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HeaderTxt.Size = new System.Drawing.Size(843, 101);
+            this.HeaderTxt.Size = new System.Drawing.Size(872, 110);
             this.HeaderTxt.TabIndex = 3;
             this.HeaderTxt.Text = "User-Agent: Fiddler";
             this.HeaderTxt.WordWrap = false;
@@ -457,12 +458,12 @@ namespace PowerComposer
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.BodyTxt, 3);
-            this.BodyTxt.Location = new System.Drawing.Point(3, 190);
+            this.BodyTxt.Location = new System.Drawing.Point(3, 199);
             this.BodyTxt.MaxLength = 0;
             this.BodyTxt.Multiline = true;
             this.BodyTxt.Name = "BodyTxt";
             this.BodyTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BodyTxt.Size = new System.Drawing.Size(843, 245);
+            this.BodyTxt.Size = new System.Drawing.Size(872, 267);
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.WordWrap = false;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
@@ -477,7 +478,7 @@ namespace PowerComposer
             this.URITxt.Location = new System.Drawing.Point(203, 3);
             this.URITxt.MaxLength = 1024;
             this.URITxt.Name = "URITxt";
-            this.URITxt.Size = new System.Drawing.Size(483, 31);
+            this.URITxt.Size = new System.Drawing.Size(512, 31);
             this.URITxt.TabIndex = 2;
             this.URITxt.Text = "http://localhost/";
             this.URITxt.Enter += new System.EventHandler(this.URITxt_Enter);
@@ -486,7 +487,7 @@ namespace PowerComposer
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 147);
+            this.label1.Location = new System.Drawing.Point(3, 156);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 40);
             this.label1.TabIndex = 16;
@@ -497,7 +498,7 @@ namespace PowerComposer
             // 
             this.TimesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
+            this.TimesTxt.Location = new System.Drawing.Point(881, 159);
             this.TimesTxt.MaxLength = 11;
             this.TimesTxt.Name = "TimesTxt";
             this.TimesTxt.Size = new System.Drawing.Size(114, 31);
@@ -510,7 +511,7 @@ namespace PowerComposer
             // 
             this.TimesLbl.AutoSize = true;
             this.TimesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimesLbl.Location = new System.Drawing.Point(972, 147);
+            this.TimesLbl.Location = new System.Drawing.Point(1001, 156);
             this.TimesLbl.Name = "TimesLbl";
             this.TimesLbl.Size = new System.Drawing.Size(74, 40);
             this.TimesLbl.TabIndex = 13;
@@ -520,9 +521,9 @@ namespace PowerComposer
             // 
             this.BuilderTipsLbl.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.BuilderTipsLbl, 2);
-            this.BuilderTipsLbl.Location = new System.Drawing.Point(852, 187);
+            this.BuilderTipsLbl.Location = new System.Drawing.Point(881, 196);
             this.BuilderTipsLbl.Name = "BuilderTipsLbl";
-            this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 251);
+            this.BuilderTipsLbl.Size = new System.Drawing.Size(193, 273);
             this.BuilderTipsLbl.TabIndex = 17;
             this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
             this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
@@ -530,7 +531,7 @@ namespace PowerComposer
             // ExecBtn
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.ExecBtn, 2);
-            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
+            this.ExecBtn.Location = new System.Drawing.Point(881, 43);
             this.ExecBtn.Name = "ExecBtn";
             this.ExecBtn.Size = new System.Drawing.Size(184, 96);
             this.ExecBtn.TabIndex = 1;
@@ -549,7 +550,7 @@ namespace PowerComposer
             this.tabControl1.Location = new System.Drawing.Point(3, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1071, 491);
+            this.tabControl1.Size = new System.Drawing.Size(1100, 522);
             this.tabControl1.TabIndex = 10;
             // 
             // saveFileDialog1
@@ -557,15 +558,28 @@ namespace PowerComposer
             this.saveFileDialog1.DefaultExt = "zip";
             this.saveFileDialog1.FileName = "vars.zip";
             // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatusLabel.BackColor = System.Drawing.Color.Silver;
+            this.StatusLabel.Location = new System.Drawing.Point(309, 11);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(794, 51);
+            this.StatusLabel.TabIndex = 12;
+            this.StatusLabel.Text = "Hello PowerComposer";
+            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.TitleLbl);
             this.Name = "PowerComposerView";
-            this.Size = new System.Drawing.Size(1090, 563);
+            this.Size = new System.Drawing.Size(1119, 613);
             this.Load += new System.EventHandler(this.PowerComposerView_Load);
             this.Leave += new System.EventHandler(this.PowerComposerView_Leave);
             this.OptionTab.ResumeLayout(false);
@@ -621,5 +635,6 @@ namespace PowerComposer
         private CheckBox HostChk;
         private SaveFileDialog saveFileDialog1;
         private ColorDialog colorDialog1;
+        private Label StatusLabel;
     }
 }

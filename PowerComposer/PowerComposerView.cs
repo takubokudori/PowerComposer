@@ -25,6 +25,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -235,7 +236,7 @@ namespace PowerComposer
             {
                 // payload including NULL char.
                 // Append Fiddler-Encoding: base64
-                HeaderTxt.Text += @"\r\nFiddler-Encoding: base64";
+                HeaderTxt.Text += Environment.NewLine + @"Fiddler-Encoding: base64";
                 body = Convert.ToBase64String(oSession.requestBodyBytes);
             }
             else
@@ -395,11 +396,13 @@ namespace PowerComposer
         private void BodyTxt_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
+            if (IsDraggingFile(e)) ChangeStatus(StatusList.DragFile);
+            else if (IsDraggingSession(e)) ChangeStatus(StatusList.DragSession);
         }
 
         private void BodyTxt_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (IsDraggingFile(e))
             {
                 string[] dragFilePathArr = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
                 string str1 = BodyTxt.Text.Substring(0, BodyTxt.SelectionStart);
@@ -408,25 +411,69 @@ namespace PowerComposer
                                + FileVariableStr(dragFilePathArr[0])
                                + str2;
             }
-            else if (e.Data.GetDataPresent("Fiddler.Session[]"))
+            else if (IsDraggingSession(e))
             {
                 Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
                 CopySessionToForm(x[0]);
             }
+            ChangeStatus(StatusList.None);
         }
 
         private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent("Fiddler.Session[]"))
+            if (IsDraggingSession(e))
             {
                 Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
                 CopySessionToForm(x[0]);
             }
+            ChangeStatus(StatusList.None);
         }
 
         private void tableLayoutPanel1_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
+            if (IsDraggingSession(e)) ChangeStatus(StatusList.DragSession);
+        }
+
+        private void tableLayoutPanel1_DragLeave(object sender, EventArgs e)
+        {
+            ChangeStatus(StatusList.None);
+        }
+
+        private static bool IsDraggingSession(DragEventArgs e)
+        {
+            return e.Data.GetDataPresent("Fiddler.Session[]");
+        }
+
+        private static bool IsDraggingFile(DragEventArgs e)
+        {
+            return e.Data.GetDataPresent(DataFormats.FileDrop);
+        }
+
+        private void ChangeStatus(StatusList s)
+        {
+            switch (s)
+            {
+                case StatusList.None:
+                    StatusLabel.Text = @"Hello PowerComposer";
+                    StatusLabel.BackColor = Color.LightGray;
+                    break;
+                case StatusList.DragFile:
+                    StatusLabel.Text = @"Include file statement.";
+                    StatusLabel.BackColor = Color.LightBlue;
+                    break;
+                case StatusList.DragSession:
+                    StatusLabel.Text = @"Copy HTTP request from web session.";
+                    StatusLabel.BackColor = Color.Lime;
+                    break;
+            }
+        }
+
+        public enum StatusList
+        {
+            None,
+            DragSession,
+            DragFile
         }
     }
 }
