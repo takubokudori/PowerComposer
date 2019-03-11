@@ -340,6 +340,7 @@ namespace PowerComposer
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AllowDrop = true;
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -369,6 +370,8 @@ namespace PowerComposer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1049, 438);
             this.tableLayoutPanel1.TabIndex = 14;
+            this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
+            this.tableLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragEnter);
             // 
             // IncludeBtn
             // 

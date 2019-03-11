@@ -414,5 +414,19 @@ namespace PowerComposer
                 CopySessionToForm(x[0]);
             }
         }
+
+        private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("Fiddler.Session[]"))
+            {
+                Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
+                CopySessionToForm(x[0]);
+            }
+        }
+
+        private void tableLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
     }
 }
