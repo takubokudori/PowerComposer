@@ -323,9 +323,14 @@ namespace PowerComposer
                 string str1 = _prevTxt.Text.Substring(0, _prevTxt.SelectionStart);
                 string str2 = _prevTxt.Text.Substring(_prevTxt.SelectionStart);
                 _prevTxt.Text = str1
-                                + @"!{" + openFileDialog1.FileName + @"}"
+                                + FileVariableStr(openFileDialog1.FileName)
                                 + str2;
             }
+        }
+
+        private string FileVariableStr(string path)
+        {
+            return @"!{" + path + @"}";
         }
 
         private void HeaderTxt_Enter(object sender, EventArgs e)
@@ -351,6 +356,29 @@ namespace PowerComposer
         private void FRTimesLbl_Click(object sender, EventArgs e)
         {
             FollowRedirectsTxt.Focus();
+        }
+
+        private void BodyTxt_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void BodyTxt_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] dragFilePathArr = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+                string str1 = BodyTxt.Text.Substring(0, BodyTxt.SelectionStart);
+                string str2 = BodyTxt.Text.Substring(BodyTxt.SelectionStart);
+                BodyTxt.Text = str1
+                               + FileVariableStr(dragFilePathArr[0])
+                               + str2;
+            }
+            else if (e.Data.GetDataPresent("Fiddler.Session[]"))
+            {
+                Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
+                PowerComposer.CopySessionToForm(x[0]);
+            }
         }
     }
 }

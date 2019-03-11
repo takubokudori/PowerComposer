@@ -35,6 +35,10 @@
     <Reference Include="Fiddler">
       <HintPath>..\..\..\..\AppData\Local\Programs\Fiddler\Fiddler.exe</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.9.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a">
+      <HintPath>..\packages\HtmlAgilityPack.1.9.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
@@ -75,6 +79,9 @@
     <EmbeddedResource Include="PowerComposerView.resx">
       <DependentUpon>PowerComposerView.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

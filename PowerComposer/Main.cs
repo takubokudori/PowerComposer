@@ -76,28 +76,32 @@ namespace PowerComposer
         private static void ReissueOnClick(object o, EventArgs e)
         {
             Session s = FiddlerObject.UI.GetFirstSelectedSession();
-            _header = s.RequestHeaders;
-            _oView.MethodTxt.Text = _header.HTTPMethod.Trim();
-            _oView.URITxt.Text = s.fullUrl;
-            _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
-            _oView.HeaderTxt.Text = _header.ToString(false, false);
-            string body = "";
-            if (IsBinary(s.requestBodyBytes))
-            {
-                // payload including NULL char.
-                // Append Fiddler-Encoding: base64
-                _oView.HeaderTxt.Text += "\r\nFiddler-Encoding: base64";
-                body = Convert.ToBase64String(s.requestBodyBytes);
-            }
-            else
-            {
-                body = s.GetRequestBodyAsString();
-            }
-
-            _oView.BodyTxt.Text = body;
+            CopySessionToForm(s);
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
         }
 
+        public static void CopySessionToForm(Session oSession)
+        {
+            _header = oSession.RequestHeaders;
+            _oView.MethodTxt.Text = _header.HTTPMethod.Trim();
+            _oView.URITxt.Text = oSession.fullUrl;
+            _oView.VersionTxt.Text = _header.HTTPVersion.Trim();
+            _oView.HeaderTxt.Text = _header.ToString(false, false);
+            string body = "";
+            if (IsBinary(oSession.requestBodyBytes))
+            {
+                // payload including NULL char.
+                // Append Fiddler-Encoding: base64
+                _oView.HeaderTxt.Text += @"\r\nFiddler-Encoding: base64";
+                body = Convert.ToBase64String(oSession.requestBodyBytes);
+            }
+            else
+            {
+                body = oSession.GetRequestBodyAsString();
+            }
+            
+            _oView.BodyTxt.Text = body;
+        }
         private static bool IsBinary(byte[] bytes)
         {
             if (bytes == null) return false;
