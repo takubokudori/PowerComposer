@@ -411,7 +411,7 @@ namespace PowerComposer
             else if (e.Data.GetDataPresent("Fiddler.Session[]"))
             {
                 Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
-                PowerComposer.CopySessionToForm(x[0]);
+                CopySessionToForm(x[0]);
             }
         }
     }
