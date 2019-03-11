@@ -223,6 +223,40 @@ namespace PowerComposer
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
 
+        public void CopySessionToForm(Session oSession)
+        {
+            var header = oSession.RequestHeaders;
+            MethodTxt.Text = header.HTTPMethod.Trim();
+            URITxt.Text = oSession.fullUrl;
+            VersionTxt.Text = header.HTTPVersion.Trim();
+            HeaderTxt.Text = header.ToString(false, false);
+            string body = "";
+            if (IsBinary(oSession.requestBodyBytes))
+            {
+                // payload including NULL char.
+                // Append Fiddler-Encoding: base64
+                HeaderTxt.Text += @"\r\nFiddler-Encoding: base64";
+                body = Convert.ToBase64String(oSession.requestBodyBytes);
+            }
+            else
+            {
+                body = oSession.GetRequestBodyAsString();
+            }
+
+            BodyTxt.Text = body;
+        }
+
+        private static bool IsBinary(byte[] bytes)
+        {
+            if (bytes == null) return false;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] == 0) return true;
+            }
+
+            return false;
+        }
+
         private void ExportVars(string path)
         {
             using (var za = ZipFile.Open(path, ZipArchiveMode.Update))
