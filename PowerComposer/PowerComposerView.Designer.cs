@@ -58,16 +58,16 @@ namespace PowerComposer
             this.BuilderTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.IncludeBtn = new System.Windows.Forms.Button();
-            this.TimesLbl = new System.Windows.Forms.Label();
             this.VersionTxt = new System.Windows.Forms.ComboBox();
-            this.TimesTxt = new System.Windows.Forms.TextBox();
             this.HeaderTxt = new System.Windows.Forms.TextBox();
-            this.ExecBtn = new System.Windows.Forms.Button();
             this.MethodTxt = new System.Windows.Forms.ComboBox();
             this.BodyTxt = new System.Windows.Forms.TextBox();
             this.URITxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TimesTxt = new System.Windows.Forms.TextBox();
+            this.TimesLbl = new System.Windows.Forms.Label();
             this.BuilderTipsLbl = new System.Windows.Forms.Label();
+            this.ExecBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -382,16 +382,6 @@ namespace PowerComposer
             this.IncludeBtn.UseVisualStyleBackColor = true;
             this.IncludeBtn.Click += new System.EventHandler(this.IncludeBtn_Click);
             // 
-            // TimesLbl
-            // 
-            this.TimesLbl.AutoSize = true;
-            this.TimesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimesLbl.Location = new System.Drawing.Point(972, 147);
-            this.TimesLbl.Name = "TimesLbl";
-            this.TimesLbl.Size = new System.Drawing.Size(74, 40);
-            this.TimesLbl.TabIndex = 13;
-            this.TimesLbl.Text = "times";
-            // 
             // VersionTxt
             // 
             this.VersionTxt.Dock = System.Windows.Forms.DockStyle.Right;
@@ -407,19 +397,6 @@ namespace PowerComposer
             this.VersionTxt.Size = new System.Drawing.Size(140, 32);
             this.VersionTxt.TabIndex = 8;
             this.VersionTxt.Text = "HTTP/1.1";
-            // 
-            // TimesTxt
-            // 
-            this.TimesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
-            this.TimesTxt.MaxLength = 11;
-            this.TimesTxt.Name = "TimesTxt";
-            this.TimesTxt.Size = new System.Drawing.Size(114, 31);
-            this.TimesTxt.TabIndex = 12;
-            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
-            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
             // 
             // HeaderTxt
             // 
@@ -439,17 +416,6 @@ namespace PowerComposer
             this.HeaderTxt.Text = "User-Agent: Fiddler";
             this.HeaderTxt.WordWrap = false;
             this.HeaderTxt.Enter += new System.EventHandler(this.HeaderTxt_Enter);
-            // 
-            // ExecBtn
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.ExecBtn, 2);
-            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
-            this.ExecBtn.Name = "ExecBtn";
-            this.ExecBtn.Size = new System.Drawing.Size(184, 96);
-            this.ExecBtn.TabIndex = 1;
-            this.ExecBtn.Text = "Execute";
-            this.ExecBtn.UseVisualStyleBackColor = true;
-            this.ExecBtn.Click += new System.EventHandler(this.ExecBtn_Click);
             // 
             // MethodTxt
             // 
@@ -497,6 +463,8 @@ namespace PowerComposer
             this.BodyTxt.TabIndex = 4;
             this.BodyTxt.WordWrap = false;
             this.BodyTxt.TextChanged += new System.EventHandler(this.BodyTxt_TextChanged);
+            this.BodyTxt.DragDrop += new System.Windows.Forms.DragEventHandler(this.BodyTxt_DragDrop);
+            this.BodyTxt.DragEnter += new System.Windows.Forms.DragEventHandler(this.BodyTxt_DragEnter);
             this.BodyTxt.Enter += new System.EventHandler(this.BodyTxt_Enter);
             // 
             // URITxt
@@ -522,6 +490,29 @@ namespace PowerComposer
             this.label1.Text = "Request Body:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TimesTxt
+            // 
+            this.TimesTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimesTxt.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.TimesTxt.Location = new System.Drawing.Point(852, 150);
+            this.TimesTxt.MaxLength = 11;
+            this.TimesTxt.Name = "TimesTxt";
+            this.TimesTxt.Size = new System.Drawing.Size(114, 31);
+            this.TimesTxt.TabIndex = 12;
+            this.TimesTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TimesTxt.Enter += new System.EventHandler(this.TimesTxt_Enter);
+            this.TimesTxt.Leave += new System.EventHandler(this.TimesTxt_Leave);
+            // 
+            // TimesLbl
+            // 
+            this.TimesLbl.AutoSize = true;
+            this.TimesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TimesLbl.Location = new System.Drawing.Point(972, 147);
+            this.TimesLbl.Name = "TimesLbl";
+            this.TimesLbl.Size = new System.Drawing.Size(74, 40);
+            this.TimesLbl.TabIndex = 13;
+            this.TimesLbl.Text = "times";
+            // 
             // BuilderTipsLbl
             // 
             this.BuilderTipsLbl.AutoSize = true;
@@ -532,6 +523,17 @@ namespace PowerComposer
             this.BuilderTipsLbl.TabIndex = 17;
             this.BuilderTipsLbl.Text = resources.GetString("BuilderTipsLbl.Text");
             this.BuilderTipsLbl.Click += new System.EventHandler(this.BuilderTipsLbl_Click);
+            // 
+            // ExecBtn
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.ExecBtn, 2);
+            this.ExecBtn.Location = new System.Drawing.Point(852, 43);
+            this.ExecBtn.Name = "ExecBtn";
+            this.ExecBtn.Size = new System.Drawing.Size(184, 96);
+            this.ExecBtn.TabIndex = 1;
+            this.ExecBtn.Text = "Execute";
+            this.ExecBtn.UseVisualStyleBackColor = true;
+            this.ExecBtn.Click += new System.EventHandler(this.ExecBtn_Click);
             // 
             // tabControl1
             // 
