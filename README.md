@@ -4,8 +4,8 @@ Enhanced Composer for Fiddler.
 # Features
 
 - Variable sequence
-- number sequence
-- file inclusion
+- Number sequence
+- File inclusion
 
 # Usage
 
@@ -16,7 +16,7 @@ Enhanced Composer for Fiddler.
 1. Select "Variables" tab.
 2. Input variable name into the form below.
 3. press the Enter key or click Add button.
-4. press Enter again or click the name you registered above.
+4. press Enter again or click the name you registered from above textarea.
 5. Input variable values. (Newline-delimited)
 
 ### Use variable
