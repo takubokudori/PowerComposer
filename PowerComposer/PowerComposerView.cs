@@ -218,12 +218,6 @@ namespace PowerComposer
             if (ParentForm != null) ParentForm.AcceptButton = null;
         }
 
-
-        private void CreateDirectoryIfNotExists(string path)
-        {
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-        }
-
         public void CopySessionToForm(Session oSession)
         {
             var header = oSession.RequestHeaders;
