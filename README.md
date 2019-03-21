@@ -9,6 +9,12 @@ Enhanced Composer for Fiddler.
 
 # Usage
 
+## Basic
+
+1. Select "Builder" tab.
+2. Edit textboxes as with Composer.
+3. Click "Execute" button to send your original requests.
+
 ## Variable sequence
 
 ### Register variable
