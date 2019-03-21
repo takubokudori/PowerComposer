@@ -95,7 +95,7 @@ namespace PowerComposer
 
         public static void Execute()
         {
-            // build header
+            // build
             string[] sarr =
             {
                 _oView.MethodTxt.Text,
