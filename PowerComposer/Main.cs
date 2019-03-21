@@ -79,7 +79,7 @@ namespace PowerComposer
             FiddlerApplication.UI.tabsViews.SelectTab(_oPage);
         }
 
-        private int FindMenuIndexByText(Menu.MenuItemCollection mic, string s)
+        private static int FindMenuIndexByText(Menu.MenuItemCollection mic, string s)
         {
             for (var i = 0; i < mic.Count; i++)
             {

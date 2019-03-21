@@ -231,7 +231,7 @@ namespace PowerComposer
             URITxt.Text = oSession.fullUrl;
             VersionTxt.Text = header.HTTPVersion.Trim();
             HeaderTxt.Text = header.ToString(false, false);
-            string body = "";
+            string body;
             if (IsBinary(oSession.requestBodyBytes))
             {
                 // payload including NULL char.
