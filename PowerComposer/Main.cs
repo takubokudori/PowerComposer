@@ -67,7 +67,8 @@ namespace PowerComposer
             _oPage.Controls.Add(_oView);
             _oView.Dock = DockStyle.Fill;
             FiddlerApplication.UI.tabsViews.TabPages.Add(_oPage);
-            FiddlerObject.UI.mnuSessionContext.MenuItems[12].MenuItems
+            var mic = FiddlerObject.UI.mnuSessionContext.MenuItems;
+            mic[FindMenuIndexByText(mic,"R&eplay")].MenuItems
                 .Add("Reissue from &PowerComposer", ReissueOnClick); //Replay ContextMenu
         }
 
