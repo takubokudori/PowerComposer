@@ -1,7 +1,7 @@
 # PowerComposer
 Enhanced Composer for Fiddler.
 
-![screenshot](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG" width="500" height="500" >
 
 # Features
 
