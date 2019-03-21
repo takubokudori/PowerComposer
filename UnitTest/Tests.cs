@@ -164,10 +164,10 @@ namespace UnitTest
         public void GESTest()
         {
             var rg = new RequestGenerator();
-            Assert.AreEqual(GetList(0, 9), rg.GenerateEnumArray("0-9"));
-            Assert.AreEqual(GetList(0, 9, true), rg.GenerateEnumArray("9-0"));
-            Assert.AreEqual(GetList(15, 30), rg.GenerateEnumArray("15-30"));
-            Assert.AreEqual(GetList(1, 532), rg.GenerateEnumArray("1-532"));
+            Assert.AreEqual(GetList(0, 9), RequestGenerator.GenerateEnumArray("0-9"));
+            Assert.AreEqual(GetList(0, 9, true), RequestGenerator.GenerateEnumArray("9-0"));
+            Assert.AreEqual(GetList(15, 30), RequestGenerator.GenerateEnumArray("15-30"));
+            Assert.AreEqual(GetList(1, 532), RequestGenerator.GenerateEnumArray("1-532"));
         }
 
         private List<string> GetList(int s, int t, bool reverse = false)
