@@ -72,12 +72,10 @@ Input File path in {}.
 !{C:\xxx\test.txt}
 ```
 
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Efi.PNG)
 <img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Efi.PNG" width="500" alt="File Inclusion" >
 
 It will be expanded when sending requests.
 
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rfi.PNG)
 <img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rfi.PNG" width="500" alt="Sent request" >
 
 ## Copy HTTP request from web sessions.
