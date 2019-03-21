@@ -1,7 +1,7 @@
 # PowerComposer
 Enhanced Composer for Fiddler.
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG" width="500" height="500" alt="screenshot" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG" width="500" alt="screenshot" >
 
 # Features
 
@@ -27,7 +27,7 @@ Enhanced Composer for Fiddler.
 4. press Enter again or click the name you registered from Variables list.
 5. Input variable values. (Newline-delimited)
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var1.PNG" width="500" height="500" alt="Register variables" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var1.PNG" width="500" alt="Register variables" >
 ### Use registered variable
 
 You can use ${} statement.
@@ -41,7 +41,7 @@ ${SearchIndex}
 
 It will be expanded sequentially when sending requests.
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG" width="500" alt="Sent Requests" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG" width="500" alt="Sent requests" >
 
 ## Number sequence
 
@@ -51,11 +51,11 @@ Input number sequence in {}.
 ```
 #{1-9}
 ```
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Eseq.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Eseq.PNG" width="500" alt="sequence" >
 
 It will be expanded when sending requests. 1, 2, 3, 4, ..., 8, 9.
 
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rseq.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rseq.PNG" width="500" alt="Sent requests" >
 
 ```
 #{9-1}
@@ -73,10 +73,12 @@ Input File path in {}.
 ```
 
 ![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Efi.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Efi.PNG" width="500" alt="File Inclusion" >
 
 It will be expanded when sending requests.
 
 ![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rfi.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rfi.PNG" width="500" alt="Sent request" >
 
 ## Copy HTTP request from web sessions.
 
