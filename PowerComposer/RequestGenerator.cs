@@ -185,11 +185,13 @@ namespace PowerComposer
                 }
                 else if (char.IsUpper(m.Value[0])) // A-Z
                 {
+                    // TODO:A-Z sequence
                     char[] start = s[0].ToCharArray();
                     char[] end = s[1].ToCharArray();
                 }
                 else if (char.IsLower(m.Value[0])) // a-z
                 {
+                    // TODO:a-z sequence
                     char[] start = s[0].ToCharArray();
                     char[] end = s[1].ToCharArray();
                 }
