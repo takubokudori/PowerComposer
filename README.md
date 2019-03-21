@@ -1,6 +1,8 @@
 # PowerComposer
 Enhanced Composer for Fiddler.
 
+![screenshot](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG)
+
 # Features
 
 - Variable sequence
@@ -17,25 +19,30 @@ Enhanced Composer for Fiddler.
 
 ## Variable sequence
 
-### Register variable
+### Register variables
 
 1. Select "Variables" tab.
 2. Input variable name into the form below.
 3. press the Enter key or click Add button.
-4. press Enter again or click the name you registered from above textarea.
+4. press Enter again or click the name you registered from Variables list.
 5. Input variable values. (Newline-delimited)
 
-### Use variable
+![Register variables](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var1.PNG)
+
+### Use registered variable
 
 You can use ${} statement.
 Input variable name in {}.
 
 ```
-${test}
+${SearchIndex}
 ```
+
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var2.PNG)
 
 It will be expanded sequentially when sending requests.
 
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG)
 ## Number sequence
 
 You can use #{} statement.
@@ -44,8 +51,11 @@ Input number sequence in {}.
 ```
 #{1-9}
 ```
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Eseq.PNG)
 
 It will be expanded when sending requests. 1, 2, 3, 4, ..., 8, 9.
+
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rseq.PNG)
 
 ```
 #{9-1}
@@ -62,7 +72,11 @@ Input File path in {}.
 !{C:\xxx\test.txt}
 ```
 
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Efi.PNG)
+
 It will be expanded when sending requests.
+
+![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/Rfi.PNG)
 
 ## Copy HTTP request from web sessions.
 
