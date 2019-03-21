@@ -286,7 +286,7 @@ namespace PowerComposer
                         if (posExt == -1) posExt = 0;
                         string s = f.Substring(0, posExt); // test.txt -> test
 
-                        if (s.Length > 0 && IsValidVarName(s))
+                        if (1 <= s.Length && s.Length <= 32 && IsValidVarName(s))
                         {
                             bool sure = true;
                             if (vars.ContainsKey(s)) // Warning
@@ -416,6 +416,7 @@ namespace PowerComposer
                 Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
                 CopySessionToForm(x[0]);
             }
+
             ChangeStatus(StatusList.None);
         }
 
@@ -426,6 +427,7 @@ namespace PowerComposer
                 Session[] x = (Session[]) e.Data.GetData("Fiddler.Session[]", false);
                 CopySessionToForm(x[0]);
             }
+
             ChangeStatus(StatusList.None);
         }
 
