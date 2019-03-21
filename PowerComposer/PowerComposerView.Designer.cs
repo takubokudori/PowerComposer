@@ -73,6 +73,7 @@ namespace PowerComposer
             this.ErrorUndefinedChk = new System.Windows.Forms.CheckBox();
             this.VariablesLbl = new System.Windows.Forms.Label();
             this.ValuesLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.BuilderTab.SuspendLayout();
@@ -405,6 +406,7 @@ namespace PowerComposer
             this.tableLayoutPanel2.Controls.Add(this.ValuesTxt, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.VariablesLbl, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ValuesLbl, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 3);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 15);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
@@ -620,6 +622,17 @@ namespace PowerComposer
             this.ValuesLbl.TabIndex = 15;
             this.ValuesLbl.Text = "Values";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(430, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 98);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "*Tips*\r\nVariable name condition is:\r\n1 <= length <= 32.\r\nalphanumeric characters " +
+    "only.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // PowerComposerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -685,5 +698,6 @@ namespace PowerComposer
         private CheckBox ErrorUndefinedChk;
         private Label VariablesLbl;
         private Label ValuesLbl;
+        private Label label2;
     }
 }
