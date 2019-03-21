@@ -37,11 +37,11 @@ Input variable name in {}.
 ${SearchIndex}
 ```
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var2.PNG" width="500" height="500" alt="Use register variables" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var2.PNG" width="500" alt="Use register variables" >
 
 It will be expanded sequentially when sending requests.
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG" width="500" height="500" alt="Sent Requests" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG" width="500" alt="Sent Requests" >
 
 ## Number sequence
 
