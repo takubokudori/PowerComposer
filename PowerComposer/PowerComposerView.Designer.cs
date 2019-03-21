@@ -63,6 +63,9 @@ namespace PowerComposer
             this.AddNewVarBtn = new System.Windows.Forms.Button();
             this.VariableBox = new System.Windows.Forms.ListBox();
             this.ValuesTxt = new System.Windows.Forms.TextBox();
+            this.VariablesLbl = new System.Windows.Forms.Label();
+            this.ValuesLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.OptionTab = new System.Windows.Forms.TabPage();
             this.HostChk = new System.Windows.Forms.CheckBox();
             this.FollowRedirectsTxt = new System.Windows.Forms.TextBox();
@@ -71,9 +74,6 @@ namespace PowerComposer
             this.AutoAuthChk = new System.Windows.Forms.CheckBox();
             this.FixLengthChk = new System.Windows.Forms.CheckBox();
             this.ErrorUndefinedChk = new System.Windows.Forms.CheckBox();
-            this.VariablesLbl = new System.Windows.Forms.Label();
-            this.ValuesLbl = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.BuilderTab.SuspendLayout();
@@ -509,6 +509,41 @@ namespace PowerComposer
             this.ValuesTxt.TabIndex = 3;
             this.ValuesTxt.TextChanged += new System.EventHandler(this.ValuesTxt_TextChanged);
             // 
+            // VariablesLbl
+            // 
+            this.VariablesLbl.AutoSize = true;
+            this.VariablesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VariablesLbl.Font = new System.Drawing.Font("MS UI Gothic", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.VariablesLbl.Location = new System.Drawing.Point(3, 0);
+            this.VariablesLbl.Name = "VariablesLbl";
+            this.VariablesLbl.Size = new System.Drawing.Size(421, 30);
+            this.VariablesLbl.TabIndex = 14;
+            this.VariablesLbl.Text = "Variables";
+            this.VariablesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ValuesLbl
+            // 
+            this.ValuesLbl.AutoSize = true;
+            this.ValuesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ValuesLbl.Font = new System.Drawing.Font("MS UI Gothic", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ValuesLbl.Location = new System.Drawing.Point(570, 0);
+            this.ValuesLbl.Name = "ValuesLbl";
+            this.ValuesLbl.Size = new System.Drawing.Size(421, 30);
+            this.ValuesLbl.TabIndex = 15;
+            this.ValuesLbl.Text = "Values";
+            this.ValuesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(430, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 98);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "*Tips*\r\nVariable name condition is:\r\n1 <= length <= 32.\r\nalphanumeric characters " +
+    "only.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // OptionTab
             // 
             this.OptionTab.Controls.Add(this.HostChk);
@@ -599,39 +634,6 @@ namespace PowerComposer
             this.ErrorUndefinedChk.TabIndex = 1;
             this.ErrorUndefinedChk.Text = "Error by undefined variable";
             this.ErrorUndefinedChk.UseVisualStyleBackColor = true;
-            // 
-            // VariablesLbl
-            // 
-            this.VariablesLbl.AutoSize = true;
-            this.VariablesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VariablesLbl.Font = new System.Drawing.Font("MS UI Gothic", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.VariablesLbl.Location = new System.Drawing.Point(3, 0);
-            this.VariablesLbl.Name = "VariablesLbl";
-            this.VariablesLbl.Size = new System.Drawing.Size(421, 30);
-            this.VariablesLbl.TabIndex = 14;
-            this.VariablesLbl.Text = "Variables";
-            // 
-            // ValuesLbl
-            // 
-            this.ValuesLbl.AutoSize = true;
-            this.ValuesLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ValuesLbl.Font = new System.Drawing.Font("MS UI Gothic", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ValuesLbl.Location = new System.Drawing.Point(570, 0);
-            this.ValuesLbl.Name = "ValuesLbl";
-            this.ValuesLbl.Size = new System.Drawing.Size(421, 30);
-            this.ValuesLbl.TabIndex = 15;
-            this.ValuesLbl.Text = "Values";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(430, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 98);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "*Tips*\r\nVariable name condition is:\r\n1 <= length <= 32.\r\nalphanumeric characters " +
-    "only.";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // PowerComposerView
             // 
