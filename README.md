@@ -1,7 +1,7 @@
 # PowerComposer
 Enhanced Composer for Fiddler.
 
-<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG" width="500" height="500" >
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/ss.PNG" width="500" height="500" alt="screenshot" >
 
 # Features
 
@@ -27,8 +27,7 @@ Enhanced Composer for Fiddler.
 4. press Enter again or click the name you registered from Variables list.
 5. Input variable values. (Newline-delimited)
 
-![Register variables](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var1.PNG)
-
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var1.PNG" width="500" height="500" alt="Register variables" >
 ### Use registered variable
 
 You can use ${} statement.
@@ -38,11 +37,12 @@ Input variable name in {}.
 ${SearchIndex}
 ```
 
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var2.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var2.PNG" width="500" height="500" alt="Use register variables" >
 
 It will be expanded sequentially when sending requests.
 
-![Use registered variable](https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG)
+<img src="https://raw.githubusercontent.com/takubokudori/PowerComposer/master/images/var3.PNG" width="500" height="500" alt="Sent Requests" >
+
 ## Number sequence
 
 You can use #{} statement.
