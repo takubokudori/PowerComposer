@@ -43,8 +43,8 @@ namespace PowerComposer
 
         public PowerComposerView()
         {
-            _prevTxt = BodyTxt;
             InitializeComponent();
+            _prevTxt = BodyTxt;
             vars = new Dictionary<string, string>();
         }
 
