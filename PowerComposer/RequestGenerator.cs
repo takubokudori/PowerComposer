@@ -25,6 +25,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -136,7 +137,14 @@ namespace PowerComposer
                     string filePath = m.Value.Substring(2, m.Value.Length - 3); // #{C:\test.txt} -> C:\test.txt
                     if (File.Exists(filePath))
                     {
-                        str = File.OpenText(filePath).ReadToEnd();
+                        byte[] buffer;
+                        using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                        {
+                            buffer = new byte[fs.Length];
+                            fs.Read(buffer, 0, buffer.Length);
+                        }
+
+                        str = Encoding.Unicode.GetString(buffer);
                     }
                     else
                     {

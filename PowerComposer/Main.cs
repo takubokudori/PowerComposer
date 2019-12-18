@@ -26,6 +26,7 @@ SOFTWARE.
 using Fiddler;
 using System;
 using System.Collections.Specialized;
+using System.Text;
 using System.Windows.Forms;
 
 [assembly: Fiddler.RequiredVersion("2.3.5.0")]
@@ -207,7 +208,7 @@ namespace PowerComposer
             byte[] bodyBytes = new byte[0];
             if (!string.IsNullOrEmpty(bodyString))
             {
-                bodyBytes = CONFIG.oBodyEncoding.GetBytes(bodyString);
+                bodyBytes = Encoding.Unicode.GetBytes(bodyString);
                 bodyBytes = EncodeRequestIfNeed(ref header, bodyBytes);
             }
 
